@@ -17,12 +17,7 @@ public class ServiceLocator : SingletonMonoBehavior<ServiceLocator>
     // Non-MonoBehavior backed systems
     public StateMachine StateMachine = new StateMachine();
     public Player Player = new Player();
-
-    public void Awake()
-    {
-        MapGenerator.Initialize();
-    }
-
+    
     public void Start()
     {
         StateMachine.ChangeState(new StateSetup());

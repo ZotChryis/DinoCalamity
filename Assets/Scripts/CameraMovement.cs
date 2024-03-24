@@ -14,7 +14,6 @@ public class CameraMovement : MonoBehaviour
     [SerializeField] private float m_zoomSpeed = 20f;
 
     private Vector3 m_direction = new Vector3(0, 0, 0);
-    private float m_currentZoom = 0f;
     
     private void Update()
     {

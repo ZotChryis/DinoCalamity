@@ -15,9 +15,10 @@ namespace MapGeneration
             {
                 mapGenerator.GenerateMap();
             }
-            if (GUILayout.Button("Generate Probabilities"))
+            
+            if (GUILayout.Button("Clear"))
             {
-                mapGenerator.GenerateProbabilityTable();
+                mapGenerator.Clear();
             }
         }
     }
