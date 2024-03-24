@@ -1,8 +1,9 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
+/// <summary>
+/// STUB
+/// </summary>
 public class Deck
 {
-    
+    public Queue<Card> m_cards;
 }

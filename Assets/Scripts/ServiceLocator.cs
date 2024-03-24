@@ -2,22 +2,21 @@ using GameStates;
 using Utility;
 
 /// <summary>
-/// This class acts as a ServiceLocator root and can be statically accessed via Game.Instance.
+/// This class acts as a ServiceLocator root and can be statically accessed via ServiceLocator.Instance.
+/// It is what bootstraps the game scene.
 /// </summary>
 
-public class Game : SingletonMonoBehavior<Game>
+public class ServiceLocator : SingletonMonoBehavior<ServiceLocator>
 {
-    public static Game Instance => ((Game)InternalInstance);
+    public static ServiceLocator Instance => ((ServiceLocator)InternalInstance);
 
-    // Mono Game Systems
+    // MonoBehavior backed systems
     public MapGenerator MapGenerator;
+    public Player Player;
     
-    // Non-Mono Game Systems
-    // stuff inside of this huge Game class
+    // Non-MonoBehavior backed systems
     public StateMachine StateMachine = new StateMachine();
-    public Hand Hand = new Hand();
-    public Deck Deck = new Deck();
-    
+
     public void Awake()
     {
         MapGenerator.Initialize();
