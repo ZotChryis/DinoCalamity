@@ -1,3 +1,4 @@
+using Gameplay;
 using GameStates;
 using Utility;
 
@@ -12,10 +13,10 @@ public class ServiceLocator : SingletonMonoBehavior<ServiceLocator>
 
     // MonoBehavior backed systems
     public MapGenerator MapGenerator;
-    public Player Player;
-    
+
     // Non-MonoBehavior backed systems
     public StateMachine StateMachine = new StateMachine();
+    public Player Player = new Player();
 
     public void Awake()
     {

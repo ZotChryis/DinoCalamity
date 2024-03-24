@@ -5,7 +5,7 @@ using UnityEngine;
 /// Scroll wheel will zoom in and out.
 /// The movement assumes the camera is built to be from the top-down perspective.
 /// </summary>
-public class TopDownCameraMovement : MonoBehaviour
+public class CameraMovement : MonoBehaviour
 {
     [SerializeField] private Camera m_camera;
 
