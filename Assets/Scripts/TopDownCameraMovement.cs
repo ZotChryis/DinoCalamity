@@ -2,7 +2,7 @@ using UnityEngine;
 
 /// <summary>
 /// This class provides basic WASD movement for the camera that is supplied.
-/// Scroll wheel will zoom to a maximum and minimum.
+/// Scroll wheel will zoom in and out.
 /// The movement assumes the camera is built to be from the top-down perspective.
 /// </summary>
 public class TopDownCameraMovement : MonoBehaviour
