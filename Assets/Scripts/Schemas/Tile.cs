@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Schemas
@@ -12,6 +10,6 @@ namespace Schemas
     public class Tile : ScriptableObject
     {
         public string Name;
-        public Sprite Icon;
+        public GameObject Prefab;
     }
 }
