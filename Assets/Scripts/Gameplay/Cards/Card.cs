@@ -2,6 +2,7 @@ namespace Gameplay.Cards
 {
     /// <summary>
     /// STUB
+    /// Base class for all cards.
     /// </summary>
     public abstract class Card
     {

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MapProbabilities:
   - Tile: {fileID: 11400000, guid: d35b6fc1bb7a4904ebf1281b2c808e35, type: 2}
-    Amount: 5
+    Amount: 0
   - Tile: {fileID: 11400000, guid: 20233b52161c6514da71e50a6ae34a18, type: 2}
     Amount: 1
   Width: 10
