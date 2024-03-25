@@ -79,7 +79,7 @@ public class MapGenerator : MonoBehaviour
         {
             for (int i = 0; i < settingsTileProbability.Amount; i++)
             {
-                m_tileProbability[tilesPlaced] = settingsTileProbability.Prefab;
+                m_tileProbability[tilesPlaced] = settingsTileProbability.Tile.Prefab;
                 tilesPlaced++;
             }
         }

@@ -1,9 +1,9 @@
-namespace Gameplay
+namespace Gameplay.Cards
 {
     /// <summary>
     /// STUB
     /// </summary>
-    public class Card
+    public abstract class Card
     {
         /// <summary>
         /// This event occurs when the card is drawn from the player's deck to the player's hand.

@@ -9,13 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 147e328fcfad61344ae3737582594965, type: 3}
-  m_Name: Map_Default
+  m_Script: {fileID: 11500000, guid: f0183e4a931545c40a697f633e351ecb, type: 3}
+  m_Name: Resource_Culture
   m_EditorClassIdentifier: 
-  MapProbabilities:
-  - Tile: {fileID: 11400000, guid: d35b6fc1bb7a4904ebf1281b2c808e35, type: 2}
-    Amount: 5
-  Width: 20
-  Height: 20
-  HexSize: 0.5
-  Gap: 0.01
+  Name: Culture
+  Icon: {fileID: 21300000, guid: 9beeb3a9e2d89564c87f71ca02f8b4ca, type: 3}

@@ -10,12 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 147e328fcfad61344ae3737582594965, type: 3}
-  m_Name: Map_Default
+  m_Name: Map_Test
   m_EditorClassIdentifier: 
   MapProbabilities:
   - Tile: {fileID: 11400000, guid: d35b6fc1bb7a4904ebf1281b2c808e35, type: 2}
     Amount: 5
-  Width: 20
-  Height: 20
+  - Tile: {fileID: 11400000, guid: 20233b52161c6514da71e50a6ae34a18, type: 2}
+    Amount: 1
+  Width: 10
+  Height: 10
   HexSize: 0.5
   Gap: 0.01

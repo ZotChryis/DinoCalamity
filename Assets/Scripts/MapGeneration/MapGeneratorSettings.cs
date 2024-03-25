@@ -1,3 +1,4 @@
+using Schemas;
 using System;
 using UnityEngine;
 
@@ -10,7 +11,7 @@ namespace MapGeneration
         [Serializable]
         public struct MapProbability
         {
-            public GameObject Prefab;
+            public Schemas.Tile Tile;
             public int Amount;
         }
 
