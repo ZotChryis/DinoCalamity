@@ -5,6 +5,8 @@ namespace Gameplay.Cards
     /// </summary>
     public class Action : Card
     {
-        
+        public Action(Schemas.Card data) : base(data)
+        {
+        }
     }
 }

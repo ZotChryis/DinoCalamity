@@ -11,7 +11,7 @@ namespace Schemas
     {
         // @Ryan: How do we differentiate between card types? Is an enum enough?
         // We'll need to map this somehow to a script
-        public enum Type
+        public enum CardType
         {
             Structure,
             Action
@@ -19,5 +19,6 @@ namespace Schemas
         
         public string Name;
         public Sprite Icon;
+        public CardType Type;
     }
 }

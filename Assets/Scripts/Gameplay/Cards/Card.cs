@@ -7,23 +7,13 @@ namespace Gameplay.Cards
     public abstract class Card
     {
         /// <summary>
-        /// This event occurs when the card is drawn from the player's deck to the player's hand.
+        /// The data for this card.
         /// </summary>
-        public delegate void OnDraw();
-    
-        /// <summary>
-        /// This event occurs when the player commits playing the card from their hand to the map.
-        /// </summary>
-        public delegate void OnPlay();
-    
-        /// <summary>
-        /// This event occurs when the card enters the discard pile in any way.
-        /// </summary>
-        public delegate void OnDiscard();
-    
-        /// <summary>
-        /// This event occurs when the card is goes from anywhere back into the player's deck.
-        /// </summary>
-        public delegate void OnShuffle();
+        public readonly Schemas.Card Data;
+        
+        public Card(Schemas.Card data)
+        {
+            Data = data;
+        }
     }
 }

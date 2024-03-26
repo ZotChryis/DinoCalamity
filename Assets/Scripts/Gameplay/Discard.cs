@@ -1,12 +1,11 @@
 using System.Collections.Generic;
 using Gameplay.Cards;
+using Card = UI.Card;
 
 namespace Gameplay
 {
     /// <summary>
     /// STUB
-    /// Should Deck/Hand/Discard just be lists within Player.cs?
-    /// What do we lose/gain from separating them into bespoke classes?
     /// </summary>
     public class Discard
     {

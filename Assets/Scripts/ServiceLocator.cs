@@ -1,5 +1,6 @@
 using Gameplay;
 using GameStates;
+using Schemas;
 using Utility;
 
 /// <summary>
@@ -15,9 +16,15 @@ public class ServiceLocator : SingletonMonoBehavior<ServiceLocator>
     public MapGenerator MapGenerator;
 
     // Non-MonoBehavior backed systems
+    public StaticData Schemas = new StaticData();
     public StateMachine StateMachine = new StateMachine();
     public Player Player = new Player();
     
+    public void Awake()
+    {
+        Schemas.Initialize();
+    }
+
     public void Start()
     {
         StateMachine.ChangeState(new StateSetup());
