@@ -4,7 +4,7 @@ namespace Gameplay.Cards
     /// STUB
     /// Base class for all cards.
     /// </summary>
-    public abstract class Card
+    public class Card
     {
         /// <summary>
         /// The data for this card.

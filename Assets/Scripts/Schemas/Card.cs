@@ -9,16 +9,8 @@ namespace Schemas
     [CreateAssetMenu]
     public class Card : ScriptableObject
     {
-        // @Ryan: How do we differentiate between card types? Is an enum enough?
-        // We'll need to map this somehow to a script
-        public enum CardType
-        {
-            Structure,
-            Action
-        }
-        
         public string Name;
         public Sprite Icon;
-        public CardType Type;
+        public Action[] Actions;
     }
 }

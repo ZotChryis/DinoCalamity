@@ -17,8 +17,10 @@ public class ServiceLocator : SingletonMonoBehavior<ServiceLocator>
 
     // Non-MonoBehavior backed systems
     public StaticData Schemas = new StaticData();
-    public StateMachine StateMachine = new StateMachine();
     public Player Player = new Player();
+    
+    //  todo: go in some world/gamemanager location
+    public StateMachine StateMachine = new StateMachine();
     
     public void Awake()
     {

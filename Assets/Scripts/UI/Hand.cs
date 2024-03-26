@@ -13,6 +13,7 @@ namespace UI
         private void Start()
         {
             ServiceLocator.Instance.Player.OnDrawEvent += OnDraw;
+            ServiceLocator.Instance.Player.OnDiscardEvent += OnDiscard;
         }
 
         private void OnDraw(Gameplay.Cards.Card card)
@@ -21,6 +22,18 @@ namespace UI
             uiCard.SetData(card.Data);
 
             m_cards.Add(card, uiCard);
+        }
+        
+        private void OnDiscard(Gameplay.Cards.Card card)
+        {
+            if (!m_cards.ContainsKey(card))
+            {
+                return;
+            }
+            
+            Card uiCard = m_cards[card];
+            Destroy(uiCard.gameObject);
+            m_cards.Remove(card);
         }
     }
 }

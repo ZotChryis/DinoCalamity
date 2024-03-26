@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Gameplay.Cards;
+using UnityEngine;
 
 namespace Gameplay
 {
@@ -14,6 +15,32 @@ namespace Gameplay
         {
             m_cards.Add(card);
             return true;
+        }
+
+        public Card ChooseRandomCard()
+        {
+            if (m_cards.Count == 0)
+            {
+                return null;
+            }
+
+            int cardIndex = Random.Range(0, m_cards.Count);
+            Card card = m_cards[cardIndex];
+            return card;
+        }
+
+        public bool Discard(Card card)
+        {
+            for (var i = m_cards.Count - 1; i >= 0; i--)
+            {
+                if (m_cards[i] == card)
+                {
+                    m_cards.RemoveAt(i);
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }

@@ -36,6 +36,7 @@ namespace Gameplay
         /// What do we lose/gain from separating them into bespoke classes?
         private Deck m_deck = new Deck();
         private Hand m_hand = new Hand();
+        private Discard m_discard = new Discard();
 
         /// <summary>
         /// Adds a card to the deck. Returns whether the addition was successful.
@@ -64,6 +65,22 @@ namespace Gameplay
             Card card = m_deck.Pop();
             m_hand.AddCard(card);
             OnDrawEvent?.Invoke(card);
+            return true;
+        }
+
+        /// <summary>
+        /// Discards a random card from the hand. Returns whether a draw was made.
+        /// </summary>
+        public bool DiscardRandomCard()
+        {
+            Card card = m_hand.ChooseRandomCard();
+            if (card == null)
+            {
+                return false;
+            }
+
+            m_hand.Discard(card);
+            OnDiscardEvent?.Invoke(card);
             return true;
         }
     }

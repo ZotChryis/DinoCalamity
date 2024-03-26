@@ -11,5 +11,6 @@ namespace Schemas
     {
         public string Name;
         public GameObject Prefab;
+        public Resource Resource;
     }
 }

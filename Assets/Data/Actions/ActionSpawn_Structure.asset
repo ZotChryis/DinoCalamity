@@ -9,10 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73c4acd9b82fa274dadc738f9163d3ff, type: 3}
-  m_Name: Card_Structure
+  m_Script: {fileID: 11500000, guid: 6e23bb4482849b249972661a345620d0, type: 3}
+  m_Name: ActionSpawn_Structure
   m_EditorClassIdentifier: 
-  Name: Structure
-  Icon: {fileID: 21300000, guid: 9beeb3a9e2d89564c87f71ca02f8b4ca, type: 3}
-  Actions:
-  - {fileID: 11400000, guid: 8be0214fd5785af4db9fc12ead0d5e96, type: 2}
+  m_prefab: {fileID: 4974757168741295493, guid: bcfcab06a715d524fba3441d1d433a90, type: 3}
