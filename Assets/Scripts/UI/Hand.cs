@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace UI
 {
@@ -14,6 +15,17 @@ namespace UI
         {
             ServiceLocator.Instance.Player.OnDrawEvent += OnDraw;
             ServiceLocator.Instance.Player.OnDiscardEvent += OnDiscard;
+        }
+
+        private void Update()
+        {
+            // TEMP: Whenever the user right clicks, we'll deselect whatever card 
+            //       This should probably live somewhere else in some input manager.
+            if (Input.GetMouseButtonDown(1))
+            {
+                ServiceLocator.Instance.Player.SelectedCard.Value = null;
+                EventSystem.current.SetSelectedGameObject(null);
+            }
         }
 
         private void OnDraw(Gameplay.Cards.Card card)

@@ -1,11 +1,10 @@
-using Schemas;
 using System;
 using UnityEngine;
 
-namespace MapGeneration
+namespace Gameplay.MapGeneration
 {
     [CreateAssetMenu]
-    public class MapGeneratorSettings : ScriptableObject
+    public class WorldSettings : ScriptableObject
     {
         //  TODO: This is placeholder randomization.
         [Serializable]
@@ -17,7 +16,7 @@ namespace MapGeneration
 
         /// <summary>
         /// Tiles are spawned at these probabilities. All probabilities are added together and then drawn from that total.
-        /// See MapGenerator.GenerateMap for execution.
+        /// See World.GenerateMap for execution.
         /// </summary>
         public MapProbability[] MapProbabilities;
 

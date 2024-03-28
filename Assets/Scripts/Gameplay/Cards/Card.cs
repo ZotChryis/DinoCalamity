@@ -15,7 +15,7 @@ namespace Gameplay.Cards
         {
             Data = data;
         }
-        
+
         /// <summary>
         /// Invokes all the card's actions, in order, for the given event type.
         /// </summary>
@@ -30,6 +30,16 @@ namespace Gameplay.Cards
             {
                 actions[i].Invoke();
             }
+        }
+
+        /// <summary>
+        /// Returns whether or not the card's play conditions are met. For example, some cards require targetting
+        /// an empty world tile, or a tile with a building, or nothing at all.
+        /// </summary>
+        public bool AreConditionsMet()
+        {
+            // TEMP - Right now all cards can be played when selected
+            return true;
         }
     }
 }

@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 7159448188289491379}
   - component: {fileID: 2840040500678983764}
   - component: {fileID: 4614516201534895465}
-  - component: {fileID: 8801103034541829303}
+  - component: {fileID: 8097265878577793254}
   m_Layer: 0
   m_Name: Card
   m_TagString: Untagged
@@ -168,8 +168,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_name: {fileID: 8216957590985165241}
   m_icon: {fileID: 6290329280319827669}
-  m_button: {fileID: 8801103034541829303}
---- !u!114 &8801103034541829303
+  m_button: {fileID: 0}
+--- !u!114 &8097265878577793254
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -193,7 +193,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.4802183, g: 0.990566, b: 0.3224012, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1

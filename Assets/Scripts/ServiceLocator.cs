@@ -1,4 +1,5 @@
 using Gameplay;
+using Gameplay.MapGeneration;
 using GameStates;
 using Schemas;
 using Utility;
@@ -13,7 +14,7 @@ public class ServiceLocator : SingletonMonoBehavior<ServiceLocator>
     public static ServiceLocator Instance => ((ServiceLocator)InternalInstance);
 
     // MonoBehavior backed systems
-    public MapGenerator MapGenerator;
+    public World world;
 
     // Non-MonoBehavior backed systems
     public StaticData Schemas = new StaticData();

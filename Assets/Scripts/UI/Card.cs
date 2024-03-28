@@ -1,10 +1,11 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace UI
 {
-    public class Card : MonoBehaviour
+    public class Card : MonoBehaviour, IPointerDownHandler
     {
         [SerializeField] private TextMeshProUGUI m_name;
         [SerializeField] private Image m_icon;
@@ -19,15 +20,15 @@ namespace UI
             m_icon.sprite = source.Data.Icon;
         }
         
-        private void Start()
+        public void OnPointerDown(PointerEventData eventData)
         {
-            m_button.onClick.AddListener(OnButtonClick);
-        }
+            // Only left clicks are counted for selecting cards
+            if (eventData.button != PointerEventData.InputButton.Left)
+            {
+                return;
+            }
 
-        private void OnButtonClick()
-        {
-            // TEMP - for now execute all onplay actions when clicking the card in hand
-            m_source.InvokeActions(Schemas.Card.EventType.OnPlay);
+            ServiceLocator.Instance.Player.SelectedCard.Value = m_source;
         }
     }
 }

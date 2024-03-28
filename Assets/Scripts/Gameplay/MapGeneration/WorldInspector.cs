@@ -1,24 +1,24 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace MapGeneration
+namespace Gameplay.MapGeneration
 {
-    [CustomEditor(typeof(MapGenerator))]
-    public class MapGeneratorInspector : Editor
+    [CustomEditor(typeof(World))]
+    public class WorldInspector : Editor
     {
         public override void OnInspectorGUI()
         {
             base.OnInspectorGUI();
 
-            MapGenerator mapGenerator = (MapGenerator) target;
+            World world = (World) target;
             if (GUILayout.Button("Generate Map"))
             {
-                mapGenerator.GenerateMap();
+                world.GenerateMap();
             }
             
             if (GUILayout.Button("Clear"))
             {
-                mapGenerator.Clear();
+                world.Clear();
             }
         }
     }

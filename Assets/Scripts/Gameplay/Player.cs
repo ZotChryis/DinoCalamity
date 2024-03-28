@@ -1,4 +1,5 @@
 using Gameplay.Cards;
+using Utility.Observable;
 
 namespace Gameplay
 {
@@ -31,13 +32,13 @@ namespace Gameplay
         public delegate void OnShuffle(Card card);
         public OnShuffle OnShuffleEvent;
 
+        public Observable<Card> SelectedCard = new Observable<Card>();
         
-        /// Should Deck/Hand/Discard just be lists within Player.cs?
-        /// What do we lose/gain from separating them into bespoke classes?
         private Deck m_deck = new Deck();
         private Hand m_hand = new Hand();
         private Discard m_discard = new Discard();
-
+        private Card m_selectedCard;
+        
         /// <summary>
         /// Adds a card to the deck. Returns whether the addition was successful.
         /// </summary>
@@ -82,6 +83,22 @@ namespace Gameplay
             m_hand.Discard(card);
             OnDiscardEvent?.Invoke(card);
             return true;
+        }
+        
+        // TEMP
+        public void PlaySelectedCard()
+        {
+            // Protect against a rogue call.
+            if (SelectedCard.Value == null)
+            {
+                return;
+            }
+            
+            m_hand.Discard(SelectedCard.Value);
+            OnDiscardEvent?.Invoke(SelectedCard.Value);
+            
+            SelectedCard.Value.InvokeActions(Schemas.Card.EventType.OnPlay);
+            SelectedCard.Value = null;
         }
     }
 }
