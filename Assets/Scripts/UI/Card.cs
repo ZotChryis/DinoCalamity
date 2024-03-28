@@ -10,13 +10,13 @@ namespace UI
         [SerializeField] private Image m_icon;
         [SerializeField] private Button m_button;
 
-        private Schemas.Card m_data;
+        private Gameplay.Cards.Card  m_source;
 
-        public void SetData(Schemas.Card data)
+        public void SetSource(Gameplay.Cards.Card source)
         {
-            m_data = data;
-            m_name.SetText(data.Name);
-            m_icon.sprite = data.Icon;
+            m_source = source;
+            m_name.SetText(source.Data.Name);
+            m_icon.sprite = source.Data.Icon;
         }
         
         private void Start()
@@ -26,11 +26,8 @@ namespace UI
 
         private void OnButtonClick()
         {
-            for (var i = 0; i < m_data.Actions.Length; i++)
-            {
-                // TEMP AS SHIT
-                m_data.Actions[i].Invoke(gameObject);
-            }
+            // TEMP - for now execute all onplay actions when clicking the card in hand
+            m_source.InvokeActions(Schemas.Card.EventType.OnPlay);
         }
     }
 }

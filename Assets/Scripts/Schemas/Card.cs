@@ -1,3 +1,4 @@
+using AYellowpaper.SerializedCollections;
 using UnityEngine;
 
 namespace Schemas
@@ -9,15 +10,18 @@ namespace Schemas
     [CreateAssetMenu]
     public class Card : ScriptableObject
     {
-        public enum ActionTiming
+        public enum EventType
         {
+            OnDraw,
+            OnDiscard,
+            OnShuffle,
             OnPlay
         }
         
         public string Name;
         public Sprite Icon;
-
-        // todo: split these up for onplay, ondiscard, etc
-        public Action[] Actions;
+        
+        [SerializedDictionary("Event Type", "Actions")]
+        public SerializedDictionary<EventType, Action[]> Actions;
     }
 }

@@ -7,9 +7,9 @@ namespace Schemas.Actions
     {
         [SerializeField] private GameObject m_prefab;
 
-        public override void Invoke(GameObject source)
+        public override void Invoke()
         {
-            Instantiate(m_prefab, source.transform);
+            Instantiate(m_prefab);
         }
     }
 }

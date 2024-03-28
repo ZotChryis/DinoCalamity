@@ -19,7 +19,7 @@ namespace UI
         private void OnDraw(Gameplay.Cards.Card card)
         {
             var uiCard = Instantiate(m_card, m_content);
-            uiCard.SetData(card.Data);
+            uiCard.SetSource(card);
 
             m_cards.Add(card, uiCard);
         }

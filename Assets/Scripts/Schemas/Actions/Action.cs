@@ -6,6 +6,6 @@ namespace Schemas
     [Serializable]
     public abstract class Action : ScriptableObject
     {
-        public abstract void Invoke(GameObject source);
+        public abstract void Invoke();
     }
 }

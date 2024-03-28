@@ -15,4 +15,7 @@ MonoBehaviour:
   Name: Discard 1
   Icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
   Actions:
-  - {fileID: 11400000, guid: a9258828ea1f1d144aee91ee8d5429bd, type: 2}
+    _serializedList:
+    - Key: 3
+      Value:
+      - {fileID: 11400000, guid: a9258828ea1f1d144aee91ee8d5429bd, type: 2}

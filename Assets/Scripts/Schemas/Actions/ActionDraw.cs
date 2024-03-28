@@ -7,7 +7,7 @@ namespace Schemas.Actions
     {
         [SerializeField] private int m_amount;
 
-        public override void Invoke(GameObject source)
+        public override void Invoke()
         {
             for (int i = 0; i < m_amount; i++)
             {
