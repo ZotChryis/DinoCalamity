@@ -10,9 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 73c4acd9b82fa274dadc738f9163d3ff, type: 3}
-  m_Name: Card_Extract
+  m_Name: Card_Discard1
   m_EditorClassIdentifier: 
-  Name: Extract
-  Icon: {fileID: 21300000, guid: b8af7ae025e373040acabdbb8420d64a, type: 3}
+  Name: Discard 1
+  Icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
   Actions:
-    _serializedList: []
+    _serializedList:
+    - Key: 3
+      Value:
+      - {fileID: 11400000, guid: a9258828ea1f1d144aee91ee8d5429bd, type: 2}

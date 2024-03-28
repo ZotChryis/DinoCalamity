@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 73c4acd9b82fa274dadc738f9163d3ff, type: 3}
-  m_Name: Card_Discard_One
+  m_Name: Card_GainResource_OnDraw_2Lava
   m_EditorClassIdentifier: 
-  Name: Discard 1
-  Icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  Name: Lava +2 OnDraw
+  Icon: {fileID: 21300000, guid: ec6032982acd4d640850fe335856a0a9, type: 3}
   Actions:
     _serializedList:
-    - Key: 3
+    - Key: 0
       Value:
-      - {fileID: 11400000, guid: a9258828ea1f1d144aee91ee8d5429bd, type: 2}
+      - {fileID: 11400000, guid: 1fc003af88098684abd7e97e0d4effaf, type: 2}
+      - {fileID: 11400000, guid: 1fc003af88098684abd7e97e0d4effaf, type: 2}

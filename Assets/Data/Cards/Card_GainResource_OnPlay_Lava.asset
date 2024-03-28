@@ -10,13 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 73c4acd9b82fa274dadc738f9163d3ff, type: 3}
-  m_Name: Card_Draw_Two
+  m_Name: Card_GainResource_OnPlay_Lava
   m_EditorClassIdentifier: 
-  Name: Draw 2
-  Icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  Name: Lava +1 OnPlay
+  Icon: {fileID: 21300000, guid: ec6032982acd4d640850fe335856a0a9, type: 3}
   Actions:
     _serializedList:
     - Key: 3
       Value:
-      - {fileID: 11400000, guid: e8101db424bd76841a2fd9e0c9ab8dc6, type: 2}
-      - {fileID: 11400000, guid: e8101db424bd76841a2fd9e0c9ab8dc6, type: 2}
+      - {fileID: 11400000, guid: 1fc003af88098684abd7e97e0d4effaf, type: 2}

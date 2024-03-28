@@ -65,6 +65,7 @@ namespace Gameplay
 
             Card card = m_deck.Pop();
             m_hand.AddCard(card);
+            card.InvokeActions(Schemas.Card.EventType.OnDraw);
             OnDrawEvent?.Invoke(card);
             return true;
         }
@@ -81,6 +82,7 @@ namespace Gameplay
             }
 
             m_hand.Discard(card);
+            card.InvokeActions(Schemas.Card.EventType.OnDiscard);
             OnDiscardEvent?.Invoke(card);
             return true;
         }
