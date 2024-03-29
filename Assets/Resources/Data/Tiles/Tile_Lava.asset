@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Tile_Lava
   m_EditorClassIdentifier: 
   Name: Lava
-  Prefab: {fileID: 6706638111451895091, guid: c307175e2800bd645baad0cfd6eda801, type: 3}
+  Prefab: {fileID: 2000517665659860340, guid: b58414a1783d29642960146ad2a03125, type: 3}
   Resource: {fileID: 11400000, guid: 06ecc9b51627c1143977f9856c6b38c5, type: 2}
