@@ -32,6 +32,9 @@ namespace Gameplay
         public delegate void OnShuffle(Card card);
         public OnShuffle OnShuffleEvent;
 
+        /// <summary>
+        /// Central method of communicating what is the currently selected card. Anyone can change this, beware.
+        /// </summary>
         public Observable<Card> SelectedCard = new Observable<Card>();
         
         private Deck m_deck = new Deck();

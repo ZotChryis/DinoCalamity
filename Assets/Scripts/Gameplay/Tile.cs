@@ -10,7 +10,7 @@ namespace Gameplay
     {
         public void OnPointerClick(PointerEventData eventData)
         {
-            
+            Debug.Log("Clicked Tile!");
         }
     }
 }

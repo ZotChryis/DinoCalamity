@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -10,8 +11,27 @@ namespace UI
         [SerializeField] private TextMeshProUGUI m_name;
         [SerializeField] private Image m_icon;
         [SerializeField] private Button m_button;
+        [SerializeField] private Animation m_animation;
 
         private Gameplay.Cards.Card  m_source;
+
+        private void Start()
+        {
+            ServiceLocator.Instance.Player.SelectedCard.OnChangedValues += OnSelectedCardChanged;
+        }
+
+        private void OnSelectedCardChanged(Gameplay.Cards.Card oldValue, Gameplay.Cards.Card newValue)
+        {
+            // TEMP - Need better animation support
+            if (newValue != m_source)
+            {
+                m_animation.Play("Card_Normal");
+            }
+            else
+            {
+                m_animation.Play("Card_Selected");
+            }
+        }
 
         public void SetSource(Gameplay.Cards.Card source)
         {
@@ -29,6 +49,12 @@ namespace UI
             }
 
             ServiceLocator.Instance.Player.SelectedCard.Value = m_source;
+        }
+
+        public void Dispose()
+        {
+            ServiceLocator.Instance.Player.SelectedCard.OnChangedValues -= OnSelectedCardChanged;
+            Destroy(gameObject);
         }
     }
 }

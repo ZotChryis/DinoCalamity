@@ -24,7 +24,6 @@ namespace UI
             if (Input.GetMouseButtonDown(1))
             {
                 ServiceLocator.Instance.Player.SelectedCard.Value = null;
-                EventSystem.current.SetSelectedGameObject(null);
             }
         }
 
@@ -44,7 +43,7 @@ namespace UI
             }
             
             Card uiCard = m_cards[card];
-            Destroy(uiCard.gameObject);
+            uiCard.Dispose();
             m_cards.Remove(card);
         }
     }
