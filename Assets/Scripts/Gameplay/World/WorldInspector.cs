@@ -1,16 +1,16 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace Gameplay.MapGeneration
+namespace Gameplay.World
 {
-    [CustomEditor(typeof(World))]
+    [CustomEditor(typeof(Gameplay.World.World))]
     public class WorldInspector : Editor
     {
         public override void OnInspectorGUI()
         {
             base.OnInspectorGUI();
 
-            World world = (World) target;
+            Gameplay.World.World world = (Gameplay.World.World) target;
             if (GUILayout.Button("Generate Map"))
             {
                 world.GenerateMap();

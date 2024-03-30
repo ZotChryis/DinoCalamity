@@ -1,5 +1,5 @@
 using Gameplay;
-using Gameplay.MapGeneration;
+using Gameplay.World;
 using GameStates;
 using Schemas;
 using Utility;

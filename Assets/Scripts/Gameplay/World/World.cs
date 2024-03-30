@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Gameplay.MapGeneration
+namespace Gameplay.World
 {
     public class World : MonoBehaviour
     {

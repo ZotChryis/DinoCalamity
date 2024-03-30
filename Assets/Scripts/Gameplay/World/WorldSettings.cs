@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Gameplay.MapGeneration
+namespace Gameplay.World
 {
     [CreateAssetMenu]
     public class WorldSettings : ScriptableObject

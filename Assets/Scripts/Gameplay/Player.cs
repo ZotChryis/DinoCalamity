@@ -37,6 +37,12 @@ namespace Gameplay
         /// </summary>
         public Observable<Card> SelectedCard = new Observable<Card>();
         
+        /// <summary>
+        /// Central method of communicating what is the currently selected tile. Anyone can change this, beware.
+        /// TODO: Support selecting multiple tiles
+        /// </summary>
+        public Observable<Tile> SelectedTile = new Observable<Tile>();
+        
         private Deck m_deck = new Deck();
         private Hand m_hand = new Hand();
         private Discard m_discard = new Discard();

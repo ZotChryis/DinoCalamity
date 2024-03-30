@@ -24,6 +24,7 @@ namespace UI
             if (Input.GetMouseButtonDown(1))
             {
                 ServiceLocator.Instance.Player.SelectedCard.Value = null;
+                ServiceLocator.Instance.Player.SelectedTile.Value = null;
             }
         }
 
