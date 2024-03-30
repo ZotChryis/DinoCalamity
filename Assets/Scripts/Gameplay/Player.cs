@@ -109,6 +109,8 @@ namespace Gameplay
             OnDiscardEvent?.Invoke(SelectedCard.Value);
             
             SelectedCard.Value.InvokeActions(Schemas.Card.EventType.OnPlay);
+            OnPlayEvent?.Invoke(SelectedCard.Value);
+            
             SelectedCard.Value = null;
             SelectedTile.Value = null;
         }
