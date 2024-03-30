@@ -110,6 +110,7 @@ namespace Gameplay
             
             SelectedCard.Value.InvokeActions(Schemas.Card.EventType.OnPlay);
             SelectedCard.Value = null;
+            SelectedTile.Value = null;
         }
     }
 }
