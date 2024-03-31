@@ -4,12 +4,12 @@ using UnityEngine.EventSystems;
 
 namespace UI
 {
-    public class Hand : MonoBehaviour
+    public class HandView : MonoBehaviour
     {
-        [SerializeField] private Card m_card;
+        [SerializeField] private PlayableCardView m_card;
         [SerializeField] private Transform m_content;
 
-        private Dictionary<Gameplay.Cards.Card, Card> m_cards = new();
+        private Dictionary<Gameplay.Cards.Card, PlayableCardView> m_cards = new();
 
         private void Start()
         {
@@ -43,7 +43,7 @@ namespace UI
                 return;
             }
             
-            Card uiCard = m_cards[card];
+            PlayableCardView uiCard = m_cards[card];
             uiCard.Dispose();
             m_cards.Remove(card);
         }

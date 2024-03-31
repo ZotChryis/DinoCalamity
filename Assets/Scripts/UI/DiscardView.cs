@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace UI
 {
-    public class Discard : MonoBehaviour
+    public class DiscardView : MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI m_count;
 
