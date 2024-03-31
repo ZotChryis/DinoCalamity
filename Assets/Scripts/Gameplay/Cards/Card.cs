@@ -34,11 +34,16 @@ namespace Gameplay.Cards
 
         /// <summary>
         /// Returns whether or not the card's play conditions are met. For example, some cards require targetting
-        /// an empty world tile, or a tile with a building, or nothing at all.
+        /// an empty World tile, or a tile with a building, or nothing at all.
         /// </summary>
-        public bool AreConditionsMet()
+        public bool ArePlayConditionsMet()
         {
-            // TEMP - Right now all cards can be played when selected
+            // STUB - I'd like to expand this concept further
+            if (Data.PlayRequiresTile)
+            {
+                return ServiceLocator.Instance.Player.SelectedTile.Value != null;
+            }
+            
             return true;
         }
     }

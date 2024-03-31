@@ -1,6 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Quick and dirty World-object mesh highlight. It works by overloading the _EMISSION and _EmissionColor overwrites
+/// on the standard Unity Lit material.
+/// </summary>
 public class Highlight : MonoBehaviour
 {
     [SerializeField] private Color color = Color.white;

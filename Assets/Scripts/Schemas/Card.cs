@@ -21,6 +21,9 @@ namespace Schemas
         public string Name;
         public Sprite Icon;
         
+        // STUB - I'd like to expand this concept further
+        public bool PlayRequiresTile;
+        
         [SerializedDictionary("Event Type", "Actions")]
         public SerializedDictionary<EventType, Action[]> Actions;
     }

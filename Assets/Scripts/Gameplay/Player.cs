@@ -43,9 +43,10 @@ namespace Gameplay
         /// </summary>
         public Observable<Tile> SelectedTile = new Observable<Tile>();
         
-        private Deck m_deck = new Deck();
-        private Hand m_hand = new Hand();
-        private Discard m_discard = new Discard();
+        public readonly Deck Deck = new Deck();
+        public readonly Hand Hand = new Hand();
+        public readonly Discard Discard = new Discard();
+        
         private Card m_selectedCard;
         
         /// <summary>
@@ -53,7 +54,7 @@ namespace Gameplay
         /// </summary>
         public bool ShuffleCard(Card card)
         {
-            if (!m_deck.AddCard(card))
+            if (!Deck.AddCard(card))
             {
                 return false;
             }
@@ -67,13 +68,13 @@ namespace Gameplay
         /// </summary>
         public bool Draw()
         {
-            if (m_deck.IsEmpty())
+            if (Deck.IsEmpty())
             {
                 return false;
             }
 
-            Card card = m_deck.Pop();
-            m_hand.AddCard(card);
+            Card card = Deck.Pop();
+            Hand.AddCard(card);
             card.InvokeActions(Schemas.Card.EventType.OnDraw);
             OnDrawEvent?.Invoke(card);
             return true;
@@ -84,13 +85,13 @@ namespace Gameplay
         /// </summary>
         public bool DiscardRandomCard()
         {
-            Card card = m_hand.ChooseRandomCard();
+            Card card = Hand.ChooseRandomCard();
             if (card == null)
             {
                 return false;
             }
 
-            m_hand.Discard(card);
+            Hand.Discard(card);
             card.InvokeActions(Schemas.Card.EventType.OnDiscard);
             OnDiscardEvent?.Invoke(card);
             return true;
@@ -105,7 +106,7 @@ namespace Gameplay
                 return;
             }
             
-            m_hand.Discard(SelectedCard.Value);
+            Hand.Discard(SelectedCard.Value);
             OnDiscardEvent?.Invoke(SelectedCard.Value);
             
             SelectedCard.Value.InvokeActions(Schemas.Card.EventType.OnPlay);

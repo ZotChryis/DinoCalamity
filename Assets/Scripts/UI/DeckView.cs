@@ -6,10 +6,6 @@ namespace UI
     public class DeckView : MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI m_count;
-
-        // TEMP: Just to show that the events are working, we'll keep track of count this way.
-        //       Ideally, the Deck class may have its own events? not sure, this is all off the cuff!
-        private int m_cardCount = 0;
         
         private void Start()
         {
@@ -20,19 +16,17 @@ namespace UI
 
         private void OnShuffle(Gameplay.Cards.Card card)
         {
-            m_cardCount++;
             UpdateCountLabel();
         }
         
         private void OnDraw(Gameplay.Cards.Card card)
         {
-            m_cardCount--;
             UpdateCountLabel();
         }
 
         private void UpdateCountLabel()
         {
-            m_count.SetText(m_cardCount.ToString());
+            m_count.SetText(ServiceLocator.Instance.Player.Deck.CardCount.ToString());
         }
     }
 }

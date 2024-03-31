@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e23bb4482849b249972661a345620d0, type: 3}
   m_Name: ActionSpawn_Structure
   m_EditorClassIdentifier: 
-  m_prefab: {fileID: 4974757168741295493, guid: bcfcab06a715d524fba3441d1d433a90, type: 3}
+  m_prefab: {fileID: 100000, guid: 1bbb91c8d96cb2446a07151ce95d1f0f, type: 3}
+  m_anchor: 0

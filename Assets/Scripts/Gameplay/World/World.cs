@@ -14,7 +14,7 @@ namespace Gameplay.World
         private GameObject[,] m_grid;
         
         /// <summary>
-        /// Generates a map in world space given the current Settings.
+        /// Generates a map in World space given the current Settings.
         /// </summary>
         public void GenerateMap()
         {
@@ -43,7 +43,7 @@ namespace Gameplay.World
         }
 
         /// <summary>
-        /// Eliminates all gameobjects that make up the world.
+        /// Eliminates all gameobjects that make up the World.
         /// </summary>
         public void Clear()
         {

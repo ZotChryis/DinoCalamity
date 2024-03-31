@@ -6,6 +6,8 @@ namespace Gameplay
 {
     public class Hand
     {
+        public int CardCount => m_cards.Count;
+        
         private List<Card> m_cards = new List<Card>();
 
         /// <summary>

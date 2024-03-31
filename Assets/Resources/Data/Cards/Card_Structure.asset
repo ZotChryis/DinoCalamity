@@ -14,5 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Structure
   Icon: {fileID: 21300000, guid: 9beeb3a9e2d89564c87f71ca02f8b4ca, type: 3}
+  PlayRequiresTile: 1
   Actions:
-  - {fileID: 11400000, guid: 8be0214fd5785af4db9fc12ead0d5e96, type: 2}
+    _serializedList:
+    - Key: 3
+      Value:
+      - {fileID: 11400000, guid: 8be0214fd5785af4db9fc12ead0d5e96, type: 2}

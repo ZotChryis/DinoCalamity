@@ -8,6 +8,8 @@ namespace Gameplay
     /// </summary>
     public class Discard
     {
+        public int CardCount => m_cards.Count;
+        
         /// <summary>
         /// An ordered list of the cards in the discard pile.
         /// </summary>

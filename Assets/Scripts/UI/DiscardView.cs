@@ -1,3 +1,4 @@
+using Gameplay.Cards;
 using TMPro;
 using UnityEngine;
 
@@ -7,25 +8,26 @@ namespace UI
     {
         [SerializeField] private TextMeshProUGUI m_count;
 
-        // TEMP: Just to show that the events are working, we'll keep track of count this way.
-        //       Ideally, the Discard class may have its own events? not sure, this is all off the cuff!
-        private int m_cardCount = 0;
-        
         private void Start()
         {
+            ServiceLocator.Instance.Player.OnShuffleEvent += OnShuffle;
             ServiceLocator.Instance.Player.OnDiscardEvent += OnDiscard;
+            UpdateCountLabel();
+        }
+
+        private void OnShuffle(Card card)
+        {
             UpdateCountLabel();
         }
 
         private void OnDiscard(Gameplay.Cards.Card card)
         {
-            m_cardCount++;
             UpdateCountLabel();
         }
         
         private void UpdateCountLabel()
         {
-            m_count.SetText(m_cardCount.ToString());
+            m_count.SetText(ServiceLocator.Instance.Player.Discard.CardCount.ToString());
         }
     }
 }

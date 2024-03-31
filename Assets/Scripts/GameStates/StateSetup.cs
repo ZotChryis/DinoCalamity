@@ -6,7 +6,7 @@ namespace GameStates
     {
         public void Enter()
         {
-            ServiceLocator.Instance.world.GenerateMap();
+            ServiceLocator.Instance.World.GenerateMap();
             ServiceLocator.Instance.StateMachine.ChangeState(new StateDraw());
         }
 

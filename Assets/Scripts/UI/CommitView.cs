@@ -1,3 +1,4 @@
+using Gameplay;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,7 +10,8 @@ namespace UI
 
         private void Start()
         {
-            ServiceLocator.Instance.Player.SelectedCard.OnChangedValues += OnSelectedCardChanged;
+            ServiceLocator.Instance.Player.SelectedCard.OnChanged += CheckCommitStatus;
+            ServiceLocator.Instance.Player.SelectedTile.OnChanged += CheckCommitStatus;
             m_button.onClick.AddListener(OnButtonClicked);
         }
 
@@ -18,9 +20,10 @@ namespace UI
             ServiceLocator.Instance.Player.PlaySelectedCard();
         }
 
-        private void OnSelectedCardChanged(Gameplay.Cards.Card oldValue, Gameplay.Cards.Card newValue)
+        private void CheckCommitStatus()
         {
-            m_button.interactable = newValue != null && newValue.AreConditionsMet();
+            var selectedCard = ServiceLocator.Instance.Player.SelectedCard.Value;
+            m_button.interactable = selectedCard != null && selectedCard.ArePlayConditionsMet();
         }
     }
 }

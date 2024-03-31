@@ -9,6 +9,8 @@ namespace Gameplay
     /// </summary>
     public class Deck
     {
+        public int CardCount => m_cards.Count;
+        
         /// <summary>
         /// An ordered list of the cards in the deck. This can be thought of as a Queue, but we use a list
         /// because we will routinely augment the order through actions.

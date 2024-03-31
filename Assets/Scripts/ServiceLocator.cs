@@ -14,7 +14,7 @@ public class ServiceLocator : SingletonMonoBehavior<ServiceLocator>
     public static ServiceLocator Instance => ((ServiceLocator)InternalInstance);
 
     // MonoBehavior backed systems
-    public World world;
+    public World World;
 
     // Non-MonoBehavior backed systems
     public StaticData Schemas = new StaticData();
@@ -22,7 +22,7 @@ public class ServiceLocator : SingletonMonoBehavior<ServiceLocator>
     public Bank Bank = new Bank();
     public UIDisplayProcessor UIDisplayProcessor;
     
-    //  todo: go in some world/gamemanager location
+    //  todo: go in some World/gamemanager location
     public StateMachine StateMachine = new StateMachine();
     
     public void Awake()
