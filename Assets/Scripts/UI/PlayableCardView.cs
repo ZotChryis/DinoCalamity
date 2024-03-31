@@ -6,15 +6,8 @@ using UnityEngine.UI;
 
 namespace UI
 {
-    public class Card : MonoBehaviour, IPointerDownHandler
+    public class PlayableCardView : BaseCardView, IPointerDownHandler
     {
-        [SerializeField] private TextMeshProUGUI m_name;
-        [SerializeField] private Image m_icon;
-        [SerializeField] private Button m_button;
-        [SerializeField] private Animation m_animation;
-
-        private Gameplay.Cards.Card  m_source;
-
         private void Start()
         {
             ServiceLocator.Instance.Player.SelectedCard.OnChangedValues += OnSelectedCardChanged;
@@ -31,13 +24,6 @@ namespace UI
             {
                 m_animation.Play("Card_Selected");
             }
-        }
-
-        public void SetSource(Gameplay.Cards.Card source)
-        {
-            m_source = source;
-            m_name.SetText(source.Data.Name);
-            m_icon.sprite = source.Data.Icon;
         }
         
         public void OnPointerDown(PointerEventData eventData)

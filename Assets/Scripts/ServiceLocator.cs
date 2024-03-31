@@ -20,6 +20,7 @@ public class ServiceLocator : SingletonMonoBehavior<ServiceLocator>
     public StaticData Schemas = new StaticData();
     public Player Player = new Player();
     public Bank Bank = new Bank();
+    public UIDisplayProcessor UIDisplayProcessor;
     
     //  todo: go in some world/gamemanager location
     public StateMachine StateMachine = new StateMachine();
@@ -38,5 +39,10 @@ public class ServiceLocator : SingletonMonoBehavior<ServiceLocator>
     public void Update()
     {
         StateMachine.Update();
+    }
+
+    public void RegisterUIDisplayProcessor(UIDisplayProcessor processor)
+    {
+        UIDisplayProcessor = processor;
     }
 }

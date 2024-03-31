@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 304b1fe281d92423ea2f488abc150915, type: 3}
+  m_Name: ActionShowView_DiscoverCard
+  m_EditorClassIdentifier: 
+  viewConfig: {fileID: 11400000, guid: 891cac2c17244413094840b61321fad2, type: 2}

@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using Card = UI.Card;
+using PlayableCardView = UI.PlayableCardView;
 
 namespace Gameplay
 {
@@ -11,6 +11,6 @@ namespace Gameplay
         /// <summary>
         /// An ordered list of the cards in the discard pile.
         /// </summary>
-        private List<Card> m_cards = new List<Card>();
+        private List<PlayableCardView> m_cards = new List<PlayableCardView>();
     }
 }

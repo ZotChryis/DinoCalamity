@@ -75,5 +75,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb54f8c0526fda7418ea2de910f2401f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_card: {fileID: 4614516201534895465, guid: 51a02e6b98d40844a96fa86b8bfaa55a, type: 3}
+  m_card: {fileID: 6679130621058983822, guid: 4b82912d368fc457ca93e318fde25a34, type: 3}
   m_content: {fileID: 2818653001547413982}

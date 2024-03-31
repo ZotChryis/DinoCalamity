@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace UI
 {
-    public class Resource : MonoBehaviour
+    public class ResourceView : MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI m_amount;
         [SerializeField] private TextMeshProUGUI m_name;

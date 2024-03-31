@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 namespace UI
 {
-    public class Commit : MonoBehaviour
+    public class CommitView : MonoBehaviour
     {
         [SerializeField] private Button m_button;
 

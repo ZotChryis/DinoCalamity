@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace UI
 {
-    public class Deck : MonoBehaviour
+    public class DeckView : MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI m_count;
 
