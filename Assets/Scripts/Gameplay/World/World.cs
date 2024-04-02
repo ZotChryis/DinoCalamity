@@ -41,6 +41,35 @@ namespace Gameplay.World
                     m_grid[row, col] = instance;
                 }
             }
+
+            PlaceHome();
+        }
+
+        /// <summary>
+        /// Places the home at the appropriate location. This function assumes the grid has been populated.
+        /// </summary>
+        private void PlaceHome()
+        {
+            int row, col;
+            switch (Settings.Location)
+            {
+                case WorldSettings.HomeLocation.Random:
+                    row = Random.Range(0, Settings.Width);
+                    col = Random.Range(0, Settings.Height);
+                    break;
+                case WorldSettings.HomeLocation.Center:
+                default:
+                    row = Settings.Width / 2;
+                    col = Settings.Height / 2;
+                    break;
+            }
+            
+            var position = m_grid[row, col].transform.position; 
+            Destroy(m_grid[row, col].gameObject);
+            
+            var instance = Instantiate(Settings.Home.Prefab, position, Quaternion.identity, transform);
+            instance.SetSchema(Settings.Home);
+            m_grid[row, col] = instance;
         }
 
         /// <summary>

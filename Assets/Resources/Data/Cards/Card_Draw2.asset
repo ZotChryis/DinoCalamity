@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73c4acd9b82fa274dadc738f9163d3ff, type: 3}
   m_Name: Card_Draw2
   m_EditorClassIdentifier: 
-  Status: 1
+  Status: 0
   Name: Draw 2
   Icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
   PlayRequiresTile: 0

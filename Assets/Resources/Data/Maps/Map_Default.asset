@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 147e328fcfad61344ae3737582594965, type: 3}
   m_Name: Map_Default
   m_EditorClassIdentifier: 
+  Home: {fileID: 11400000, guid: 877febce483a81c46a4fb37fbc68a01b, type: 2}
+  Location: 0
   MapProbabilities:
   - Tile: {fileID: 11400000, guid: d35b6fc1bb7a4904ebf1281b2c808e35, type: 2}
     Amount: 1

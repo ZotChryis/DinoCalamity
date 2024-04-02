@@ -1363,6 +1363,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a509743a2141164459afa2f3371b0c70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MininmumStatus: 1
   World: {fileID: 338218855}
   UIDisplayProcessor: {fileID: 1630393976}
 --- !u!1001 &1817181962

@@ -1,6 +1,7 @@
 using Gameplay;
 using Gameplay.World;
 using GameStates;
+using Schemas;
 using Utility;
 
 /// <summary>
@@ -12,6 +13,9 @@ public class ServiceLocator : SingletonMonoBehavior<ServiceLocator>
 {
     public static ServiceLocator Instance => ((ServiceLocator)InternalInstance);
 
+    // Settings (Move this stuff?)
+    public Schema.ProductionStatus MininmumStatus;
+    
     // MonoBehavior backed systems
     public World World;
 
@@ -26,7 +30,7 @@ public class ServiceLocator : SingletonMonoBehavior<ServiceLocator>
     
     public void Awake()
     {
-        Schemas.Initialize();
+        Schemas.Initialize(MininmumStatus);
         Bank.Initialize();
     }
 

@@ -20,11 +20,20 @@ namespace Schemas
         public IReadOnlyList<Tile> Tiles;
         public IReadOnlyList<Resource> Resources;
 
-        public void Initialize()
+        public void Initialize(Schema.ProductionStatus minimumStatus)
         {
-            Cards = Array.FindAll(UnityEngine.Resources.LoadAll<Card>(c_cardDirectory), c => c.Status >= Schema.ProductionStatus.InDevelopment);
-            Tiles = Array.FindAll(UnityEngine.Resources.LoadAll<Tile>(c_tileDirectory), c => c.Status >= Schema.ProductionStatus.InDevelopment);
-            Resources = Array.FindAll(UnityEngine.Resources.LoadAll<Resource>(c_resourceDirectory), c => c.Status >= Schema.ProductionStatus.InDevelopment);
+            Cards = Array.FindAll(
+                UnityEngine.Resources.LoadAll<Card>(c_cardDirectory), 
+                v => v.Status >= minimumStatus
+            );
+            Tiles = Array.FindAll(
+                UnityEngine.Resources.LoadAll<Tile>(c_tileDirectory), 
+                v => v.Status >= minimumStatus
+            );
+            Resources = Array.FindAll(
+                UnityEngine.Resources.LoadAll<Resource>(c_resourceDirectory),
+                v => v.Status >= minimumStatus
+            );
         }
     }
 }

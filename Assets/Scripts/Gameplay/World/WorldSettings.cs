@@ -6,6 +6,12 @@ namespace Gameplay.World
     [CreateAssetMenu]
     public class WorldSettings : ScriptableObject
     {
+        public enum HomeLocation
+        {
+            Center,
+            Random
+        }
+        
         //  TODO: This is placeholder randomization.
         [Serializable]
         public struct MapProbability
@@ -13,6 +19,16 @@ namespace Gameplay.World
             public Schemas.Tile Tile;
             public int Amount;
         }
+
+        /// <summary>
+        /// The player's home tile.
+        /// </summary>
+        public Schemas.Tile Home;
+
+        /// <summary>
+        /// The location where to place the home tile.
+        /// </summary>
+        public HomeLocation Location;
 
         /// <summary>
         /// Tiles are spawned at these probabilities. All probabilities are added together and then drawn from that total.
