@@ -3,9 +3,9 @@ using UnityEngine;
 namespace Schemas.Actions
 {
     [CreateAssetMenu]
-    public class ActionSpawn : Action
+    public class ActionSpawnStructure : Action
     {
-        [SerializeField] private GameObject m_prefab;
+        [SerializeField] private Structure m_schema;
         [SerializeField] private Gameplay.Tile.Anchor m_anchor;
 
         public override void Invoke()
@@ -17,7 +17,7 @@ namespace Schemas.Actions
                 return;
             }
             
-            tile.AddSpawn(m_prefab, m_anchor);
+            tile.AddStructure(m_schema, m_anchor);
         }
     }
 }

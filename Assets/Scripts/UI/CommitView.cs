@@ -20,7 +20,7 @@ namespace UI
 
         private void OnStateChangedEvent(IState state)
         {
-            m_button.interactable = state is StatePlay;
+            CheckCommitStatus();
         }
 
         private void OnButtonClicked()
@@ -30,8 +30,9 @@ namespace UI
 
         private void CheckCommitStatus()
         {
+            var isPlayState = ServiceLocator.Instance.StateMachine.GetCurrentState() is StatePlay;
             var selectedCard = ServiceLocator.Instance.Player.SelectedCard.Value;
-            m_button.interactable = selectedCard != null && selectedCard.ArePlayConditionsMet();
+            m_button.interactable = isPlayState && selectedCard != null && selectedCard.ArePlayConditionsMet();
         }
     }
 }

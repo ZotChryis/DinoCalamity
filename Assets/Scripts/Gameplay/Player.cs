@@ -80,7 +80,7 @@ namespace Gameplay
 
             Card card = Deck.Pop();
             Hand.AddCard(card);
-            card.InvokeActions(Schemas.Card.EventType.OnDraw);
+            card.InvokeActions(Schemas.Action.EventType.OnDraw);
             OnDrawEvent?.Invoke(card);
             return true;
         }
@@ -97,7 +97,7 @@ namespace Gameplay
             }
 
             Hand.RemoveCard(card);
-            card.InvokeActions(Schemas.Card.EventType.OnDiscard);
+            card.InvokeActions(Schemas.Action.EventType.OnDiscard);
             Discard.AddCard(card);
             OnDiscardEvent?.Invoke(card);
             return true;
@@ -116,7 +116,7 @@ namespace Gameplay
             Discard.AddCard(SelectedCard.Value);
             OnDiscardEvent?.Invoke(SelectedCard.Value);
             
-            SelectedCard.Value.InvokeActions(Schemas.Card.EventType.OnPlay);
+            SelectedCard.Value.InvokeActions(Schemas.Action.EventType.OnPlay);
             OnPlayEvent?.Invoke(SelectedCard.Value);
             
             SelectedCard.Value = null;

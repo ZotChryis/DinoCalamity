@@ -10,6 +10,6 @@ namespace Schemas
     public class Tile : Schema
     {
         public string Name;
-        public GameObject Prefab;
+        public Gameplay.Tile Prefab;
     }
 }

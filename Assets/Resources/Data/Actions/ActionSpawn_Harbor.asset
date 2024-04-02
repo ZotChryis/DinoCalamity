@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: ActionSpawn_Harbor
   m_EditorClassIdentifier: 
   Status: 1
-  m_prefab: {fileID: 100000, guid: 1bbb91c8d96cb2446a07151ce95d1f0f, type: 3}
+  m_schema: {fileID: 11400000, guid: 5865b887cd47ccc48a5afa1c90d11711, type: 2}
   m_anchor: 0

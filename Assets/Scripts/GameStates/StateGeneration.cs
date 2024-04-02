@@ -10,6 +10,7 @@ namespace GameStates
 
         public void Update()
         {
+            ServiceLocator.Instance.StateMachine.ChangeState(new StateEnd());
         }
 
         public void Exit()

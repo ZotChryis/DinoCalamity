@@ -1,5 +1,3 @@
-using Gameplay.Cards;
-using UnityEngine;
 using Utility;
 
 namespace GameStates
@@ -8,15 +6,7 @@ namespace GameStates
     {
         public void Enter()
         {
-            // TEMP: Draw 5 randomly
-            for (int i = 0; i < 10; i++)
-            {
-                int randomCardIndex = Random.Range(0, ServiceLocator.Instance.Schemas.Cards.Count);
-                Schemas.Card cardData = ServiceLocator.Instance.Schemas.Cards[randomCardIndex];
-                ServiceLocator.Instance.Player.ShuffleCard(new Card(cardData));
-            }
-
-            // TEMP - Draw 5 of those
+            // TEMP - Draw 5 cards
             ServiceLocator.Instance.Player.Draw();
             ServiceLocator.Instance.Player.Draw();
             ServiceLocator.Instance.Player.Draw();

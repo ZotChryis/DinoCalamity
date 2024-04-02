@@ -28,6 +28,11 @@
             m_currentState.Enter();
             OnStateChangedEvent?.Invoke(m_currentState);
         }
+
+        public IState GetCurrentState()
+        {
+            return m_currentState;
+        }
  
         public void Update()
         {

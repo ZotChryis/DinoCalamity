@@ -10,14 +10,6 @@ namespace Schemas
     [CreateAssetMenu]
     public class Card : Schema
     {
-        public enum EventType
-        {
-            OnDraw,
-            OnDiscard,
-            OnShuffle,
-            OnPlay
-        }
-        
         public string Name;
         public Sprite Icon;
         
@@ -25,6 +17,6 @@ namespace Schemas
         public bool PlayRequiresTile;
         
         [SerializedDictionary("Event Type", "Actions")]
-        public SerializedDictionary<EventType, Action[]> Actions;
+        public SerializedDictionary<Action.EventType, Action[]> Actions;
     }
 }

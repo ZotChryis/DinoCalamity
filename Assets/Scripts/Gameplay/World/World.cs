@@ -9,9 +9,9 @@ namespace Gameplay.World
         public WorldSettings Settings;
 
         private int m_totalTileProbability;
-        private GameObject[] m_tileProbability;
+        private Schemas.Tile[] m_tileProbability;
 
-        private GameObject[,] m_grid;
+        private Tile[,] m_grid;
         
         /// <summary>
         /// Generates a map in World space given the current Settings.
@@ -21,7 +21,7 @@ namespace Gameplay.World
             GenerateProbabilityTable();
             Clear();
 
-            m_grid = new GameObject[Settings.Width, Settings.Height];
+            m_grid = new Tile[Settings.Width, Settings.Height];
             float zOffsetEven = Mathf.Sqrt(3) * Settings.HexSize;
             for (int row = 0; row < Settings.Width; row++)
             {
@@ -32,12 +32,13 @@ namespace Gameplay.World
                     {
                         zPos += (zOffsetEven) / 2f;
                     }
-
                     float xPos = row * 1.5f * (Settings.HexSize + Settings.Gap);
-                
                     Vector3 position = new Vector3(xPos, 0, zPos);
 
-                    m_grid[row, col] = Instantiate(GetRandomTile(), position, Quaternion.identity, transform);
+                    var schema = GetRandomTileSchema();
+                    var instance = Instantiate(schema.Prefab, position, Quaternion.identity, transform);
+                    instance.SetSchema(schema);
+                    m_grid[row, col] = instance;
                 }
             }
         }
@@ -75,19 +76,19 @@ namespace Gameplay.World
                 m_totalTileProbability += settingsTileProbability.Amount;
             }
 
-            m_tileProbability = new GameObject[m_totalTileProbability];
+            m_tileProbability = new Schemas.Tile[m_totalTileProbability];
             int tilesPlaced = 0;
             foreach (var settingsTileProbability in Settings.MapProbabilities)
             {
                 for (int i = 0; i < settingsTileProbability.Amount; i++)
                 {
-                    m_tileProbability[tilesPlaced] = settingsTileProbability.Tile.Prefab;
+                    m_tileProbability[tilesPlaced] = settingsTileProbability.Tile;
                     tilesPlaced++;
                 }
             }
         }
 
-        private GameObject GetRandomTile()
+        private Schemas.Tile GetRandomTileSchema()
         {
             //  TODO: Introduce a good way to randomize the tiles
             int randomIndex = Random.Range(0, m_totalTileProbability);

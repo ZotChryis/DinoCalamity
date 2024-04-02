@@ -1,7 +1,9 @@
 using System.Collections.Generic;
 using AYellowpaper.SerializedCollections;
+using GameStates;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using Utility;
 
 namespace Gameplay
 {
@@ -24,11 +26,11 @@ namespace Gameplay
         [SerializeField] private SerializedDictionary<Anchor, Transform> Anchors;
             
         private Schemas.Tile m_schema;
-        private List<GameObject> m_spawns;
+        private List<Structure> m_structures;
 
-        private void Start()
+        private void Awake()
         {
-            m_spawns = new List<GameObject>();
+            m_structures = new List<Structure>();
             ServiceLocator.Instance.Player.SelectedTile.OnChangedValues += OnSelectedTileChanged;
         }
 
@@ -37,7 +39,7 @@ namespace Gameplay
             m_highlight.ToggleHighlight(newValue == this);
         }
 
-        // TODO: Associate schema to this World tile
+        // Do we want an interface for schema baked items?
         public void SetSchema(Schemas.Tile schema)
         {
             m_schema = schema;
@@ -54,13 +56,14 @@ namespace Gameplay
             ServiceLocator.Instance.Player.SelectedTile.Value = this;
         }
         
-        public void AddSpawn(GameObject prefab, Anchor anchor)
+        public void AddStructure(Schemas.Structure schema, Anchor anchor)
         {
             // We spawn in world position and then zero out local position so we can retain the prefab author's
             // scale and rotation information, while manipulating the position
-            GameObject spawn = Instantiate(prefab, Anchors[anchor], true);
-            spawn.transform.localPosition = Vector3.zero;
-            m_spawns.Add(spawn);
+            Structure spawn = Instantiate(schema.Prefab, Anchors[anchor], true);
+            spawn.gameObject.transform.localPosition = Vector3.zero;
+            spawn.SetSchema(schema);
+            m_structures.Add(spawn);
         }
     }
 }

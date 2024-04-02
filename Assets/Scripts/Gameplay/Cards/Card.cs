@@ -19,7 +19,7 @@ namespace Gameplay.Cards
         /// <summary>
         /// Invokes all the card's actions, in order, for the given event type.
         /// </summary>
-        public void InvokeActions(Schemas.Card.EventType eventType)
+        public void InvokeActions(Schemas.Action.EventType eventType)
         {
             if (!Data.Actions.TryGetValue(eventType, out var actions))
             {

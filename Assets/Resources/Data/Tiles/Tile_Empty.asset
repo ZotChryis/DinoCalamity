@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f7f32e681069ad45920dbfea5b09c66, type: 3}
   m_Name: Tile_Empty
   m_EditorClassIdentifier: 
+  Status: 0
   Name: Empty
-  Prefab: {fileID: 8196668447057169037, guid: 89396e14473a74d4784e2b00ed74835f, type: 3}
+  Prefab: {fileID: 7377226027043762976, guid: 89396e14473a74d4784e2b00ed74835f, type: 3}
   Resource: {fileID: 0}
