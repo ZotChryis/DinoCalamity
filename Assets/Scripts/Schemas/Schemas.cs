@@ -23,8 +23,8 @@ namespace Schemas
         public void Initialize()
         {
             Cards = Array.FindAll(UnityEngine.Resources.LoadAll<Card>(c_cardDirectory), c => c.Status >= Schema.ProductionStatus.InDevelopment);
-            Tiles = Array.FindAll(UnityEngine.Resources.LoadAll<Tile>(c_cardDirectory), c => c.Status >= Schema.ProductionStatus.InDevelopment);
-            Resources = Array.FindAll(UnityEngine.Resources.LoadAll<Resource>(c_cardDirectory), c => c.Status >= Schema.ProductionStatus.InDevelopment);
+            Tiles = Array.FindAll(UnityEngine.Resources.LoadAll<Tile>(c_tileDirectory), c => c.Status >= Schema.ProductionStatus.InDevelopment);
+            Resources = Array.FindAll(UnityEngine.Resources.LoadAll<Resource>(c_resourceDirectory), c => c.Status >= Schema.ProductionStatus.InDevelopment);
         }
     }
 }

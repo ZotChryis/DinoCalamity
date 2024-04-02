@@ -1,7 +1,6 @@
 using Gameplay;
 using Gameplay.World;
 using GameStates;
-using Schemas;
 using Utility;
 
 /// <summary>
@@ -22,7 +21,7 @@ public class ServiceLocator : SingletonMonoBehavior<ServiceLocator>
     public Bank Bank = new Bank();
     public UIDisplayProcessor UIDisplayProcessor;
     
-    //  todo: go in some World/gamemanager location
+    //  todo: go in some gamemanager
     public StateMachine StateMachine = new StateMachine();
     
     public void Awake()

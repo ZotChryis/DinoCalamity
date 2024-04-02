@@ -13,12 +13,20 @@
     public class StateMachine
     {
         private IState m_currentState;
+        
+        /// <summary>
+        /// STUB - This should be outside of the state machine?
+        /// This event occurs when the state changes. 
+        /// </summary>
+        public delegate void OnStateChanged(IState state);
+        public OnStateChanged OnStateChangedEvent;
  
         public void ChangeState(IState newState)
         {
             m_currentState?.Exit();
             m_currentState = newState;
             m_currentState.Enter();
+            OnStateChangedEvent?.Invoke(m_currentState);
         }
  
         public void Update()

@@ -26,6 +26,8 @@ namespace GameStates
 
         public void Update()
         {
+            // On first update, go into StatePlay
+            ServiceLocator.Instance.StateMachine.ChangeState(new StatePlay());
         }
 
         public void Exit()
