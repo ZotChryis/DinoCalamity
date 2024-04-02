@@ -45,10 +45,15 @@ namespace Gameplay
         
         public readonly Deck Deck = new Deck();
         public readonly Hand Hand = new Hand();
-        public readonly Discard Discard = new Discard();
+        public readonly Deck Discard = new Deck();
         
         private Card m_selectedCard;
-        
+
+        public Player()
+        {
+            Deck.CardCount.OnChanged += OnDeckCountChanged;
+        }
+
         /// <summary>
         /// Adds a card to the deck. Returns whether the addition was successful.
         /// </summary>
@@ -91,8 +96,9 @@ namespace Gameplay
                 return false;
             }
 
-            Hand.Discard(card);
+            Hand.RemoveCard(card);
             card.InvokeActions(Schemas.Card.EventType.OnDiscard);
+            Discard.AddCard(card);
             OnDiscardEvent?.Invoke(card);
             return true;
         }
@@ -106,7 +112,8 @@ namespace Gameplay
                 return;
             }
             
-            Hand.Discard(SelectedCard.Value);
+            Hand.RemoveCard(SelectedCard.Value);
+            Discard.AddCard(SelectedCard.Value);
             OnDiscardEvent?.Invoke(SelectedCard.Value);
             
             SelectedCard.Value.InvokeActions(Schemas.Card.EventType.OnPlay);
@@ -114,6 +121,22 @@ namespace Gameplay
             
             SelectedCard.Value = null;
             SelectedTile.Value = null;
+        }
+        
+        
+        // STUB - This should live in a game state manager of some sort?
+        private void OnDeckCountChanged()
+        {
+            if (Deck.CardCount.Value != 0)
+            {
+                return;
+            }
+            
+            Discard.Shuffle();
+            while (!Discard.IsEmpty())
+            {
+                Deck.AddCard(Discard.Pop());
+            }
         }
     }
 }

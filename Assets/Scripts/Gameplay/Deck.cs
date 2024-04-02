@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using Gameplay.Cards;
 using UnityEngine.Assertions;
+using Utility;
+using Utility.Observable;
 
 namespace Gameplay
 {
@@ -9,7 +11,7 @@ namespace Gameplay
     /// </summary>
     public class Deck
     {
-        public int CardCount => m_cards.Count;
+        public Observable<int> CardCount = new Observable<int>(0);
         
         /// <summary>
         /// An ordered list of the cards in the deck. This can be thought of as a Queue, but we use a list
@@ -23,6 +25,7 @@ namespace Gameplay
         public bool AddCard(Card card)
         {
             m_cards.Add(card);
+            CardCount.Value = m_cards.Count;
             return true;
         }
 
@@ -35,7 +38,16 @@ namespace Gameplay
             Assert.IsFalse(IsEmpty());
             Card card = m_cards[0];
             m_cards.RemoveAt(0);
+            CardCount.Value = m_cards.Count;
             return card;
+        }
+
+        /// <summary>
+        /// Shuffles all current cards randomly.
+        /// </summary>
+        public void Shuffle()
+        {
+            Algorithms.Shuffle(m_cards);
         }
 
         /// <summary>

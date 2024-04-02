@@ -31,7 +31,7 @@ namespace Gameplay
             return card;
         }
 
-        public bool Discard(Card card)
+        public bool RemoveCard(Card card)
         {
             for (var i = m_cards.Count - 1; i >= 0; i--)
             {

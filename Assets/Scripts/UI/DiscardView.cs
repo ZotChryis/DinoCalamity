@@ -10,21 +10,10 @@ namespace UI
 
         private void Start()
         {
-            ServiceLocator.Instance.Player.OnShuffleEvent += OnShuffle;
-            ServiceLocator.Instance.Player.OnDiscardEvent += OnDiscard;
+            ServiceLocator.Instance.Player.Discard.CardCount.OnChanged += UpdateCountLabel;
             UpdateCountLabel();
         }
 
-        private void OnShuffle(Card card)
-        {
-            UpdateCountLabel();
-        }
-
-        private void OnDiscard(Gameplay.Cards.Card card)
-        {
-            UpdateCountLabel();
-        }
-        
         private void UpdateCountLabel()
         {
             m_count.SetText(ServiceLocator.Instance.Player.Discard.CardCount.ToString());

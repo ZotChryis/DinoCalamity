@@ -2,12 +2,12 @@ using Utility;
 
 namespace GameStates
 {
-    public class StatePlay : IState
+    public class StateGeneration : IState
     {
         public void Enter()
         {
         }
-        
+
         public void Update()
         {
         }
