@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0183e4a931545c40a697f633e351ecb, type: 3}
   m_Name: Resource_Technology
   m_EditorClassIdentifier: 
+  Status: 1
   Name: Technology
   Icon: {fileID: 21300000, guid: 932c4924bd375a94aab19a7cdd25543a, type: 3}

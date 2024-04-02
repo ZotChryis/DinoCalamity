@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0183e4a931545c40a697f633e351ecb, type: 3}
   m_Name: Resource_Might
   m_EditorClassIdentifier: 
+  Status: 1
   Name: Might
   Icon: {fileID: 21300000, guid: bb127e4c21ed81e408b5ee8729a730bc, type: 3}

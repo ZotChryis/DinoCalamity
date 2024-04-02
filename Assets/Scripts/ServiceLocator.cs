@@ -17,7 +17,7 @@ public class ServiceLocator : SingletonMonoBehavior<ServiceLocator>
     public World World;
 
     // Non-MonoBehavior backed systems
-    public StaticData Schemas = new StaticData();
+    public Schemas.Schemas Schemas = new Schemas.Schemas();
     public Player Player = new Player();
     public Bank Bank = new Bank();
     public UIDisplayProcessor UIDisplayProcessor;

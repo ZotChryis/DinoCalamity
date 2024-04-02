@@ -7,10 +7,9 @@ namespace Schemas
     /// Create new entries via the asset create menu.
     /// </summary>
     [CreateAssetMenu]
-    public class Tile : ScriptableObject
+    public class Tile : Schema
     {
         public string Name;
         public GameObject Prefab;
-        public Resource Resource;
     }
 }

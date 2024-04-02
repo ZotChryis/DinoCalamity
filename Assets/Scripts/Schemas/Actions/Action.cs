@@ -1,10 +1,9 @@
 using System;
-using UnityEngine;
 
 namespace Schemas
 {
     [Serializable]
-    public abstract class Action : ScriptableObject
+    public abstract class Action : Schema
     {
         public abstract void Invoke();
     }

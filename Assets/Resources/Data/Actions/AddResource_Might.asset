@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0183e4a931545c40a697f633e351ecb, type: 3}
-  m_Name: Resource_Prosperity
+  m_Script: {fileID: 11500000, guid: 150a070d7978e1949890332ccc834515, type: 3}
+  m_Name: AddResource_Might
   m_EditorClassIdentifier: 
   Status: 1
-  Name: Prosperity
-  Icon: {fileID: 21300000, guid: 6b437b2bd16bcce4583ff361fe898894, type: 3}
+  m_resource: {fileID: 11400000, guid: d793ebab29a725941afcc7a88853e594, type: 2}
+  m_amount: 1

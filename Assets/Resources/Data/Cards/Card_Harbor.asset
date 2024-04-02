@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 73c4acd9b82fa274dadc738f9163d3ff, type: 3}
-  m_Name: Card_Structure
+  m_Name: Card_Harbor
   m_EditorClassIdentifier: 
-  Name: Structure
+  Status: 1
+  Name: Lava-Proof Harbor
   Icon: {fileID: 21300000, guid: 9beeb3a9e2d89564c87f71ca02f8b4ca, type: 3}
   PlayRequiresTile: 1
   Actions:

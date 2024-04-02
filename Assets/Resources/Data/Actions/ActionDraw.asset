@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fce0ef2404a83ae4ebde1b7b81b31171, type: 3}
   m_Name: ActionDraw
   m_EditorClassIdentifier: 
+  Status: 1
   m_amount: 1

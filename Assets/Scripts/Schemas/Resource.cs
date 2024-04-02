@@ -7,7 +7,7 @@ namespace Schemas
     /// Create new entries via the asset create menu.
     /// </summary>
     [CreateAssetMenu]
-    public class Resource : ScriptableObject
+    public class Resource : Schema
     {
         public string Name;
         public Sprite Icon;

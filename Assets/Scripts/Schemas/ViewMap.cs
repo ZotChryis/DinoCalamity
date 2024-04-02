@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Schemas
 {
     [CreateAssetMenu]
-    public class ViewMap : ScriptableObject
+    public class ViewMap : Schema
     {
         public enum ViewType
         {
