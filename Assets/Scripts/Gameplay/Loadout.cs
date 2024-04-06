@@ -1,4 +1,3 @@
-using Schemas;
 using Utility.Observable;
 using Card = Gameplay.Cards.Card;
 
@@ -45,7 +44,7 @@ namespace Gameplay
         public Observable<Tile> SelectedTile = new Observable<Tile>();
         
         public readonly Deck Deck = new Deck();
-        public readonly Hand Hand = new Hand();
+        public readonly Deck Hand = new Deck();
         public readonly Deck Discard = new Deck();
 
         private Schemas.Loadout m_schema; 
@@ -72,7 +71,7 @@ namespace Gameplay
         /// </summary>
         public bool ShuffleCard(Card card)
         {
-            if (!Deck.AddCard(card))
+            if (!Deck.ShuffleCard(card))
             {
                 return false;
             }
@@ -111,7 +110,7 @@ namespace Gameplay
 
             Hand.RemoveCard(card);
             card.InvokeActions(Schemas.Action.EventType.OnDiscard);
-            Discard.AddCard(card);
+            Discard.AddCardFront(card);
             OnDiscardEvent?.Invoke(card);
             return true;
         }
@@ -126,7 +125,7 @@ namespace Gameplay
             }
             
             Hand.RemoveCard(SelectedCard.Value);
-            Discard.AddCard(SelectedCard.Value);
+            Discard.AddCardFront(SelectedCard.Value);
             OnDiscardEvent?.Invoke(SelectedCard.Value);
             
             SelectedCard.Value.InvokeActions(Schemas.Action.EventType.OnPlay);
@@ -154,7 +153,7 @@ namespace Gameplay
 
         public void DrawUntilFull()
         {
-            while (Hand.CardCount < m_schema.HandSize && !Deck.IsEmpty())
+            while (Hand.CardCount.Value < m_schema.HandSize && !Deck.IsEmpty())
             {
                 Draw();
             }

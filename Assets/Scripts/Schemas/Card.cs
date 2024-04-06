@@ -15,6 +15,7 @@ namespace Schemas
         
         // STUB - I'd like to expand this concept further
         public bool PlayRequiresTile;
+        public bool PlayRequiresTileVision;
         
         [SerializedDictionary("Event Type", "Actions")]
         public SerializedDictionary<Action.EventType, Action[]> Actions;

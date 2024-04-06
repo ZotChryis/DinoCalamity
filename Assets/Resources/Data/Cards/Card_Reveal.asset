@@ -10,16 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 73c4acd9b82fa274dadc738f9163d3ff, type: 3}
-  m_Name: Card_Harbor
+  m_Name: Card_Reveal
   m_EditorClassIdentifier: 
   Status: 1
-  Name: Lava-Proof Harbor
-  Icon: {fileID: 21300000, guid: 9beeb3a9e2d89564c87f71ca02f8b4ca, type: 3}
+  Name: Reveal
+  Icon: {fileID: 21300000, guid: 8fc9f669d148e1643b559b09fed55478, type: 3}
   PlayRequiresTile: 1
-  PlayRequiresTileVision: 1
+  PlayRequiresTileVision: 0
   Actions:
     _serializedList:
     - Key: 3
       Value:
-      - {fileID: 11400000, guid: 8be0214fd5785af4db9fc12ead0d5e96, type: 2}
       - {fileID: 11400000, guid: 875e98f98bae9ea4da7224bc09ad4d6c, type: 2}
