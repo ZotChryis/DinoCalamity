@@ -172,7 +172,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a21fe90c555c1754e8c8500f0f4b6a68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Settings: {fileID: 11400000, guid: 6c65ef3275febc047923794be41a4ba8, type: 2}
 --- !u!1 &552079032
 GameObject:
   m_ObjectHideFlags: 0
@@ -1462,6 +1461,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a509743a2141164459afa2f3371b0c70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  WorldSettings: {fileID: 11400000, guid: 6aa88cd805fcd1a48b6a1749f5246620, type: 2}
+  LoadoutSettings: {fileID: 11400000, guid: 2c5d52003f1a73747bb45bc732c8a15d, type: 2}
   MininmumStatus: 1
   World: {fileID: 338218855}
   UIDisplayProcessor: {fileID: 1630393976}

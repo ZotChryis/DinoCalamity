@@ -13,8 +13,8 @@ namespace UI
         {
             // STUB - some game manager should be handling this
             ServiceLocator.Instance.StateMachine.OnStateChangedEvent += OnStateChangedEvent;
-            ServiceLocator.Instance.Player.SelectedCard.OnChanged += CheckCommitStatus;
-            ServiceLocator.Instance.Player.SelectedTile.OnChanged += CheckCommitStatus;
+            ServiceLocator.Instance.Loadout.SelectedCard.OnChanged += CheckCommitStatus;
+            ServiceLocator.Instance.Loadout.SelectedTile.OnChanged += CheckCommitStatus;
             m_button.onClick.AddListener(OnButtonClicked);
         }
 
@@ -25,13 +25,13 @@ namespace UI
 
         private void OnButtonClicked()
         {
-            ServiceLocator.Instance.Player.PlaySelectedCard();
+            ServiceLocator.Instance.Loadout.PlaySelectedCard();
         }
 
         private void CheckCommitStatus()
         {
             var isPlayState = ServiceLocator.Instance.StateMachine.GetCurrentState() is StatePlay;
-            var selectedCard = ServiceLocator.Instance.Player.SelectedCard.Value;
+            var selectedCard = ServiceLocator.Instance.Loadout.SelectedCard.Value;
             m_button.interactable = isPlayState && selectedCard != null && selectedCard.ArePlayConditionsMet();
         }
     }

@@ -11,7 +11,7 @@ namespace Schemas.Actions
         public override void Invoke()
         {
             // This action requires a target tile
-            var tile = ServiceLocator.Instance.Player.SelectedTile.Value;
+            var tile = ServiceLocator.Instance.Loadout.SelectedTile.Value;
             if (tile == null)
             {
                 return;

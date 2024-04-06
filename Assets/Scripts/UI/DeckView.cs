@@ -9,8 +9,8 @@ namespace UI
         
         private void Start()
         {
-            ServiceLocator.Instance.Player.OnShuffleEvent += OnShuffle;
-            ServiceLocator.Instance.Player.OnDrawEvent += OnDraw;
+            ServiceLocator.Instance.Loadout.OnShuffleEvent += OnShuffle;
+            ServiceLocator.Instance.Loadout.OnDrawEvent += OnDraw;
             UpdateCountLabel();
         }
 
@@ -26,7 +26,7 @@ namespace UI
 
         private void UpdateCountLabel()
         {
-            m_count.SetText(ServiceLocator.Instance.Player.Deck.CardCount.ToString());
+            m_count.SetText(ServiceLocator.Instance.Loadout.Deck.CardCount.ToString());
         }
     }
 }

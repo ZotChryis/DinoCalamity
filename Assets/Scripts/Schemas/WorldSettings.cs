@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Gameplay.World
+namespace Schemas
 {
     [CreateAssetMenu]
     public class WorldSettings : ScriptableObject
@@ -16,14 +16,14 @@ namespace Gameplay.World
         [Serializable]
         public struct MapProbability
         {
-            public Schemas.Tile Tile;
+            public Tile Tile;
             public int Amount;
         }
 
         /// <summary>
         /// The player's home tile.
         /// </summary>
-        public Schemas.Tile Home;
+        public Tile Home;
 
         /// <summary>
         /// The location where to place the home tile.

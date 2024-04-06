@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using AYellowpaper.SerializedCollections;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -31,7 +32,7 @@ namespace Gameplay
         private void Awake()
         {
             m_structures = new List<Structure>();
-            ServiceLocator.Instance.Player.SelectedTile.OnChangedValues += OnSelectedTileChanged;
+            ServiceLocator.Instance.Loadout.SelectedTile.OnChangedValues += OnSelectedTileChanged;
             ToggleFog(true);
         }
 
@@ -54,11 +55,25 @@ namespace Gameplay
                 return;
             }
             
-            ServiceLocator.Instance.Player.SelectedTile.Value = this;
+            ServiceLocator.Instance.Loadout.SelectedTile.Value = this;
         }
         
         public void AddStructure(Schemas.Structure schema, Anchor anchor)
         {
+            // If this tile is the Home, we can't place buildings here so we ignore the action (it gets consumed. we 
+            // may want to add a generic "IsNotHome" check of some sort
+            if (ServiceLocator.Instance.World.IsHome(this))
+            {
+                return;
+            }
+            
+            // Currently, if you place a building on a tile that has one, we'll just replace it
+            foreach (var structure in m_structures)
+            {
+                Destroy(structure);
+            }
+            m_structures.Clear();
+            
             // We spawn in world position and then zero out local position so we can retain the prefab author's
             // scale and rotation information, while manipulating the position
             Structure spawn = Instantiate(schema.Prefab, m_anchors[anchor], true);

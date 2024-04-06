@@ -11,7 +11,7 @@ namespace Schemas.Actions
         {
             for (int i = 0; i < m_amount; i++)
             {
-                ServiceLocator.Instance.Player.Draw();
+                ServiceLocator.Instance.Loadout.Draw();
             }
         }
     }

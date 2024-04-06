@@ -3,6 +3,7 @@ using Gameplay.World;
 using GameStates;
 using Schemas;
 using Utility;
+using Loadout = Schemas.Loadout;
 
 /// <summary>
 /// This class acts as a ServiceLocator root and can be statically accessed via ServiceLocator.Instance.
@@ -13,7 +14,10 @@ public class ServiceLocator : SingletonMonoBehavior<ServiceLocator>
 {
     public static ServiceLocator Instance => ((ServiceLocator)InternalInstance);
 
-    // Settings (Move this stuff?)
+    // WorldSettings and Config of the run (Move this stuff somewhere else later)
+    // 
+    public WorldSettings WorldSettings;
+    public Loadout LoadoutSettings;
     public Schema.ProductionStatus MininmumStatus;
     
     // MonoBehavior backed systems
@@ -21,7 +25,7 @@ public class ServiceLocator : SingletonMonoBehavior<ServiceLocator>
 
     // Non-MonoBehavior backed systems
     public Schemas.Schemas Schemas = new Schemas.Schemas();
-    public Player Player = new Player();
+    public Gameplay.Loadout Loadout = new Gameplay.Loadout();
     public Bank Bank = new Bank();
     public UIDisplayProcessor UIDisplayProcessor;
     
@@ -31,6 +35,8 @@ public class ServiceLocator : SingletonMonoBehavior<ServiceLocator>
     public void Awake()
     {
         Schemas.Initialize(MininmumStatus);
+        World.Initialize(WorldSettings);
+        Loadout.Initialize(LoadoutSettings);
         Bank.Initialize();
     }
 

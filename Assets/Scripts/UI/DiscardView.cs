@@ -10,13 +10,13 @@ namespace UI
 
         private void Start()
         {
-            ServiceLocator.Instance.Player.Discard.CardCount.OnChanged += UpdateCountLabel;
+            ServiceLocator.Instance.Loadout.Discard.CardCount.OnChanged += UpdateCountLabel;
             UpdateCountLabel();
         }
 
         private void UpdateCountLabel()
         {
-            m_count.SetText(ServiceLocator.Instance.Player.Discard.CardCount.ToString());
+            m_count.SetText(ServiceLocator.Instance.Loadout.Discard.CardCount.ToString());
         }
     }
 }

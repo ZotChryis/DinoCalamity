@@ -1,39 +1,43 @@
 using System.Collections.Generic;
+using Schemas;
 using UnityEngine;
 
 namespace Gameplay.World
 {
     public class World : MonoBehaviour
     {
-        // TEMP - We should supply the settings we want on creation so we can make levels
-        //        but for now, we can serialize it for ease of access.
-        public WorldSettings Settings;
-
         private int m_totalTileProbability;
         private Schemas.Tile[] m_tileProbability;
 
         private Tile[,] m_grid;
+        private Tile m_home;
+        private WorldSettings m_schema;
+
+        public void Initialize(WorldSettings schema)
+        {
+            m_schema = schema;
+        }
         
         /// <summary>
-        /// Generates a map in World space given the current Settings.
+        /// Generates a map in World space given the current WorldSettings.
         /// </summary>
         public void GenerateMap()
         {
             GenerateProbabilityTable();
             Clear();
 
-            m_grid = new Tile[Settings.Width, Settings.Height];
-            float zOffsetEven = Mathf.Sqrt(3) * Settings.HexSize;
-            for (int row = 0; row < Settings.Width; row++)
+            m_grid = new Tile[m_schema.Width, m_schema.Height];
+            float zOffsetEven = Mathf.Sqrt(3) * m_schema.HexSize;
+            for (int row = 0; row < m_schema.Width; row++)
             {
-                for (int col = 0; col < Settings.Height; col++)
+                for (int col = 0; col < m_schema.Height; col++)
                 {
-                    float zPos = col * (zOffsetEven + Settings.Gap);
+                    float zPos = col * (zOffsetEven + m_schema.Gap);
                     if (row % 2 == 1)
                     {
                         zPos += (zOffsetEven) / 2f;
                     }
-                    float xPos = row * 1.5f * (Settings.HexSize + Settings.Gap);
+                    float xPos = row * 1.5f * (m_schema.HexSize + m_schema.Gap);
                     Vector3 position = new Vector3(xPos, 0, zPos);
 
                     var schema = GetRandomTileSchema();
@@ -52,28 +56,28 @@ namespace Gameplay.World
         private void PlaceHome()
         {
             int row, col;
-            switch (Settings.Location)
+            switch (m_schema.Location)
             {
                 case WorldSettings.HomeLocation.Random:
-                    row = Random.Range(0, Settings.Width);
-                    col = Random.Range(0, Settings.Height);
+                    row = Random.Range(0, m_schema.Width);
+                    col = Random.Range(0, m_schema.Height);
                     break;
                 case WorldSettings.HomeLocation.Center:
                 default:
-                    row = Settings.Width / 2;
-                    col = Settings.Height / 2;
+                    row = m_schema.Width / 2;
+                    col = m_schema.Height / 2;
                     break;
             }
             
             var position = m_grid[row, col].transform.position; 
             Destroy(m_grid[row, col].gameObject);
             
-            var instance = Instantiate(Settings.Home.Prefab, position, Quaternion.identity, transform);
-            instance.SetSchema(Settings.Home);
-            m_grid[row, col] = instance;
+            m_home = Instantiate(m_schema.Home.Prefab, position, Quaternion.identity, transform);
+            m_home.SetSchema(m_schema.Home);
+            m_grid[row, col] = m_home;
 
             // Home and its neighbors should be set to have fog off 
-            ToggleFog(instance, false, true);
+            ToggleFog(m_home, false, true);
         }
 
         /// <summary>
@@ -104,14 +108,14 @@ namespace Gameplay.World
         {
             // O(2N) because we have to find the total first to properly initialize the array.
             m_totalTileProbability = 0;
-            foreach (var settingsTileProbability in Settings.MapProbabilities)
+            foreach (var settingsTileProbability in m_schema.MapProbabilities)
             {
                 m_totalTileProbability += settingsTileProbability.Amount;
             }
 
             m_tileProbability = new Schemas.Tile[m_totalTileProbability];
             int tilesPlaced = 0;
-            foreach (var settingsTileProbability in Settings.MapProbabilities)
+            foreach (var settingsTileProbability in m_schema.MapProbabilities)
             {
                 for (int i = 0; i < settingsTileProbability.Amount; i++)
                 {
@@ -130,9 +134,9 @@ namespace Gameplay.World
 
         private List<Tile> GetNeighbors(Tile tile)
         {
-            for (var i = 0; i < Settings.Width; i++)
+            for (var i = 0; i < m_schema.Width; i++)
             {
-                for (int j = 0; j < Settings.Height; j++)
+                for (int j = 0; j < m_schema.Height; j++)
                 {
                     if (m_grid[i, j] == tile)
                     {
@@ -179,11 +183,11 @@ namespace Gameplay.World
 
         private bool IsValidLocation(int x, int y)
         {
-            if (x < 0 || x >= Settings.Width)
+            if (x < 0 || x >= m_schema.Width)
             {
                 return false;
             }
-            if (y < 0 || y >= Settings.Height)
+            if (y < 0 || y >= m_schema.Height)
             {
                 return false;
             }
@@ -205,6 +209,11 @@ namespace Gameplay.World
             {
                 homeNeighbor.ToggleFog(on);
             }
+        }
+
+        public bool IsHome(Tile tile)
+        {
+            return tile == m_home;
         }
     }
 }

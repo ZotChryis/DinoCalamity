@@ -41,8 +41,8 @@ namespace Gameplay.Cards
             // STUB - I'd like to expand this concept further
             if (Data.PlayRequiresTile)
             {
-                return ServiceLocator.Instance.Player.SelectedTile.Value != null &&
-                       !ServiceLocator.Instance.Player.SelectedTile.Value.IsInFog();
+                return ServiceLocator.Instance.Loadout.SelectedTile.Value != null &&
+                       !ServiceLocator.Instance.Loadout.SelectedTile.Value.IsInFog();
             }
             
             return true;

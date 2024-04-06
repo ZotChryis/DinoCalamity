@@ -15,9 +15,9 @@ MonoBehaviour:
   Home: {fileID: 11400000, guid: 877febce483a81c46a4fb37fbc68a01b, type: 2}
   Location: 0
   MapProbabilities:
-  - Tile: {fileID: 11400000, guid: d35b6fc1bb7a4904ebf1281b2c808e35, type: 2}
+  - Tile: {fileID: 11400000, guid: 20233b52161c6514da71e50a6ae34a18, type: 2}
     Amount: 1
-  Width: 20
-  Height: 20
+  Width: 15
+  Height: 15
   HexSize: 0.5
   Gap: 0.01

@@ -13,8 +13,8 @@ namespace UI
 
         private void Start()
         {
-            ServiceLocator.Instance.Player.OnDrawEvent += OnDraw;
-            ServiceLocator.Instance.Player.OnDiscardEvent += OnDiscard;
+            ServiceLocator.Instance.Loadout.OnDrawEvent += OnDraw;
+            ServiceLocator.Instance.Loadout.OnDiscardEvent += OnDiscard;
         }
 
         private void Update()
@@ -23,8 +23,8 @@ namespace UI
             //       This should probably live somewhere else in some input manager.
             if (Input.GetMouseButtonDown(1))
             {
-                ServiceLocator.Instance.Player.SelectedCard.Value = null;
-                ServiceLocator.Instance.Player.SelectedTile.Value = null;
+                ServiceLocator.Instance.Loadout.SelectedCard.Value = null;
+                ServiceLocator.Instance.Loadout.SelectedTile.Value = null;
             }
         }
 

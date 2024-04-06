@@ -11,16 +11,16 @@ namespace Schemas.Actions
         public override void Invoke()
         {
             // This action requires a tile
-            if (ServiceLocator.Instance.Player.SelectedTile.Value == null)
+            if (ServiceLocator.Instance.Loadout.SelectedTile.Value == null)
             {
                 return;
             }
 
-            ServiceLocator.Instance.Player.SelectedTile.Value.ToggleFog(m_enable);
+            ServiceLocator.Instance.Loadout.SelectedTile.Value.ToggleFog(m_enable);
             if (m_includeNeighbors)
             {
                 ServiceLocator.Instance.World.ToggleFog(
-                    ServiceLocator.Instance.Player.SelectedTile.Value,
+                    ServiceLocator.Instance.Loadout.SelectedTile.Value,
                     false,
                     true
                 );

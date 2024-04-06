@@ -1,7 +1,8 @@
+using System;
 using GameStates;
-using Schemas;
 using UnityEngine;
 using Utility;
+using Action = Schemas.Action;
 
 namespace Gameplay
 {
@@ -11,8 +12,12 @@ namespace Gameplay
 
         private void Awake()
         {
-            // STUB - This needs to probably happen in some game manager
             ServiceLocator.Instance.StateMachine.OnStateChangedEvent += OnStateChanged;
+        }
+
+        private void OnDestroy()
+        {
+            ServiceLocator.Instance.StateMachine.OnStateChangedEvent -= OnStateChanged;
         }
 
         private void OnStateChanged(IState state)

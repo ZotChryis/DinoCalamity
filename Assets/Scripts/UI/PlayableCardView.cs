@@ -10,7 +10,7 @@ namespace UI
     {
         private void Start()
         {
-            ServiceLocator.Instance.Player.SelectedCard.OnChangedValues += OnSelectedCardChanged;
+            ServiceLocator.Instance.Loadout.SelectedCard.OnChangedValues += OnSelectedCardChanged;
         }
 
         private void OnSelectedCardChanged(Gameplay.Cards.Card oldValue, Gameplay.Cards.Card newValue)
@@ -34,12 +34,12 @@ namespace UI
                 return;
             }
 
-            ServiceLocator.Instance.Player.SelectedCard.Value = m_source;
+            ServiceLocator.Instance.Loadout.SelectedCard.Value = m_source;
         }
 
         public void Dispose()
         {
-            ServiceLocator.Instance.Player.SelectedCard.OnChangedValues -= OnSelectedCardChanged;
+            ServiceLocator.Instance.Loadout.SelectedCard.OnChangedValues -= OnSelectedCardChanged;
             Destroy(gameObject);
         }
     }
