@@ -1,9 +1,7 @@
 using System.Collections.Generic;
 using AYellowpaper.SerializedCollections;
-using GameStates;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using Utility;
 
 namespace Gameplay
 {
@@ -19,12 +17,14 @@ namespace Gameplay
         {
             Center
         }
-        
+
         [SerializeField] private Highlight m_highlight;
+        [SerializeField] private GameObject m_fog;
+        [SerializeField] private GameObject m_content;
 
         [SerializedDictionary("Anchor", "Transform")] 
-        [SerializeField] private SerializedDictionary<Anchor, Transform> Anchors;
-            
+        [SerializeField] private SerializedDictionary<Anchor, Transform> m_anchors;
+        
         private Schemas.Tile m_schema;
         private List<Structure> m_structures;
 
@@ -32,6 +32,7 @@ namespace Gameplay
         {
             m_structures = new List<Structure>();
             ServiceLocator.Instance.Player.SelectedTile.OnChangedValues += OnSelectedTileChanged;
+            ToggleFog(true);
         }
 
         private void OnSelectedTileChanged(Tile oldValue, Tile newValue)
@@ -60,10 +61,21 @@ namespace Gameplay
         {
             // We spawn in world position and then zero out local position so we can retain the prefab author's
             // scale and rotation information, while manipulating the position
-            Structure spawn = Instantiate(schema.Prefab, Anchors[anchor], true);
+            Structure spawn = Instantiate(schema.Prefab, m_anchors[anchor], true);
             spawn.gameObject.transform.localPosition = Vector3.zero;
             spawn.SetSchema(schema);
             m_structures.Add(spawn);
+        }
+
+        public void ToggleFog(bool on)
+        {
+            m_fog.SetActive(on);
+            m_content.SetActive(!on);
+        }
+
+        public bool IsInFog()
+        {
+            return m_fog.activeInHierarchy;
         }
     }
 }

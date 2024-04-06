@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Gameplay.World
@@ -70,6 +71,9 @@ namespace Gameplay.World
             var instance = Instantiate(Settings.Home.Prefab, position, Quaternion.identity, transform);
             instance.SetSchema(Settings.Home);
             m_grid[row, col] = instance;
+
+            // Home and its neighbors should be set to have fog off 
+            ToggleFog(instance, false, true);
         }
 
         /// <summary>
@@ -122,6 +126,85 @@ namespace Gameplay.World
             //  TODO: Introduce a good way to randomize the tiles
             int randomIndex = Random.Range(0, m_totalTileProbability);
             return m_tileProbability[randomIndex];
+        }
+
+        private List<Tile> GetNeighbors(Tile tile)
+        {
+            for (var i = 0; i < Settings.Width; i++)
+            {
+                for (int j = 0; j < Settings.Height; j++)
+                {
+                    if (m_grid[i, j] == tile)
+                    {
+                        return GetNeighbors(i, j);
+                    }
+                }
+            }
+
+            return new List<Tile>();
+        }
+        
+        private List<Tile> GetNeighbors(int x, int y)
+        {
+            void TryAdd(ref List<Tile> tiles, int r, int c)
+            {
+                if (IsValidLocation(r, c ))
+                {
+                    tiles.Add(m_grid[r, c]);
+                }
+            }
+            
+            List<Tile> neighbors = new List<Tile>();
+            if (x % 2 == 0)
+            {
+                TryAdd(ref neighbors, x - 1, y - 1);
+                TryAdd(ref neighbors, x, y - 1);
+                TryAdd(ref neighbors, x + 1, y - 1);
+                TryAdd(ref neighbors, x - 1, y);
+                TryAdd(ref neighbors, x, y + 1);
+                TryAdd(ref neighbors, x + 1, y);
+            }
+            else
+            {
+                TryAdd(ref neighbors, x - 1, y);
+                TryAdd(ref neighbors, x, y - 1);
+                TryAdd(ref neighbors, x + 1, y);
+                TryAdd(ref neighbors, x - 1, y + 1);
+                TryAdd(ref neighbors, x, y + 1);
+                TryAdd(ref neighbors, x + 1, y + 1);
+            }
+
+            return neighbors;
+        }
+
+        private bool IsValidLocation(int x, int y)
+        {
+            if (x < 0 || x >= Settings.Width)
+            {
+                return false;
+            }
+            if (y < 0 || y >= Settings.Height)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        public void ToggleFog(Tile tile, bool on, bool includeNeightbors)
+        {
+            tile.ToggleFog(on);
+
+            if (!includeNeightbors)
+            {
+                return;
+            }
+            
+            var homeNeighbors = GetNeighbors(tile);
+            foreach (var homeNeighbor in homeNeighbors)
+            {
+                homeNeighbor.ToggleFog(on);
+            }
         }
     }
 }

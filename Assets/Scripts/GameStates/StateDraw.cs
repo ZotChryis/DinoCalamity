@@ -6,9 +6,7 @@ namespace GameStates
     {
         public void Enter()
         {
-            // TEMP - Draw 5 cards
-            ServiceLocator.Instance.Player.Draw();
-            ServiceLocator.Instance.Player.Draw();
+            // TEMP - Draw 3 cards
             ServiceLocator.Instance.Player.Draw();
             ServiceLocator.Instance.Player.Draw();
             ServiceLocator.Instance.Player.Draw();
