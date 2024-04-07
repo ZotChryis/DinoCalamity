@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fd1e0adaa781f094db7d914743d70d8a, type: 3}
-  m_Name: ActionFog_Reveal
+  m_Name: ActionFog_Remove_SelfNeighbors
   m_EditorClassIdentifier: 
   Status: 1
   m_enable: 0
