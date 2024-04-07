@@ -22,32 +22,23 @@ public class ServiceLocator : SingletonMonoBehavior<ServiceLocator>
     
     // MonoBehavior backed systems
     public World World;
+    public GameManager GameManager;
 
     // Non-MonoBehavior backed systems
     public Schemas.Schemas Schemas = new Schemas.Schemas();
     public Gameplay.Loadout Loadout = new Gameplay.Loadout();
     public Bank Bank = new Bank();
     public UIDisplayProcessor UIDisplayProcessor;
-    
-    //  todo: go in some gamemanager
-    public StateMachine StateMachine = new StateMachine();
-    
+
+    // Moved the state machine to be handled by GameManager.
+    public StateMachine StateMachine => GameManager.StateMachine;
+
     public void Awake()
     {
         Schemas.Initialize(MininmumStatus);
         World.Initialize(WorldSettings);
         Loadout.Initialize(LoadoutSettings);
         Bank.Initialize();
-    }
-
-    public void Start()
-    {
-        StateMachine.ChangeState(new StateSetup());
-    }
-
-    public void Update()
-    {
-        StateMachine.Update();
     }
 
     public void RegisterUIDisplayProcessor(UIDisplayProcessor processor)

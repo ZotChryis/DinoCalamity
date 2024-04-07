@@ -6,7 +6,8 @@ namespace GameStates
     {
         public void Enter()
         {
-            // TODO: Increment turn counter?
+            // Increment turn counter
+            ServiceLocator.Instance.GameManager.IncrementTurnCount();
         }
 
         public void Update()
