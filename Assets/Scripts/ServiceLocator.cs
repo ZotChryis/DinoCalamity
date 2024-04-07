@@ -22,15 +22,16 @@ public class ServiceLocator : SingletonMonoBehaviour
     
     // MonoBehavior backed systems
     public World World;
+    public GameManager GameManager;
 
     // Non-MonoBehavior backed systems
     public Schemas.Schemas Schemas = new Schemas.Schemas();
     public Gameplay.Loadout Loadout = new Gameplay.Loadout();
     public Bank Bank = new Bank();
     public UIDisplayProcessor UIDisplayProcessor;
-    
-    //  todo: go in some gamemanager
-    public StateMachine StateMachine = new StateMachine();
+
+    // Moved the state machine to be handled by GameManager.
+    public StateMachine StateMachine => GameManager.StateMachine;
     
     protected override void Awake()
     {
@@ -40,16 +41,6 @@ public class ServiceLocator : SingletonMonoBehaviour
         World.Initialize(WorldSettings);
         Loadout.Initialize(LoadoutSettings);
         Bank.Initialize();
-    }
-
-    public void Start()
-    {
-        StateMachine.ChangeState(new StateSetup());
-    }
-
-    public void Update()
-    {
-        StateMachine.Update();
     }
 
     // TODO: Move to this paradigm for the rest of things?
