@@ -16,22 +16,22 @@ namespace Schemas
         private const string c_tileDirectory = "Data/Tiles";
         private const string c_resourceDirectory = "Data/Resources";
         
-        public IReadOnlyList<Card> Cards;
-        public IReadOnlyList<Tile> Tiles;
-        public IReadOnlyList<Resource> Resources;
+        public IReadOnlyList<CardSchema> Cards;
+        public IReadOnlyList<TileSchema> Tiles;
+        public IReadOnlyList<ResourceSchema> Resources;
 
         public void Initialize(Schema.ProductionStatus minimumStatus)
         {
             Cards = Array.FindAll(
-                UnityEngine.Resources.LoadAll<Card>(c_cardDirectory), 
+                UnityEngine.Resources.LoadAll<CardSchema>(c_cardDirectory), 
                 v => v.Status >= minimumStatus
             );
             Tiles = Array.FindAll(
-                UnityEngine.Resources.LoadAll<Tile>(c_tileDirectory), 
+                UnityEngine.Resources.LoadAll<TileSchema>(c_tileDirectory), 
                 v => v.Status >= minimumStatus
             );
             Resources = Array.FindAll(
-                UnityEngine.Resources.LoadAll<Resource>(c_resourceDirectory),
+                UnityEngine.Resources.LoadAll<ResourceSchema>(c_resourceDirectory),
                 v => v.Status >= minimumStatus
             );
         }

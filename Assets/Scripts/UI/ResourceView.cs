@@ -10,9 +10,9 @@ namespace UI
         [SerializeField] private TextMeshProUGUI m_name;
         [SerializeField] private Image m_icon;
 
-        private Schemas.Resource m_data;
+        private Schemas.ResourceSchema m_data;
         
-        public void SetData(Schemas.Resource data)
+        public void SetData(Schemas.ResourceSchema data)
         {
             m_data = data;
             m_name.SetText(data.Name);
@@ -22,7 +22,7 @@ namespace UI
             ServiceLocator.Instance.Bank.OnResourceUpdateEvent += OnResourceUpdateEvent;
         }
         
-        private void OnResourceUpdateEvent(Schemas.Resource resource, int currentTotal)
+        private void OnResourceUpdateEvent(Schemas.ResourceSchema resource, int currentTotal)
         {
             if (resource != m_data)
             {

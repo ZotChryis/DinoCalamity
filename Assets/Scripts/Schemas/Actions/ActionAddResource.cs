@@ -5,7 +5,7 @@ namespace Schemas.Actions
     [CreateAssetMenu]
     public class ActionResource : Action
     {
-        [SerializeField] private global::Schemas.Resource m_resource;
+        [SerializeField] private global::Schemas.ResourceSchema m_resource;
         [SerializeField] private int m_amount;
         
         public override void Invoke()

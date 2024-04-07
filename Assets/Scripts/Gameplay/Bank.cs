@@ -11,10 +11,10 @@ namespace Gameplay
         /// <summary>
         /// This event occurs when the amount of a resource changes.
         /// </summary>
-        public delegate void OnResourceUpdate(Schemas.Resource resource, int currentTotal);
+        public delegate void OnResourceUpdate(Schemas.ResourceSchema resource, int currentTotal);
         public OnResourceUpdate OnResourceUpdateEvent;
         
-        private Dictionary<Schemas.Resource, int> m_resources = new Dictionary<Resource, int>();
+        private Dictionary<Schemas.ResourceSchema, int> m_resources = new Dictionary<ResourceSchema, int>();
         
         public void Initialize()
         {
@@ -26,7 +26,7 @@ namespace Gameplay
             }
         }
 
-        public void DeltaResource(Schemas.Resource resource, int amount)
+        public void DeltaResource(Schemas.ResourceSchema resource, int amount)
         {
             m_resources[resource] += amount;
             OnResourceUpdateEvent?.Invoke(resource, m_resources[resource]);

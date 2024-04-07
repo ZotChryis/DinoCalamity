@@ -147,7 +147,7 @@ GameObject:
   - component: {fileID: 2175957555453255389}
   - component: {fileID: 7754809047594963358}
   m_Layer: 0
-  m_Name: Discard
+  m_Name: DiscardView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

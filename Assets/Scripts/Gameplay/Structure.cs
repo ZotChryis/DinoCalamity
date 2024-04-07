@@ -8,7 +8,7 @@ namespace Gameplay
 {
     public class Structure : MonoBehaviour
     {
-        private Schemas.Structure m_schema;
+        private Schemas.StructureSchema m_schema;
 
         private void Awake()
         {
@@ -31,7 +31,7 @@ namespace Gameplay
             InvokeActions(Action.EventType.OnGeneration);
         }
 
-        public void SetSchema(Schemas.Structure schema)
+        public void SetSchema(Schemas.StructureSchema schema)
         {
             m_schema = schema;
         }

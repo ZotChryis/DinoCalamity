@@ -9,9 +9,9 @@ namespace Gameplay.Cards
         /// <summary>
         /// The data for this card.
         /// </summary>
-        public readonly Schemas.Card Data;
+        public readonly Schemas.CardSchema Data;
         
-        public Card(Schemas.Card data)
+        public Card(Schemas.CardSchema data)
         {
             Data = data;
         }

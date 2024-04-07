@@ -5,7 +5,7 @@ namespace Schemas.Actions
     [CreateAssetMenu]
     public class ActionSpawnStructure : Action
     {
-        [SerializeField] private Structure m_schema;
+        [SerializeField] private StructureSchema m_schema;
         [SerializeField] private Gameplay.Tile.Anchor m_anchor;
 
         public override void Invoke()

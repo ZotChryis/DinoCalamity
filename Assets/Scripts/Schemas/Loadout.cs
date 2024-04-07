@@ -11,6 +11,6 @@ namespace Schemas
     {
         public string Name;
         public int HandSize;
-        public Card[] Deck;
+        public CardSchema[] Deck;
     }
 }

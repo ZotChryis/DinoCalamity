@@ -16,14 +16,14 @@ namespace Schemas
         [Serializable]
         public struct MapProbability
         {
-            public Tile Tile;
+            public TileSchema Tile;
             public int Amount;
         }
 
         /// <summary>
         /// The player's home tile.
         /// </summary>
-        public Tile Home;
+        public TileSchema Home;
 
         /// <summary>
         /// The location where to place the home tile.

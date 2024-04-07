@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Schemas
 {
     [CreateAssetMenu]
-    public class Structure : Schema
+    public class StructureSchema : Schema
     {
         public Gameplay.Structure Prefab;
         

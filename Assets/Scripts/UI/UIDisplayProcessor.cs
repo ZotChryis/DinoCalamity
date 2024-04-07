@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using Schemas;
 using UI;
 using UnityEngine;
-using static Schemas.ViewMap;
+using static Schemas.ViewMapSchema;
 
 public class UIDisplayProcessor : MonoBehaviour
 {
     [SerializeField]
-    private ViewMap m_viewMap;
+    private ViewMapSchema m_viewMap;
 
     [SerializeField]
     private Transform m_popupParentTransform;
@@ -17,7 +17,7 @@ public class UIDisplayProcessor : MonoBehaviour
 
     public View TryShowView(ViewType viewType)
     {
-        if (!m_viewMap.ViewConfigs.TryGetValue(viewType, out ViewConfig config))
+        if (!m_viewMap.ViewConfigs.TryGetValue(viewType, out ViewSchema config))
         {
             return null;
         }
@@ -25,7 +25,7 @@ public class UIDisplayProcessor : MonoBehaviour
         return TryShowView(config);
     }
 
-    public View TryShowView(ViewConfig config)
+    public View TryShowView(ViewSchema config)
     {
         if (config.ViewPrefab == null)
         {

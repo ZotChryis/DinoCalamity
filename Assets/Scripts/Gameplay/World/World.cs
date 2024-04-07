@@ -7,7 +7,7 @@ namespace Gameplay.World
     public class World : MonoBehaviour
     {
         private int m_totalTileProbability;
-        private Schemas.Tile[] m_tileProbability;
+        private Schemas.TileSchema[] m_tileProbability;
 
         private Tile[,] m_grid;
         private Tile m_home;
@@ -113,7 +113,7 @@ namespace Gameplay.World
                 m_totalTileProbability += settingsTileProbability.Amount;
             }
 
-            m_tileProbability = new Schemas.Tile[m_totalTileProbability];
+            m_tileProbability = new Schemas.TileSchema[m_totalTileProbability];
             int tilesPlaced = 0;
             foreach (var settingsTileProbability in m_schema.MapProbabilities)
             {
@@ -125,7 +125,7 @@ namespace Gameplay.World
             }
         }
 
-        private Schemas.Tile GetRandomTileSchema()
+        private Schemas.TileSchema GetRandomTileSchema()
         {
             //  TODO: Introduce a good way to randomize the tiles
             int randomIndex = Random.Range(0, m_totalTileProbability);

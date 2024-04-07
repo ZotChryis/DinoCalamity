@@ -7,7 +7,7 @@ namespace Schemas
     /// Create new entries via the asset create menu.
     /// </summary>
     [CreateAssetMenu]
-    public class ViewConfig : ScriptableObject
+    public class ViewSchema : ScriptableObject
     {
         public View ViewPrefab;
     }

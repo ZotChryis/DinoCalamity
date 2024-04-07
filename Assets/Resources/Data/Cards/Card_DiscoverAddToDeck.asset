@@ -10,12 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 73c4acd9b82fa274dadc738f9163d3ff, type: 3}
-  m_Name: Card_ShowDiscoverView
+  m_Name: Card_DiscoverAddToDeck
   m_EditorClassIdentifier: 
-  Name: Discover
-  Icon: {fileID: 21300000, guid: a2b6f809c83e05845bac707ad76ae2be, type: 3}
+  Status: 0
+  Name: AddToDeck
+  Icon: {fileID: 21300000, guid: bb127e4c21ed81e408b5ee8729a730bc, type: 3}
+  PlayRequiresTile: 0
   Actions:
     _serializedList:
     - Key: 3
       Value:
-      - {fileID: 11400000, guid: e56386fead836498f866ceec811155b1, type: 2}
+      - {fileID: 11400000, guid: 24b817dd1b9f14d62be34060013b5143, type: 2}

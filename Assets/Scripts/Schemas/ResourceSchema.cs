@@ -3,13 +3,13 @@ using UnityEngine;
 namespace Schemas
 {
     /// <summary>
-    /// The data definition for a Tile.
+    /// The data definition for a Resource.
     /// Create new entries via the asset create menu.
     /// </summary>
     [CreateAssetMenu]
-    public class Tile : Schema
+    public class ResourceSchema : Schema
     {
         public string Name;
-        public Gameplay.Tile Prefab;
+        public Sprite Icon;
     }
 }

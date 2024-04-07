@@ -5,7 +5,7 @@ namespace Schemas.Actions
     [CreateAssetMenu]
     public class ActionShowView : Action
     {
-        [SerializeField] private ViewConfig viewConfig;
+        [SerializeField] private ViewSchema viewConfig;
 
         public override void Invoke()
         {

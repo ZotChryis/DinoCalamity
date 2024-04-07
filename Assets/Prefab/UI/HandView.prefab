@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4583661743640322097}
   - component: {fileID: 4471382389565355855}
   m_Layer: 0
-  m_Name: Hand
+  m_Name: HandView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
