@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 713650c42a39945b7aa1620866ce7070, type: 3}
   m_Name: ActionDiscover_AddToHand
   m_EditorClassIdentifier: 
-  Status: 0
+  Status: 1
   viewConfig: {fileID: 11400000, guid: 891cac2c17244413094840b61321fad2, type: 2}
   CardDiscoverOptions: {fileID: 11400000, guid: b5655603788f44aa1913ee6670566f51, type: 2}

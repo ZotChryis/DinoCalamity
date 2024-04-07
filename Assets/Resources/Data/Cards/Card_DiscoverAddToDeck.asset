@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73c4acd9b82fa274dadc738f9163d3ff, type: 3}
   m_Name: Card_DiscoverAddToDeck
   m_EditorClassIdentifier: 
-  Status: 0
+  Status: 1
   Name: AddToDeck
   Icon: {fileID: 21300000, guid: bb127e4c21ed81e408b5ee8729a730bc, type: 3}
   PlayRequiresTile: 0
+  PlayRequiresTileVision: 0
   Actions:
     _serializedList:
     - Key: 3

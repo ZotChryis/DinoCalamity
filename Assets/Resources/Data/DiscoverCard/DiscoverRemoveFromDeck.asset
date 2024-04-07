@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 384610fd4a57349e285c2dd8e29a6625, type: 3}
   m_Name: DiscoverRemoveFromDeck
   m_EditorClassIdentifier: 
-  Status: 0
+  Status: 1
   DiscoverType: 3
   CardOptions: []
   DiscoverCardCount: 4

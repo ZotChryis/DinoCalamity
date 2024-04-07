@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73c4acd9b82fa274dadc738f9163d3ff, type: 3}
   m_Name: Card_DiscoverRemoveFromDeck
   m_EditorClassIdentifier: 
-  Status: 0
+  Status: 1
   Name: Thin Deck!
   Icon: {fileID: 21300000, guid: b8af7ae025e373040acabdbb8420d64a, type: 3}
   PlayRequiresTile: 0
+  PlayRequiresTileVision: 0
   Actions:
     _serializedList:
     - Key: 3
