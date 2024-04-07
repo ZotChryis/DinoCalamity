@@ -37,10 +37,10 @@ namespace UI
             ServiceLocator.Instance.Loadout.SelectedCard.Value = m_source;
         }
 
-        public void Dispose()
+        protected override void OnDestroy()
         {
             ServiceLocator.Instance.Loadout.SelectedCard.OnChangedValues -= OnSelectedCardChanged;
-            Destroy(gameObject);
+            base.OnDestroy();
         }
     }
 }

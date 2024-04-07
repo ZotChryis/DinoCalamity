@@ -9,18 +9,7 @@ namespace UI
         
         private void Start()
         {
-            ServiceLocator.Instance.Loadout.OnShuffleEvent += OnShuffle;
-            ServiceLocator.Instance.Loadout.OnDrawEvent += OnDraw;
-            UpdateCountLabel();
-        }
-
-        private void OnShuffle(Gameplay.Cards.Card card)
-        {
-            UpdateCountLabel();
-        }
-        
-        private void OnDraw(Gameplay.Cards.Card card)
-        {
+            ServiceLocator.Instance.Loadout.Deck.CardCount.OnChanged += UpdateCountLabel;
             UpdateCountLabel();
         }
 

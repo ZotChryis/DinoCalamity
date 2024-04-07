@@ -96,7 +96,7 @@ namespace UI
             switch (m_discoverCardsData.DiscoverType)
             {
                 case DiscoverCardSchema.DiscoverTypeEnum.AddToDeck:
-                    ServiceLocator.Instance.Loadout.Deck.RemoveCard(cardView.SourceCard);
+                    ServiceLocator.Instance.Loadout.Deck.ShuffleCard(cardView.SourceCard);
                     break;
                 case DiscoverCardSchema.DiscoverTypeEnum.AddToHand:
                     ServiceLocator.Instance.Loadout.Hand.AddCard(cardView.SourceCard);

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Gameplay.Cards;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -13,8 +14,7 @@ namespace UI
 
         private void Start()
         {
-            ServiceLocator.Instance.Loadout.OnDrawEvent += OnDraw;
-            ServiceLocator.Instance.Loadout.OnDiscardEvent += OnDiscard;
+            ServiceLocator.Instance.Loadout.Hand.CardCount.OnChanged += OnHandUpdated;
         }
 
         private void Update()
@@ -28,24 +28,51 @@ namespace UI
             }
         }
 
-        private void OnDraw(Gameplay.Cards.Card card)
+        private void OnHandUpdated()
+        {
+            ClearViews();
+            var hand = ServiceLocator.Instance.Loadout.Hand;
+            foreach(var card in hand.Cards)
+            {
+                AddCardToHand(card);
+            }
+
+        }
+
+        private void ClearViews()
+        {
+            foreach(var view in m_cards)
+            {
+                Destroy(view.Value.gameObject);
+            }
+            m_cards.Clear();
+        }
+
+        private void AddCardToHand(Gameplay.Cards.Card card)
         {
             var uiCard = Instantiate(m_card, m_content);
             uiCard.SetData(card);
 
             m_cards.Add(card, uiCard);
         }
+
+        //private void OnDraw(Gameplay.Cards.Card card)
+        //{
+        //    var uiCard = Instantiate(m_card, m_content);
+        //    uiCard.SetData(card);
+
+        //    m_cards.Add(card, uiCard);
+        //}
         
-        private void OnDiscard(Gameplay.Cards.Card card)
-        {
-            if (!m_cards.ContainsKey(card))
-            {
-                return;
-            }
+        //private void OnDiscard(Gameplay.Cards.Card card)
+        //{
+        //    if (!m_cards.ContainsKey(card))
+        //    {
+        //        return;
+        //    }
             
-            PlayableCardView uiCard = m_cards[card];
-            uiCard.Dispose();
-            m_cards.Remove(card);
-        }
+        //    PlayableCardView uiCard = m_cards[card];
+        //    m_cards.Remove(card);
+        //}
     }
 }

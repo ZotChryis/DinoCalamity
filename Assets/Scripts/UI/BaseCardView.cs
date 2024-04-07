@@ -22,6 +22,11 @@ public class BaseCardView : MonoBehaviour
         m_button.onClick.AddListener(OnButtonPress);
     }
 
+    protected virtual void OnDestroy()
+    {
+        m_button.onClick.RemoveListener(OnButtonPress);
+    }
+
     public virtual void SetData(Gameplay.Cards.Card source)
     {
         m_source = source;
@@ -31,6 +36,6 @@ public class BaseCardView : MonoBehaviour
 
     private void OnButtonPress()
     {
-        OnCardViewPressedEvent.Invoke(this);
+        OnCardViewPressedEvent?.Invoke(this);
     }
 }

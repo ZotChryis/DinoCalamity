@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Gameplay.Cards;
 using UnityEngine;
@@ -14,6 +15,8 @@ namespace Gameplay
     {
         public Observable<int> CardCount = new Observable<int>(0);
         public IReadOnlyList<Card> Cards => m_cards;
+        public event Action<Card> CardAddedEvent;
+        public event Action<Card> CardRemovedEvent;
         
         /// <summary>
         /// An ordered list of the cards in the deck. This can be thought of as a Queue, but we use a list
@@ -28,6 +31,7 @@ namespace Gameplay
         {
             m_cards.Add(card);
             CardCount.Value = m_cards.Count;
+            CardAddedEvent?.Invoke(card);
             return true;
         }
         
@@ -38,6 +42,7 @@ namespace Gameplay
         {
             m_cards.Insert(0, card);
             CardCount.Value = m_cards.Count;
+            CardAddedEvent?.Invoke(card);
             return true;
         }
         
@@ -48,6 +53,7 @@ namespace Gameplay
         {
             m_cards.Insert(UnityEngine.Random.Range(0, m_cards.Count), card);
             CardCount.Value = m_cards.Count;
+            CardAddedEvent?.Invoke(card);
             return true;
         }
 
@@ -90,7 +96,7 @@ namespace Gameplay
                 return null;
             }
 
-            int cardIndex = Random.Range(0, m_cards.Count);
+            int cardIndex = UnityEngine.Random.Range(0, m_cards.Count);
             Card card = m_cards[cardIndex];
             return card;
         }
@@ -106,6 +112,7 @@ namespace Gameplay
                 {
                     m_cards.RemoveAt(i);
                     CardCount.Value = m_cards.Count;
+                    CardRemovedEvent?.Invoke(card);
                     return true;
                 }
             }
