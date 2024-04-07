@@ -9,7 +9,18 @@ namespace Schemas
     [CreateAssetMenu]
     public class TileSchema : Schema
     {
+        public enum TileType
+        {
+            Home,
+            Empty,
+            Lava,
+            Dino,
+            Fossil,
+            Amber
+        }
+        
         public string Name;
         public Gameplay.Tile Prefab;
+        public TileType Type;
     }
 }

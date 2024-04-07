@@ -15,3 +15,4 @@ MonoBehaviour:
   Status: 1
   Name: Fossil
   Prefab: {fileID: 3459353211222292083, guid: a69dde5ed32c48343aad7a24d335cf39, type: 3}
+  Type: 4

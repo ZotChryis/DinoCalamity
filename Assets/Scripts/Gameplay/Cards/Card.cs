@@ -1,3 +1,5 @@
+using Schemas.Checks;
+
 namespace Gameplay.Cards
 {
     /// <summary>
@@ -7,13 +9,13 @@ namespace Gameplay.Cards
     public class Card
     {
         /// <summary>
-        /// The data for this card.
+        /// The schema for this card.
         /// </summary>
-        public readonly Schemas.CardSchema Data;
+        public readonly Schemas.CardSchema Schema;
         
-        public Card(Schemas.CardSchema data)
+        public Card(Schemas.CardSchema schema)
         {
-            Data = data;
+            Schema = schema;
         }
 
         /// <summary>
@@ -21,37 +23,41 @@ namespace Gameplay.Cards
         /// </summary>
         public void InvokeActions(Schemas.Action.EventType eventType)
         {
-            if (!Data.Actions.TryGetValue(eventType, out var actions))
+            if (!Schema.ActionByType.TryGetValue(eventType, out var cardEvents))
             {
                 return;
             }
             
-            for (var i = 0; i < actions.Length; i++)
+            for (var i = 0; i < cardEvents.Actions.Length; i++)
             {
-                actions[i].Invoke();
+                cardEvents.Actions[i].Invoke();
             }
         }
 
         /// <summary>
-        /// Returns whether or not the card's play conditions are met. For example, some cards require targetting
-        /// an empty World tile, or a tile with a building, or nothing at all.
+        /// Returns whether or not the card's conditions for the event are met.
+        /// For example, some cards require targetting an empty World tile, or a tile with a building, etc.
         /// </summary>
-        public bool ArePlayConditionsMet()
+        public bool AreConditionsMet(Schemas.Action.EventType eventType)
         {
-            // STUB - I'd like to expand this concept further
-            if (Data.PlayRequiresTile)
+            if (!Schema.ActionByType.TryGetValue(eventType, out var cardEvents))
             {
-                if (ServiceLocator.Instance.Loadout.SelectedTile.Value == null)
-                {
-                    return false;
-                }
-                
-                if (Data.PlayRequiresTileVision && ServiceLocator.Instance.Loadout.SelectedTile.Value.IsInFog())
+                return true;
+            }
+
+            Check.Context context = new Check.Context()
+            {
+                SelectedTile = ServiceLocator.Instance.Loadout.SelectedTile.Value
+            };
+
+            for (var i = 0; i < cardEvents.Checks.Length; i++)
+            {
+                if (!cardEvents.Checks[i].IsValid(context))
                 {
                     return false;
                 }
             }
-            
+
             return true;
         }
     }

@@ -15,3 +15,4 @@ MonoBehaviour:
   Status: 1
   Name: Empty
   Prefab: {fileID: 1309592889208938097, guid: 2c1a07d6ff666264ebfc52f5ba078101, type: 3}
+  Type: 1

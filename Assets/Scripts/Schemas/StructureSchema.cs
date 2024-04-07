@@ -8,7 +8,7 @@ namespace Schemas
     {
         public Gameplay.Structure Prefab;
         
-        [SerializedDictionary("Event Type", "Actions")]
-        public SerializedDictionary<Action.EventType, Action[]> Actions;
+        [SerializedDictionary("Event Type", "ActionEvent")]
+        public SerializedDictionary<Action.EventType, ActionEvent> ActionByType;
     }
 }

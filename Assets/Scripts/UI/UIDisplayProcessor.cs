@@ -51,7 +51,7 @@ public class UIDisplayProcessor : MonoBehaviour
 
     }
 
-    private void Start()
+    private void Awake()
     {
         m_activeViews = new List<View>();
         ServiceLocator.Instance.RegisterUIDisplayProcessor(this);

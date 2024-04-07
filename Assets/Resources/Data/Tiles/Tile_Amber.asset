@@ -15,3 +15,4 @@ MonoBehaviour:
   Status: 1
   Name: Amber
   Prefab: {fileID: 8345107443637791908, guid: d90a1393305273343b1efe227b9915dc, type: 3}
+  Type: 5

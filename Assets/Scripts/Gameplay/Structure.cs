@@ -1,14 +1,15 @@
-using System;
 using GameStates;
+using Schemas.Checks;
 using UnityEngine;
 using Utility;
 using Action = Schemas.Action;
 
 namespace Gameplay
 {
+    // TODO: I think we can generalize this with Card?
     public class Structure : MonoBehaviour
     {
-        private Schemas.StructureSchema m_schema;
+        public Schemas.StructureSchema Schema;
 
         private void Awake()
         {
@@ -28,29 +29,60 @@ namespace Gameplay
                 return;
             }
 
+            if (!AreConditionsMet(Action.EventType.OnGeneration))
+            {
+                return;
+            }
+            
             InvokeActions(Action.EventType.OnGeneration);
         }
 
         public void SetSchema(Schemas.StructureSchema schema)
         {
-            m_schema = schema;
+            Schema = schema;
         }
-        
+
         /// <summary>
         /// Invokes all the card's actions, in order, for the given event type.
-        /// TODO: I think we can generalize this with Card?
         /// </summary>
         public void InvokeActions(Schemas.Action.EventType eventType)
         {
-            if (!m_schema.Actions.TryGetValue(eventType, out var actions))
+            if (!Schema.ActionByType.TryGetValue(eventType, out var cardEvents))
             {
                 return;
             }
             
-            for (var i = 0; i < actions.Length; i++)
+            for (var i = 0; i < cardEvents.Actions.Length; i++)
             {
-                actions[i].Invoke();
+                cardEvents.Actions[i].Invoke();
             }
+        }
+
+        /// <summary>
+        /// Returns whether or not the card's conditions for the event are met.
+        /// For example, some cards require targetting an empty World tile, or a tile with a building, etc.
+        /// </summary>
+        public bool AreConditionsMet(Schemas.Action.EventType eventType)
+        {
+            if (!Schema.ActionByType.TryGetValue(eventType, out var cardEvents))
+            {
+                return true;
+            }
+
+            Check.Context context = new Check.Context()
+            {
+                SelectedTile = ServiceLocator.Instance.Loadout.SelectedTile.Value
+            };
+
+            for (var i = 0; i < cardEvents.Checks.Length; i++)
+            {
+                if (!cardEvents.Checks[i].IsValid(context))
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
     }
 }

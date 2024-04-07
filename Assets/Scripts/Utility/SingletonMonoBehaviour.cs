@@ -4,7 +4,7 @@ namespace Utility
 {
     public class SingletonMonoBehaviour : MonoBehaviour
     {
-        public static SingletonMonoBehaviour InternalInstance { get; private set; }
+        protected static SingletonMonoBehaviour InternalInstance { get; private set; }
 
         protected virtual void Awake()
         {

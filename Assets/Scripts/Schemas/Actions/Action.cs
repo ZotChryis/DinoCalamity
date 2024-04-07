@@ -1,4 +1,5 @@
 using System;
+using Schemas.Checks;
 
 namespace Schemas
 {
@@ -15,5 +16,12 @@ namespace Schemas
         }
         
         public abstract void Invoke();
+    }
+    
+    [Serializable]
+    public class ActionEvent
+    {
+        public Check[] Checks;
+        public Action[] Actions;
     }
 }

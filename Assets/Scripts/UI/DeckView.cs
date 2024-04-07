@@ -7,7 +7,7 @@ namespace UI
     {
         [SerializeField] private TextMeshProUGUI m_count;
         
-        private void Start()
+        private void Awake()
         {
             ServiceLocator.Instance.Loadout.Deck.CardCount.OnChanged += UpdateCountLabel;
             UpdateCountLabel();

@@ -26,7 +26,8 @@ namespace Gameplay
         [SerializedDictionary("Anchor", "Transform")] 
         [SerializeField] private SerializedDictionary<Anchor, Transform> m_anchors;
         
-        private Schemas.TileSchema m_schema;
+        [HideInInspector] public Schemas.TileSchema Schema;
+        
         private List<Structure> m_structures;
 
         private void Awake()
@@ -44,7 +45,7 @@ namespace Gameplay
         // Do we want an interface for schema baked items?
         public void SetSchema(Schemas.TileSchema schema)
         {
-            m_schema = schema;
+            Schema = schema;
         }
         
         public void OnPointerClick(PointerEventData eventData)

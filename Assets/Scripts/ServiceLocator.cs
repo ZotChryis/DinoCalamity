@@ -52,6 +52,7 @@ public class ServiceLocator : SingletonMonoBehaviour
         StateMachine.Update();
     }
 
+    // TODO: Move to this paradigm for the rest of things?
     public void RegisterUIDisplayProcessor(UIDisplayProcessor processor)
     {
         UIDisplayProcessor = processor;

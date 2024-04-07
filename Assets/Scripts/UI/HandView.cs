@@ -1,7 +1,5 @@
 using System.Collections.Generic;
-using Gameplay.Cards;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 namespace UI
 {
@@ -12,7 +10,7 @@ namespace UI
 
         private Dictionary<Gameplay.Cards.Card, PlayableCardView> m_cards = new();
 
-        private void Start()
+        private void Awake()
         {
             ServiceLocator.Instance.Loadout.Hand.CardCount.OnChanged += OnHandUpdated;
         }
@@ -36,7 +34,6 @@ namespace UI
             {
                 AddCardToHand(card);
             }
-
         }
 
         private void ClearViews()
@@ -55,24 +52,5 @@ namespace UI
 
             m_cards.Add(card, uiCard);
         }
-
-        //private void OnDraw(Gameplay.Cards.Card card)
-        //{
-        //    var uiCard = Instantiate(m_card, m_content);
-        //    uiCard.SetData(card);
-
-        //    m_cards.Add(card, uiCard);
-        //}
-        
-        //private void OnDiscard(Gameplay.Cards.Card card)
-        //{
-        //    if (!m_cards.ContainsKey(card))
-        //    {
-        //        return;
-        //    }
-            
-        //    PlayableCardView uiCard = m_cards[card];
-        //    m_cards.Remove(card);
-        //}
     }
 }

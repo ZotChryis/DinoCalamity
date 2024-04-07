@@ -30,8 +30,8 @@ public class BaseCardView : MonoBehaviour
     public virtual void SetData(Gameplay.Cards.Card source)
     {
         m_source = source;
-        m_name.SetText(source.Data.Name);
-        m_icon.sprite = source.Data.Icon;
+        m_name.SetText(source.Schema.Name);
+        m_icon.sprite = source.Schema.Icon;
     }
 
     private void OnButtonPress()

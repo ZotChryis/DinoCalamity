@@ -15,3 +15,4 @@ MonoBehaviour:
   Status: 1
   Name: Dino
   Prefab: {fileID: 6125427455479687762, guid: 3f0c73f42c103494bb57b5dbbeb46dfd, type: 3}
+  Type: 3
