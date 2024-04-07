@@ -26,7 +26,7 @@ namespace Gameplay
         [SerializedDictionary("Anchor", "Transform")] 
         [SerializeField] private SerializedDictionary<Anchor, Transform> m_anchors;
         
-        private Schemas.Tile m_schema;
+        private Schemas.TileSchema m_schema;
         private List<Structure> m_structures;
 
         private void Awake()
@@ -42,7 +42,7 @@ namespace Gameplay
         }
 
         // Do we want an interface for schema baked items?
-        public void SetSchema(Schemas.Tile schema)
+        public void SetSchema(Schemas.TileSchema schema)
         {
             m_schema = schema;
         }
@@ -58,7 +58,7 @@ namespace Gameplay
             ServiceLocator.Instance.Loadout.SelectedTile.Value = this;
         }
         
-        public void AddStructure(Schemas.Structure schema, Anchor anchor)
+        public void AddStructure(Schemas.StructureSchema schema, Anchor anchor)
         {
             // If this tile is the Home, we can't place buildings here so we ignore the action (it gets consumed. we 
             // may want to add a generic "IsNotHome" check of some sort

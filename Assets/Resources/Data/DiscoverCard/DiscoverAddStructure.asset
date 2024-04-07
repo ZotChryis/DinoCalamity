@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 384610fd4a57349e285c2dd8e29a6625, type: 3}
+  m_Name: DiscoverAddStructure
+  m_EditorClassIdentifier: 
+  Status: 0
+  DiscoverType: 2
+  CardOptions:
+  - {fileID: 11400000, guid: 9deae018627593545a63f0846b7e5581, type: 2}
+  - {fileID: 11400000, guid: d885701bef9f58641aa11580f55134c4, type: 2}
+  - {fileID: 11400000, guid: 4ac889919b0be224891f2483994a0350, type: 2}
+  - {fileID: 11400000, guid: ddb12f6e5cf2bab41b2864de43ab9c1d, type: 2}
+  - {fileID: 11400000, guid: 347b64ffabf4baf4887e76d2fa5eaf63, type: 2}
+  DiscoverCardCount: 4

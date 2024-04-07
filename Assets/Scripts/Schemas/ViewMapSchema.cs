@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Schemas
 {
     [CreateAssetMenu]
-    public class ViewMap : Schema
+    public class ViewMapSchema : Schema
     {
         public enum ViewType
         {
@@ -12,6 +12,6 @@ namespace Schemas
         }
 
         [SerializedDictionary("View Type", "ViewConfigs")]
-        public SerializedDictionary<ViewType, ViewConfig> ViewConfigs;
+        public SerializedDictionary<ViewType, ViewSchema> ViewConfigs;
     }
 }

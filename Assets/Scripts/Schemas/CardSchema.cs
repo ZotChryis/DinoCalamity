@@ -8,7 +8,7 @@ namespace Schemas
     /// Create new entries via the asset create menu.
     /// </summary>
     [CreateAssetMenu]
-    public class Card : Schema
+    public class CardSchema : Schema
     {
         public string Name;
         public Sprite Icon;

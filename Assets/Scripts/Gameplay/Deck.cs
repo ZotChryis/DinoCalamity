@@ -13,6 +13,7 @@ namespace Gameplay
     public class Deck
     {
         public Observable<int> CardCount = new Observable<int>(0);
+        public IReadOnlyList<Card> Cards => m_cards;
         
         /// <summary>
         /// An ordered list of the cards in the deck. This can be thought of as a Queue, but we use a list
@@ -47,6 +48,19 @@ namespace Gameplay
         {
             m_cards.Insert(UnityEngine.Random.Range(0, m_cards.Count), card);
             CardCount.Value = m_cards.Count;
+            return true;
+        }
+
+        /// <summary>
+        /// Remove a specified card from the deck
+        /// </summary>
+        public bool RemoveCard(Card card)
+        {
+            if (!m_cards.Contains(card))
+            {
+                return false;
+            }
+            m_cards.Remove(card);
             return true;
         }
 
