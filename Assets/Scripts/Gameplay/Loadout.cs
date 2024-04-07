@@ -59,7 +59,7 @@ namespace Gameplay
         {
             // Start the user's deck with the pre-selected kit
             m_schema = loadout;
-            foreach (Schemas.Card card in m_schema.Deck)
+            foreach (Schemas.CardSchema card in m_schema.Deck)
             {
                 ShuffleCard(new Card(card));
             }

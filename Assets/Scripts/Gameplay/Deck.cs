@@ -52,19 +52,6 @@ namespace Gameplay
         }
 
         /// <summary>
-        /// Remove a specified card from the deck
-        /// </summary>
-        public bool RemoveCard(Card card)
-        {
-            if (!m_cards.Contains(card))
-            {
-                return false;
-            }
-            m_cards.Remove(card);
-            return true;
-        }
-
-        /// <summary>
         /// Returns the card at the very top of the deck. It is removed from the deck.
         /// </summary>
         /// <returns></returns>

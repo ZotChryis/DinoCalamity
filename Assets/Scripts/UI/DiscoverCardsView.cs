@@ -62,7 +62,7 @@ namespace UI
                     }
                     break;
                 case DiscoverCardSchema.DiscoverTypeEnum.RemoveFromDeck:
-                    cardsToDiscover = new List<Card>(ServiceLocator.Instance.Player.Deck.Cards);
+                    cardsToDiscover = new List<Card>(ServiceLocator.Instance.Loadout.Deck.Cards);
                     break;
                 default:
                     break;
@@ -96,13 +96,13 @@ namespace UI
             switch (m_discoverCardsData.DiscoverType)
             {
                 case DiscoverCardSchema.DiscoverTypeEnum.AddToDeck:
-                    ServiceLocator.Instance.Player.Deck.RemoveCard(cardView.SourceCard);
+                    ServiceLocator.Instance.Loadout.Deck.RemoveCard(cardView.SourceCard);
                     break;
                 case DiscoverCardSchema.DiscoverTypeEnum.AddToHand:
-                    ServiceLocator.Instance.Player.Hand.AddCard(cardView.SourceCard);
+                    ServiceLocator.Instance.Loadout.Hand.AddCard(cardView.SourceCard);
                     break;
                 case DiscoverCardSchema.DiscoverTypeEnum.RemoveFromDeck:
-                    ServiceLocator.Instance.Player.Deck.RemoveCard(cardView.SourceCard);
+                    ServiceLocator.Instance.Loadout.Deck.RemoveCard(cardView.SourceCard);
                     break;
                 default:
                     break;
