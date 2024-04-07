@@ -10,7 +10,7 @@ using Loadout = Schemas.Loadout;
 /// It is what bootstraps the game scene.
 /// </summary>
 
-public class ServiceLocator : SingletonMonoBehavior<ServiceLocator>
+public class ServiceLocator : SingletonMonoBehaviour
 {
     public static ServiceLocator Instance => ((ServiceLocator)InternalInstance);
 
@@ -32,8 +32,10 @@ public class ServiceLocator : SingletonMonoBehavior<ServiceLocator>
     //  todo: go in some gamemanager
     public StateMachine StateMachine = new StateMachine();
     
-    public void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+        
         Schemas.Initialize(MininmumStatus);
         World.Initialize(WorldSettings);
         Loadout.Initialize(LoadoutSettings);
