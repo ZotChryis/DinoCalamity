@@ -5,9 +5,8 @@ using Utility;
 public class GameManager: MonoBehaviour
 {
     public StateMachine StateMachine = new StateMachine();
-
-    [SerializeField] private int turn = 1;
-    public int Turn => turn;
+    
+    public int Turn { get; private set; } = 1;
 
     public void Start()
     {
@@ -29,6 +28,6 @@ public class GameManager: MonoBehaviour
 
     public void IncrementTurnCount()
     {
-        turn++;
+        Turn++;
     }
 }
