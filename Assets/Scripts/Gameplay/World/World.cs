@@ -10,7 +10,6 @@ namespace Gameplay.World
         private Schemas.TileSchema[] m_tileProbability;
 
         private Tile[,] m_grid;
-        private Tile m_home;
         private WorldSettings m_schema;
 
         public void Initialize(WorldSettings schema)
@@ -68,16 +67,12 @@ namespace Gameplay.World
                     col = m_schema.Height / 2;
                     break;
             }
-            
-            var position = m_grid[row, col].transform.position; 
-            Destroy(m_grid[row, col].gameObject);
-            
-            m_home = Instantiate(m_schema.Home.Prefab, position, Quaternion.identity, transform);
-            m_home.SetSchema(m_schema.Home);
-            m_grid[row, col] = m_home;
 
-            // Home and its neighbors should be set to have fog off 
-            ToggleFog(m_home, false, true);
+            // Now replace the home where the settings tell us to...
+            SwapTile(m_grid[row, col], m_schema.Home);
+            
+            // ...and toggle the fog on it and surrounding tiles.
+            ToggleFog(m_grid[row, col], false, true);
         }
 
         /// <summary>
@@ -195,6 +190,9 @@ namespace Gameplay.World
             return true;
         }
 
+        /// <summary>
+        /// Toggles the fog on the given tile to the given value.
+        /// </summary>
         public void ToggleFog(Tile tile, bool on, bool includeNeightbors)
         {
             tile.ToggleFog(on);
@@ -211,9 +209,40 @@ namespace Gameplay.World
             }
         }
 
+        /// <summary>
+        /// Returns whether the provided tile is the Home tile.
+        /// </summary>
         public bool IsHome(Tile tile)
         {
-            return tile == m_home;
+            return tile.Schema.Type == TileSchema.TileType.Home;
+        }
+
+        /// <summary>
+        /// Attempts to recreate the given tile in the world into the given tile schema.
+        /// Returns whether or not it was successful.
+        /// </summary>
+        public bool SwapTile(Tile tile, TileSchema schema)
+        {
+            for (var row = 0; row < m_schema.Width; row++)
+            {
+                for (int col = 0; col < m_schema.Height; col++)
+                {
+                    if (m_grid[row, col] == tile)
+                    {
+                        var oldTile = m_grid[row, col];
+                        var position = oldTile.transform.position;
+                        var newTile = Instantiate(schema.Prefab, position, Quaternion.identity, transform);
+                        newTile.SetSchema(schema);
+                        newTile.ToggleFog(oldTile.IsInFog());
+                        m_grid[row, col] = newTile;
+                        
+                        Destroy(oldTile.gameObject);
+                        return true;
+                    }
+                }
+            }
+
+            return false;
         }
     }
 }

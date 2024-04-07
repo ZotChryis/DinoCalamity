@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73c4acd9b82fa274dadc738f9163d3ff, type: 3}
+  m_Name: Card_Scour
+  m_EditorClassIdentifier: 
+  Status: 1
+  Name: Scour
+  Icon: {fileID: 21300000, guid: 201d202949a2b29499f1bd4e40304b41, type: 3}
+  ActionByType:
+    _serializedList:
+    - Key: 3
+      Value:
+        Checks:
+        - {fileID: 11400000, guid: f10f9c2215449d741a23b0e9e7d0bb8a, type: 2}
+        - {fileID: 11400000, guid: ed9cdc7983ce8ad44b6a9e21434e1a60, type: 2}
+        - {fileID: 11400000, guid: 70683f61f208f30428772160a35e060e, type: 2}
+        - {fileID: 11400000, guid: 880e2fd65fe1fc54fa7c994dc24dfa58, type: 2}
+        Actions:
+        - {fileID: 11400000, guid: 76cf4fb6a12370046a2c2995302ff4c0, type: 2}
+        - {fileID: 11400000, guid: d2651fed2ad26194c8e8155d54aaa9f6, type: 2}
+        - {fileID: 11400000, guid: d2651fed2ad26194c8e8155d54aaa9f6, type: 2}
+        - {fileID: 11400000, guid: d2651fed2ad26194c8e8155d54aaa9f6, type: 2}
+        - {fileID: 11400000, guid: d2651fed2ad26194c8e8155d54aaa9f6, type: 2}
+        - {fileID: 11400000, guid: d2651fed2ad26194c8e8155d54aaa9f6, type: 2}

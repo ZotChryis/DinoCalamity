@@ -10,6 +10,7 @@ namespace Schemas.Actions
 
         public override void Invoke()
         {
+            // TODO: We should move to using ActionContext
             // This action requires a tile
             if (ServiceLocator.Instance.Loadout.SelectedTile.Value == null)
             {

@@ -93,5 +93,10 @@ namespace Gameplay
         {
             return m_fog.activeInHierarchy;
         }
+
+        public int GetStructureCount()
+        {
+            return m_structures.Count;
+        }
     }
 }

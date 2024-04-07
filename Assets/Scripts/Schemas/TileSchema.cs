@@ -16,7 +16,8 @@ namespace Schemas
             Lava,
             Dino,
             Fossil,
-            Amber
+            Amber,
+            Desert
         }
         
         public string Name;
