@@ -17,6 +17,12 @@ MonoBehaviour:
   MapProbabilities:
   - Tile: {fileID: 11400000, guid: 20233b52161c6514da71e50a6ae34a18, type: 2}
     Amount: 1
+  - Tile: {fileID: 11400000, guid: 8575669f50febd74090d0624259cd49d, type: 2}
+    Amount: 1
+  - Tile: {fileID: 11400000, guid: 0b6d9acb6e0da834bbe5bc38210500c7, type: 2}
+    Amount: 1
+  - Tile: {fileID: 11400000, guid: 4fa70f3d3f1248c468173a62fada940f, type: 2}
+    Amount: 1
   Width: 15
   Height: 15
   HexSize: 0.5
