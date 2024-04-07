@@ -9,7 +9,7 @@ namespace Gameplay
     // TODO: I think we can generalize this with Card?
     public class Structure : MonoBehaviour
     {
-        public Schemas.StructureSchema Schema;
+        [HideInInspector] public Schemas.StructureSchema Schema;
 
         private void Awake()
         {
