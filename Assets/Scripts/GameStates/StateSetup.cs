@@ -1,5 +1,3 @@
-using Gameplay.Cards;
-using UnityEngine;
 using Utility;
 
 namespace GameStates
@@ -9,6 +7,7 @@ namespace GameStates
         public void Enter()
         {
             ServiceLocator.Instance.World.GenerateMap();
+            ServiceLocator.Instance.GameManager.GenerateCalamity();
         }
 
         public void Update()

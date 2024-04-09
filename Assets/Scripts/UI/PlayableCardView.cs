@@ -1,4 +1,5 @@
 using System;
+using Gameplay;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -13,7 +14,7 @@ namespace UI
             ServiceLocator.Instance.Loadout.SelectedCard.OnChangedValues += OnSelectedCardChanged;
         }
 
-        private void OnSelectedCardChanged(Gameplay.Cards.Card oldValue, Gameplay.Cards.Card newValue)
+        private void OnSelectedCardChanged(Card oldValue, Card newValue)
         {
             // TEMP - Need better animation support
             if (newValue != m_source)

@@ -1,3 +1,4 @@
+using Gameplay;
 using UI;
 using UnityEngine;
 
@@ -9,7 +10,7 @@ namespace Schemas.Actions
         [SerializeField] private ViewSchema viewConfig;
         [SerializeField] private DiscoverCardSchema CardDiscoverOptions;
 
-        public override void Invoke()
+        public override void Invoke(Invoker.Context context)
         {
             var view = ServiceLocator.Instance.UIDisplayProcessor.TryShowView(viewConfig);
             var discoverCardView = view as DiscoverCardsView;

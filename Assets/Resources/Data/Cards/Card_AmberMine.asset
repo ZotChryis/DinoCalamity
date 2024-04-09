@@ -15,11 +15,11 @@ MonoBehaviour:
   Status: 1
   Name: Amber Mine
   Icon: {fileID: 21300000, guid: ee24737cf7d409e449a01943ed495295, type: 3}
-  ActionByType:
+  ActionsByType:
     _serializedList:
     - Key: 3
       Value:
-        Checks:
+      - Checks:
         - {fileID: 11400000, guid: f334de4f532e14342ad6cf8b8de87e6e, type: 2}
         - {fileID: 11400000, guid: ed9cdc7983ce8ad44b6a9e21434e1a60, type: 2}
         Actions:

@@ -1,14 +1,11 @@
-using AYellowpaper.SerializedCollections;
+using Gameplay;
 using UnityEngine;
 
 namespace Schemas
 {
     [CreateAssetMenu]
-    public class StructureSchema : Schema
+    public class StructureSchema : InvokerSchema
     {
-        public Gameplay.Structure Prefab;
-        
-        [SerializedDictionary("Event Type", "ActionEvent")]
-        public SerializedDictionary<Action.EventType, ActionEvent> ActionByType;
+        public Structure Prefab;
     }
 }

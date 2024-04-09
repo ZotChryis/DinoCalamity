@@ -15,11 +15,11 @@ MonoBehaviour:
   Status: 1
   Name: Lava-Proof Harbor
   Icon: {fileID: 21300000, guid: 9beeb3a9e2d89564c87f71ca02f8b4ca, type: 3}
-  ActionByType:
+  ActionsByType:
     _serializedList:
     - Key: 3
       Value:
-        Checks:
+      - Checks:
         - {fileID: 11400000, guid: 2ac4baa31e4d7e44d9d449a0d2c0d4a2, type: 2}
         - {fileID: 11400000, guid: ed9cdc7983ce8ad44b6a9e21434e1a60, type: 2}
         Actions:

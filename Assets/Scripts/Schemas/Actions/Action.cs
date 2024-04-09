@@ -1,4 +1,5 @@
 using System;
+using Gameplay;
 using Schemas.Checks;
 
 namespace Schemas
@@ -6,16 +7,7 @@ namespace Schemas
     [Serializable]
     public abstract class Action : Schema
     {
-        public enum EventType
-        {
-            OnDraw,
-            OnDiscard,
-            OnShuffle,
-            OnPlay,
-            OnGeneration
-        }
-        
-        public abstract void Invoke();
+        public abstract void Invoke(Invoker.Context context);
     }
     
     [Serializable]

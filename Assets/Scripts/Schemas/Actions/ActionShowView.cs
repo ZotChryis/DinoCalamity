@@ -1,3 +1,4 @@
+using Gameplay;
 using UnityEngine;
 
 namespace Schemas.Actions
@@ -7,7 +8,7 @@ namespace Schemas.Actions
     {
         [SerializeField] private ViewSchema viewConfig;
 
-        public override void Invoke()
+        public override void Invoke(Invoker.Context context)
         {
             ServiceLocator.Instance.UIDisplayProcessor.TryShowView(viewConfig);
         }

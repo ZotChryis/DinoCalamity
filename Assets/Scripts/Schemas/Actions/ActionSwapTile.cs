@@ -1,3 +1,4 @@
+using Gameplay;
 using UnityEngine;
 
 namespace Schemas.Actions
@@ -10,7 +11,7 @@ namespace Schemas.Actions
     {
         public TileSchema Tile;
         
-        public override void Invoke()
+        public override void Invoke(Invoker.Context context)
         {
             // TODO: We should move to using ActionContext
             // This action requires a tile

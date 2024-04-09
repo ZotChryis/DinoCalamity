@@ -7,7 +7,7 @@ namespace Schemas
     /// Create new entries via the asset create menu.
     /// </summary>
     [CreateAssetMenu]
-    public class TileSchema : Schema
+    public class TileSchema : InvokerSchema
     {
         public enum TileType
         {

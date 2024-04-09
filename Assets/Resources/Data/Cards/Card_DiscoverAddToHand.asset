@@ -15,10 +15,10 @@ MonoBehaviour:
   Status: 1
   Name: Discover!
   Icon: {fileID: 21300000, guid: 9beeb3a9e2d89564c87f71ca02f8b4ca, type: 3}
-  ActionByType:
+  ActionsByType:
     _serializedList:
     - Key: 3
       Value:
-        Checks: []
+      - Checks: []
         Actions:
         - {fileID: 11400000, guid: d5b0870ec96a943c29945ff894fe8281, type: 2}

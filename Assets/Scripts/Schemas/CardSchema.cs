@@ -1,4 +1,3 @@
-using AYellowpaper.SerializedCollections;
 using UnityEngine;
 
 namespace Schemas
@@ -8,12 +7,9 @@ namespace Schemas
     /// Create new entries via the asset create menu.
     /// </summary>
     [CreateAssetMenu]
-    public class CardSchema : Schema
+    public class CardSchema : InvokerSchema
     {
         public string Name;
         public Sprite Icon;
-
-        [SerializedDictionary("Event Type", "ActionEvent")]
-        public SerializedDictionary<Action.EventType, ActionEvent> ActionByType;
     }
 }

@@ -15,10 +15,12 @@ namespace Schemas
         private const string c_cardDirectory = "Data/Cards";
         private const string c_tileDirectory = "Data/Tiles";
         private const string c_resourceDirectory = "Data/Resources";
+        private const string c_calamityDirectory = "Data/Calamities";
         
         public IReadOnlyList<CardSchema> Cards;
         public IReadOnlyList<TileSchema> Tiles;
         public IReadOnlyList<ResourceSchema> Resources;
+        public IReadOnlyList<CalamitySchema> Calamities;
 
         public void Initialize(Schema.ProductionStatus minimumStatus)
         {
@@ -33,6 +35,10 @@ namespace Schemas
             Resources = Array.FindAll(
                 UnityEngine.Resources.LoadAll<ResourceSchema>(c_resourceDirectory),
                 v => v.Status >= minimumStatus
+            );
+            Calamities = Array.FindAll(
+                UnityEngine.Resources.LoadAll<CalamitySchema>(c_calamityDirectory),
+                c => c.Status >= minimumStatus
             );
         }
     }

@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Security.Cryptography;
 using AYellowpaper.SerializedCollections;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -71,7 +70,7 @@ namespace Gameplay
             // Currently, if you place a building on a tile that has one, we'll just replace it
             foreach (var structure in m_structures)
             {
-                Destroy(structure);
+                Destroy(structure.gameObject);
             }
             m_structures.Clear();
             

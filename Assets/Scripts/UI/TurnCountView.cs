@@ -11,10 +11,10 @@ public class TurnCountView : MonoBehaviour
 
     private void Awake()
     {
-        ServiceLocator.Instance.GameManager.StateMachine.OnStateChangedEvent += OnStateChangedEvent;
+        ServiceLocator.Instance.GameManager.Turn.OnChanged += OnTurnCounterChanged;
     }
 
-    private void OnStateChangedEvent(IState state)
+    private void OnTurnCounterChanged()
     {
         //m_bum_turnCountertton.interactable = state is StatePlay;
         m_turnCounter.text = ServiceLocator.Instance.GameManager.Turn.ToString();

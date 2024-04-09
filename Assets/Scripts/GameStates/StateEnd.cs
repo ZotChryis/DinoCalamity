@@ -7,7 +7,7 @@ namespace GameStates
         public void Enter()
         {
             // Increment turn counter
-            ServiceLocator.Instance.GameManager.IncrementTurnCount();
+            ServiceLocator.Instance.GameManager.EndTurn();
         }
 
         public void Update()

@@ -25,7 +25,7 @@ namespace UI
         {
             // STUB - some game manager should be handling this
             //ServiceLocator.Instance.StateMachine.ChangeState(new StateGeneration());
-            ServiceLocator.Instance.GameManager.EndTurn();
+            ServiceLocator.Instance.GameManager.RequestEndTurn();
         }
     }
 }

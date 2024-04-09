@@ -15,11 +15,11 @@ MonoBehaviour:
   Status: 1
   Name: Scour
   Icon: {fileID: 21300000, guid: 201d202949a2b29499f1bd4e40304b41, type: 3}
-  ActionByType:
+  ActionsByType:
     _serializedList:
     - Key: 3
       Value:
-        Checks:
+      - Checks:
         - {fileID: 11400000, guid: f10f9c2215449d741a23b0e9e7d0bb8a, type: 2}
         - {fileID: 11400000, guid: ed9cdc7983ce8ad44b6a9e21434e1a60, type: 2}
         - {fileID: 11400000, guid: 70683f61f208f30428772160a35e060e, type: 2}

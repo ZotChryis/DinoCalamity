@@ -15,11 +15,11 @@ MonoBehaviour:
   Status: 1
   Name: Scrimshander
   Icon: {fileID: 21300000, guid: bd618efc9b7c95145894d93f0829990f, type: 3}
-  ActionByType:
+  ActionsByType:
     _serializedList:
     - Key: 3
       Value:
-        Checks:
+      - Checks:
         - {fileID: 11400000, guid: 8c36cf846c100fd4fae195a06d376a9b, type: 2}
         - {fileID: 11400000, guid: ed9cdc7983ce8ad44b6a9e21434e1a60, type: 2}
         Actions:

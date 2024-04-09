@@ -1,5 +1,4 @@
 using Utility.Observable;
-using Card = Gameplay.Cards.Card;
 
 namespace Gameplay
 {
@@ -92,7 +91,7 @@ namespace Gameplay
 
             Card card = Deck.Pop();
             Hand.AddCard(card);
-            card.InvokeActions(Schemas.Action.EventType.OnDraw);
+            card.Invoker.TryInvokeActions(Invoker.EventType.CardOnDraw);
             OnDrawEvent?.Invoke(card);
             return true;
         }
@@ -109,7 +108,7 @@ namespace Gameplay
             }
 
             Hand.RemoveCard(card);
-            card.InvokeActions(Schemas.Action.EventType.OnDiscard);
+            card.Invoker.TryInvokeActions(Invoker.EventType.CardOnDiscard);
             Discard.AddCardFront(card);
             OnDiscardEvent?.Invoke(card);
             return true;
@@ -128,7 +127,7 @@ namespace Gameplay
             Discard.AddCardFront(SelectedCard.Value);
             OnDiscardEvent?.Invoke(SelectedCard.Value);
             
-            SelectedCard.Value.InvokeActions(Schemas.Action.EventType.OnPlay);
+            SelectedCard.Value.Invoker.TryInvokeActions(Invoker.EventType.CardOnPlay);
             OnPlayEvent?.Invoke(SelectedCard.Value);
             
             SelectedCard.Value = null;

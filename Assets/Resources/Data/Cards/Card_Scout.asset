@@ -15,11 +15,11 @@ MonoBehaviour:
   Status: 1
   Name: Scout
   Icon: {fileID: 21300000, guid: 8fc9f669d148e1643b559b09fed55478, type: 3}
-  ActionByType:
+  ActionsByType:
     _serializedList:
     - Key: 3
       Value:
-        Checks:
+      - Checks:
         - {fileID: 11400000, guid: f10f9c2215449d741a23b0e9e7d0bb8a, type: 2}
         Actions:
         - {fileID: 11400000, guid: 425d56dac9fc4b745a6cb29afe1c2abb, type: 2}

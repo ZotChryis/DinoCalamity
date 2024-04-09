@@ -1,3 +1,4 @@
+using Gameplay;
 using UnityEngine;
 
 namespace Schemas.Checks
@@ -10,7 +11,7 @@ namespace Schemas.Checks
     {
         public bool Negate;
         
-        public override bool IsValid(Context context)
+        public override bool IsValid(Invoker.Context context)
         {
             if (context.SelectedTile == null)
             {

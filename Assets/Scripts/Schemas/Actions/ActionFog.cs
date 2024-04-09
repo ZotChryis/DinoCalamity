@@ -1,3 +1,4 @@
+using Gameplay;
 using UnityEngine;
 
 namespace Schemas.Actions
@@ -8,7 +9,7 @@ namespace Schemas.Actions
         [SerializeField] private bool m_enable;
         [SerializeField] private bool m_includeNeighbors;
 
-        public override void Invoke()
+        public override void Invoke(Invoker.Context context)
         {
             // TODO: We should move to using ActionContext
             // This action requires a tile

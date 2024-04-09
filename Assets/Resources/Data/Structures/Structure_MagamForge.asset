@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Status: 1
   Prefab: {fileID: 6064727291728260522, guid: ecfb231f27451754ca180068156dda8e, type: 3}
-  ActionByType:
+  ActionsByType:
     _serializedList:
     - Key: 4
       Value:
-        Checks: []
+      - Checks: []
         Actions:
         - {fileID: 11400000, guid: 6560a117dbf947e499634a6bd4848190, type: 2}

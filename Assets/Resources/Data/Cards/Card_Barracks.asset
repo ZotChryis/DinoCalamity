@@ -15,11 +15,11 @@ MonoBehaviour:
   Status: 1
   Name: Barracks
   Icon: {fileID: 21300000, guid: 0bde533bf84adc24c8e0c8a5a5b2ee15, type: 3}
-  ActionByType:
+  ActionsByType:
     _serializedList:
     - Key: 3
       Value:
-        Checks:
+      - Checks:
         - {fileID: 11400000, guid: 3041af89019a39247889cef4559665e0, type: 2}
         - {fileID: 11400000, guid: ed9cdc7983ce8ad44b6a9e21434e1a60, type: 2}
         Actions:

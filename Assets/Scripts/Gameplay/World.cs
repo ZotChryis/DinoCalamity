@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Schemas;
 using UnityEngine;
 
-namespace Gameplay.World
+namespace Gameplay
 {
     public class World : MonoBehaviour
     {

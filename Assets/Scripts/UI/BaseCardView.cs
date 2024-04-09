@@ -1,4 +1,5 @@
 using System;
+using Gameplay;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,9 +12,9 @@ public class BaseCardView : MonoBehaviour
 
     [SerializeField] protected Animation m_animation;
 
-    public Gameplay.Cards.Card SourceCard => m_source;
+    public Card SourceCard => m_source;
 
-    protected Gameplay.Cards.Card m_source;
+    protected Card m_source;
 
     public event Action<BaseCardView> OnCardViewPressedEvent;
 
@@ -27,7 +28,7 @@ public class BaseCardView : MonoBehaviour
         m_button.onClick.RemoveListener(OnButtonPress);
     }
 
-    public virtual void SetData(Gameplay.Cards.Card source)
+    public virtual void SetData(Card source)
     {
         m_source = source;
         m_name.SetText(source.Schema.Name);

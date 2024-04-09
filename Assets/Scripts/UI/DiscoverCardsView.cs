@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using Gameplay.Cards;
+using Gameplay;
 using Schemas.Actions;
 using TMPro;
 using UnityEngine;

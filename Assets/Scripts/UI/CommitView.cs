@@ -1,5 +1,5 @@
+using Gameplay;
 using GameStates;
-using Schemas;
 using UnityEngine;
 using UnityEngine.UI;
 using Utility;
@@ -33,7 +33,9 @@ namespace UI
         {
             var isPlayState = ServiceLocator.Instance.StateMachine.GetCurrentState() is StatePlay;
             var selectedCard = ServiceLocator.Instance.Loadout.SelectedCard.Value;
-            m_button.interactable = isPlayState && selectedCard != null && selectedCard.AreConditionsMet(Action.EventType.OnPlay);
+            m_button.interactable = isPlayState && 
+                                    selectedCard != null && 
+                                    selectedCard.Invoker.AreConditionsMet(Invoker.EventType.CardOnPlay);
         }
     }
 }

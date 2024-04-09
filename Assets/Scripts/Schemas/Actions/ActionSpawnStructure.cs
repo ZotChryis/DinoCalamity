@@ -1,3 +1,4 @@
+using Gameplay;
 using UnityEngine;
 
 namespace Schemas.Actions
@@ -8,7 +9,7 @@ namespace Schemas.Actions
         [SerializeField] private StructureSchema m_schema;
         [SerializeField] private Gameplay.Tile.Anchor m_anchor;
 
-        public override void Invoke()
+        public override void Invoke(Invoker.Context context)
         {
             // This action requires a target tile
             var tile = ServiceLocator.Instance.Loadout.SelectedTile.Value;

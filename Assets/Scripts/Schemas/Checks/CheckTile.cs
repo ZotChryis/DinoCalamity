@@ -1,3 +1,4 @@
+using Gameplay;
 using UnityEngine;
 
 namespace Schemas.Checks
@@ -8,7 +9,7 @@ namespace Schemas.Checks
     [CreateAssetMenu]
     public class CheckTile : Check
     {
-        public override bool IsValid(Context context)
+        public override bool IsValid(Invoker.Context context)
         {
             return context.SelectedTile != null;
         }

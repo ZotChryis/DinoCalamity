@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Gameplay;
 using UnityEngine;
 
 namespace UI
@@ -8,7 +9,7 @@ namespace UI
         [SerializeField] private PlayableCardView m_card;
         [SerializeField] private Transform m_content;
 
-        private Dictionary<Gameplay.Cards.Card, PlayableCardView> m_cards = new();
+        private Dictionary<Card, PlayableCardView> m_cards = new();
 
         private void Awake()
         {
@@ -45,7 +46,7 @@ namespace UI
             m_cards.Clear();
         }
 
-        private void AddCardToHand(Gameplay.Cards.Card card)
+        private void AddCardToHand(Card card)
         {
             var uiCard = Instantiate(m_card, m_content);
             uiCard.SetData(card);
