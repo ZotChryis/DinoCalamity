@@ -41,6 +41,7 @@ namespace Gameplay
             
             // These events pertain to any other context.
             GlobalOnEndTurn,
+            GlobalOnStartTurn,
         }
         
         public InvokerState State { get; private set; } = new InvokerState();
@@ -53,11 +54,13 @@ namespace Gameplay
             Schema = schema;
 
             ServiceLocator.Instance.GameManager.OnTurnEndEvent += OnTurnEnded;
+            ServiceLocator.Instance.GameManager.OnTurnStartEvent += OnTurnStarted;
         }
 
         public void Destroy()
         {
             ServiceLocator.Instance.GameManager.OnTurnEndEvent -= OnTurnEnded;
+            ServiceLocator.Instance.GameManager.OnTurnStartEvent -= OnTurnStarted;
         }
 
         private void OnTurnEnded()
@@ -68,6 +71,16 @@ namespace Gameplay
             }
             
             TryInvokeActions(EventType.GlobalOnEndTurn);
+        }
+        
+        private void OnTurnStarted()
+        {
+            if (!AreConditionsMet(EventType.GlobalOnStartTurn))
+            {
+                return;
+            }
+            
+            TryInvokeActions(EventType.GlobalOnStartTurn);
         }
 
         public void TryInvokeActions(EventType eventType)

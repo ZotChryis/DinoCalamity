@@ -7,6 +7,7 @@ namespace Gameplay
     public class World : MonoBehaviour
     {
         public Tile[,] Grid { get; private set; }
+        public Tile Home { get; private set; }
         
         private int m_totalTileProbability;
         private Schemas.TileSchema[] m_tileProbability;
@@ -74,6 +75,8 @@ namespace Gameplay
             
             // ...and toggle the fog on it and surrounding tiles.
             ToggleFog(Grid[row, col], false, true);
+
+            Home = Grid[row, col];
         }
 
         /// <summary>
@@ -242,6 +245,11 @@ namespace Gameplay
                         newTile.SetSchema(schema);
                         newTile.ToggleFog(oldTile.IsInFog());
                         Grid[row, col] = newTile;
+
+                        if (IsHome(oldTile))
+                        {
+                            Home = newTile;
+                        }
                         
                         Destroy(oldTile.gameObject);
                         return true;

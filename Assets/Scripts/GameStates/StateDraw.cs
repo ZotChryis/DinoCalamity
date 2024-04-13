@@ -6,6 +6,7 @@ namespace GameStates
     {
         public void Enter()
         {
+            ServiceLocator.Instance.GameManager.StartTurn();
             ServiceLocator.Instance.Loadout.DrawUntilFull();
         }
 

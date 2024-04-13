@@ -12,6 +12,12 @@ public class GameManager: MonoBehaviour
     public delegate void OnTurnEnd();
     public OnTurnEnd OnTurnEndEvent;
     
+    /// <summary>
+    /// This event occurs when the turn starts.
+    /// </summary>
+    public delegate void OnTurnStart();
+    public OnTurnEnd OnTurnStartEvent;
+    
     public StateMachine StateMachine { get; private set; } = new StateMachine();
     public Observable<int> Turn { get; private set; } = new Observable<int>(0);
     public Calamity Calamity { get; private set; }
@@ -35,10 +41,15 @@ public class GameManager: MonoBehaviour
         StateMachine.ChangeState(new StateGeneration());
     }
 
+    public void StartTurn()
+    {
+        OnTurnStartEvent?.Invoke();
+        Turn.Value += 1;
+    }
+
     public void EndTurn()
     {
         OnTurnEndEvent?.Invoke();
-        Turn.Value += 1;
     }
 
     public void GenerateCalamity()

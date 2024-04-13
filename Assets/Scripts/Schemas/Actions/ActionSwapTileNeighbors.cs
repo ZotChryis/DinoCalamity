@@ -27,8 +27,6 @@ namespace Schemas.Actions
                     Tile
                 );
             }
-            
-            Debug.Log("ActionSwapTileNeighbors");
         }
     }
 }
