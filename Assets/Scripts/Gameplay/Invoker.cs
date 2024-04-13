@@ -20,6 +20,10 @@ namespace Gameplay
         {
             public Invoker Invoker;
             public Gameplay.Tile SelectedTile;
+            public object Owner;
+            
+            // TODO: Support this
+            public Gameplay.Card SelectedCard;
         }
         
         public enum EventType
@@ -41,9 +45,11 @@ namespace Gameplay
         
         public InvokerState State { get; private set; } = new InvokerState();
         protected InvokerSchema Schema;
+        protected object Owner;
 
-        public void Initialize(InvokerSchema schema)
+        public void Initialize(object owner, InvokerSchema schema)
         {
+            Owner = owner;
             Schema = schema;
 
             ServiceLocator.Instance.GameManager.OnTurnEndEvent += OnTurnEnded;
@@ -136,8 +142,9 @@ namespace Gameplay
         {
             return new Context()
             {
+                Owner = Owner,
                 Invoker = this,
-                SelectedTile = ServiceLocator.Instance.Loadout.SelectedTile.Value
+                SelectedTile = ServiceLocator.Instance.Loadout.SelectedTile.Value,
             };
         }
     }

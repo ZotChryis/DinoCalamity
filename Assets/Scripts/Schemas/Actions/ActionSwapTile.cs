@@ -10,18 +10,18 @@ namespace Schemas.Actions
     public class ActionSwapTile : Action
     {
         public TileSchema Tile;
-        
         public override void Invoke(Invoker.Context context)
         {
-            // TODO: We should move to using ActionContext
             // This action requires a tile
-            if (ServiceLocator.Instance.Loadout.SelectedTile.Value == null)
+            if (context.SelectedTile == null)
             {
                 return;
             }
             
+            
+            // Swap selected tile
             ServiceLocator.Instance.World.SwapTile(
-                ServiceLocator.Instance.Loadout.SelectedTile.Value,
+                context.SelectedTile,
                 Tile
             );
         }

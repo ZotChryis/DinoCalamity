@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using AYellowpaper.SerializedCollections;
 using UnityEngine;
@@ -8,7 +9,7 @@ namespace Gameplay
     /// <summary>
     /// STUB
     /// </summary>
-    public class Tile : MonoBehaviour, IPointerClickHandler
+    public class Tile : MonoBehaviour, IPointerClickHandler, IInvoker
     {
         // STUB - We might want to have multiple places to spawn stuff on the tile. We'll denote the difference with
         // this. However, if we find we don't need it, we can rip it out. We could generalize this further and make it
@@ -18,6 +19,8 @@ namespace Gameplay
             Center
         }
 
+        public Invoker Invoker { get; private set; } = new Invoker();
+        
         [SerializeField] private Highlight m_highlight;
         [SerializeField] private GameObject m_fog;
         [SerializeField] private GameObject m_content;
@@ -36,6 +39,11 @@ namespace Gameplay
             ToggleFog(true);
         }
 
+        private void OnDestroy()
+        {
+            ServiceLocator.Instance.Loadout.SelectedTile.OnChangedValues -= OnSelectedTileChanged;
+        }
+
         private void OnSelectedTileChanged(Tile oldValue, Tile newValue)
         {
             m_highlight.ToggleHighlight(newValue == this);
@@ -45,6 +53,7 @@ namespace Gameplay
         public void SetSchema(Schemas.TileSchema schema)
         {
             Schema = schema;
+            Invoker.Initialize(this, Schema);
         }
         
         public void OnPointerClick(PointerEventData eventData)

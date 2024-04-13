@@ -6,10 +6,11 @@ namespace Gameplay
 {
     public class World : MonoBehaviour
     {
+        public Tile[,] Grid { get; private set; }
+        
         private int m_totalTileProbability;
         private Schemas.TileSchema[] m_tileProbability;
 
-        private Tile[,] m_grid;
         private WorldSettings m_schema;
 
         public void Initialize(WorldSettings schema)
@@ -25,7 +26,7 @@ namespace Gameplay
             GenerateProbabilityTable();
             Clear();
 
-            m_grid = new Tile[m_schema.Width, m_schema.Height];
+            Grid = new Tile[m_schema.Width, m_schema.Height];
             float zOffsetEven = Mathf.Sqrt(3) * m_schema.HexSize;
             for (int row = 0; row < m_schema.Width; row++)
             {
@@ -42,7 +43,7 @@ namespace Gameplay
                     var schema = GetRandomTileSchema();
                     var instance = Instantiate(schema.Prefab, position, Quaternion.identity, transform);
                     instance.SetSchema(schema);
-                    m_grid[row, col] = instance;
+                    Grid[row, col] = instance;
                 }
             }
 
@@ -69,16 +70,16 @@ namespace Gameplay
             }
 
             // Now replace the home where the settings tell us to...
-            SwapTile(m_grid[row, col], m_schema.Home);
+            SwapTile(Grid[row, col], m_schema.Home);
             
             // ...and toggle the fog on it and surrounding tiles.
-            ToggleFog(m_grid[row, col], false, true);
+            ToggleFog(Grid[row, col], false, true);
         }
 
         /// <summary>
         /// Eliminates all gameobjects that make up the World.
         /// </summary>
-        public void Clear()
+        private void Clear()
         {
             // For some reason, in editor, using DestroyImmediate only kills half of the children. So we have to wrap 
             // this function in a while loop to do it until it's empty. Super odd. Probably why the game can hang
@@ -127,13 +128,13 @@ namespace Gameplay
             return m_tileProbability[randomIndex];
         }
 
-        private List<Tile> GetNeighbors(Tile tile)
+        public List<Tile> GetNeighbors(Tile tile)
         {
             for (var i = 0; i < m_schema.Width; i++)
             {
                 for (int j = 0; j < m_schema.Height; j++)
                 {
-                    if (m_grid[i, j] == tile)
+                    if (Grid[i, j] == tile)
                     {
                         return GetNeighbors(i, j);
                     }
@@ -143,13 +144,13 @@ namespace Gameplay
             return new List<Tile>();
         }
         
-        private List<Tile> GetNeighbors(int x, int y)
+        public List<Tile> GetNeighbors(int x, int y)
         {
             void TryAdd(ref List<Tile> tiles, int r, int c)
             {
                 if (IsValidLocation(r, c ))
                 {
-                    tiles.Add(m_grid[r, c]);
+                    tiles.Add(Grid[r, c]);
                 }
             }
             
@@ -223,18 +224,24 @@ namespace Gameplay
         /// </summary>
         public bool SwapTile(Tile tile, TileSchema schema)
         {
+            // Do nothing if it's the same one
+            if (tile.Schema == schema)
+            {
+                return false;
+            }
+            
             for (var row = 0; row < m_schema.Width; row++)
             {
                 for (int col = 0; col < m_schema.Height; col++)
                 {
-                    if (m_grid[row, col] == tile)
+                    if (Grid[row, col] == tile)
                     {
-                        var oldTile = m_grid[row, col];
+                        var oldTile = Grid[row, col];
                         var position = oldTile.transform.position;
                         var newTile = Instantiate(schema.Prefab, position, Quaternion.identity, transform);
                         newTile.SetSchema(schema);
                         newTile.ToggleFog(oldTile.IsInFog());
-                        m_grid[row, col] = newTile;
+                        Grid[row, col] = newTile;
                         
                         Destroy(oldTile.gameObject);
                         return true;

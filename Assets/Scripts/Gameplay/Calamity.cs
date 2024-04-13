@@ -11,7 +11,7 @@ namespace Gameplay
         public Calamity(CalamitySchema schema)
         {
             m_schema = schema;
-            Invoker.Initialize(schema);
+            Invoker.Initialize(this, schema);
         }
     }
 }

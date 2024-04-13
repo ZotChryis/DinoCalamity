@@ -15,7 +15,7 @@ namespace Gameplay
         public Card(Schemas.CardSchema schema)
         {
             Schema = schema;
-            Invoker.Initialize(Schema);
+            Invoker.Initialize(this, Schema);
         }
     }
 }

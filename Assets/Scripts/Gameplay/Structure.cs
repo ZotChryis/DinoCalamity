@@ -40,7 +40,7 @@ namespace Gameplay
         public void SetSchema(Schemas.StructureSchema schema)
         {
             Schema = schema;
-            Invoker.Initialize(Schema);
+            Invoker.Initialize(this, Schema);
         }
     }
 }

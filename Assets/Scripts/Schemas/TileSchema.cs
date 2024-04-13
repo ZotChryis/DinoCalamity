@@ -17,7 +17,8 @@ namespace Schemas
             Dino,
             Fossil,
             Amber,
-            Desert
+            Desert,
+            CalamityMeteorCrater,
         }
         
         public string Name;
