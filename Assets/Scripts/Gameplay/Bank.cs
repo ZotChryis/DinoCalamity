@@ -31,5 +31,11 @@ namespace Gameplay
             m_resources[resource] += amount;
             OnResourceUpdateEvent?.Invoke(resource, m_resources[resource]);
         }
+
+        public int GetAmount(ResourceSchema resource)
+        {
+            m_resources.TryGetValue(resource, out int value);
+            return value;
+        }
     }
 }

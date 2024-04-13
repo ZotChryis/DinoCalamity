@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc4d4a379617da64086a76d6dfd5fd2c, type: 3}
-  m_Name: CheckState_Counter_21+
+  m_Script: {fileID: 11500000, guid: 5a8b47e5cab5e91439563efe83e2d2a1, type: 3}
+  m_Name: CheckBank_Might_100+
   m_EditorClassIdentifier: 
   Status: 1
-  Key: Counter
-  Value: 20
-  Comparison: 4
+  Resource: {fileID: 11400000, guid: d793ebab29a725941afcc7a88853e594, type: 2}
+  Value: 100
+  Comparison: 3
