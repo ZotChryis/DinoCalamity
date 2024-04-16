@@ -13,8 +13,6 @@ MonoBehaviour:
   m_Name: Card_Scrimshander
   m_EditorClassIdentifier: 
   Status: 1
-  Name: Scrimshander
-  Icon: {fileID: 21300000, guid: bd618efc9b7c95145894d93f0829990f, type: 3}
   ActionsByType:
     _serializedList:
     - Key: 3
@@ -25,3 +23,6 @@ MonoBehaviour:
         Actions:
         - {fileID: 11400000, guid: 427e150e2ca89de498f5b5aff58d5afa, type: 2}
         - {fileID: 11400000, guid: 875e98f98bae9ea4da7224bc09ad4d6c, type: 2}
+  Name: Scrimshander
+  Description: Fossil<br>+1 Prosperity
+  Icon: {fileID: 21300000, guid: bd618efc9b7c95145894d93f0829990f, type: 3}

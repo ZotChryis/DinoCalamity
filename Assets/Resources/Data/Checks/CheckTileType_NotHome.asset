@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: CheckTileType_NotHome
   m_EditorClassIdentifier: 
   Status: 1
-  Type: 0
+  Schema: {fileID: 11400000, guid: 877febce483a81c46a4fb37fbc68a01b, type: 2}
   Negate: 1

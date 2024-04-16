@@ -6,6 +6,8 @@ namespace Schemas.Actions
     [CreateAssetMenu]
     public class ActionSpawnStructure : Action
     {
+        public StructureSchema Structure => m_schema;
+        
         [SerializeField] private StructureSchema m_schema;
         [SerializeField] private Gameplay.Tile.Anchor m_anchor;
 

@@ -13,8 +13,6 @@ MonoBehaviour:
   m_Name: Card_Barracks
   m_EditorClassIdentifier: 
   Status: 1
-  Name: Barracks
-  Icon: {fileID: 21300000, guid: 0bde533bf84adc24c8e0c8a5a5b2ee15, type: 3}
   ActionsByType:
     _serializedList:
     - Key: 3
@@ -25,3 +23,6 @@ MonoBehaviour:
         Actions:
         - {fileID: 11400000, guid: d8e030cdc2419774d8bf81c2a84dde56, type: 2}
         - {fileID: 11400000, guid: 875e98f98bae9ea4da7224bc09ad4d6c, type: 2}
+  Name: Barracks
+  Description: Dino<br>+1 Might
+  Icon: {fileID: 21300000, guid: 0bde533bf84adc24c8e0c8a5a5b2ee15, type: 3}

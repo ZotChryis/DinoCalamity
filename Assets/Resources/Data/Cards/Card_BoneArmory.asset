@@ -13,8 +13,6 @@ MonoBehaviour:
   m_Name: Card_BoneArmory
   m_EditorClassIdentifier: 
   Status: 1
-  Name: Bone Armory
-  Icon: {fileID: 21300000, guid: 3e5c7e660b3ac674abde386fcf470a80, type: 3}
   ActionsByType:
     _serializedList:
     - Key: 3
@@ -25,3 +23,6 @@ MonoBehaviour:
         Actions:
         - {fileID: 11400000, guid: 6ee270867ab0313419ae9f81ccf07263, type: 2}
         - {fileID: 11400000, guid: 875e98f98bae9ea4da7224bc09ad4d6c, type: 2}
+  Name: Bone Armory
+  Description: Fossil<br>+1 Might
+  Icon: {fileID: 21300000, guid: 3e5c7e660b3ac674abde386fcf470a80, type: 3}

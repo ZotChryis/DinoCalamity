@@ -17,7 +17,7 @@ namespace UI
         private void OnSelectedCardChanged(Card oldValue, Card newValue)
         {
             // TEMP - Need better animation support
-            if (newValue != m_source)
+            if (newValue != SourceCard)
             {
                 m_animation.Play("Card_Normal");
             }
@@ -35,7 +35,7 @@ namespace UI
                 return;
             }
 
-            ServiceLocator.Instance.Loadout.SelectedCard.Value = m_source;
+            ServiceLocator.Instance.Loadout.SelectedCard.Value = SourceCard;
         }
 
         protected override void OnDestroy()

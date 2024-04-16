@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: CheckTileType_Fossil
   m_EditorClassIdentifier: 
   Status: 1
-  Type: 4
+  Schema: {fileID: 11400000, guid: 0b6d9acb6e0da834bbe5bc38210500c7, type: 2}
   Negate: 0

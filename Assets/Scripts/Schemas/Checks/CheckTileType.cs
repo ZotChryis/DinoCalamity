@@ -9,8 +9,8 @@ namespace Schemas.Checks
     [CreateAssetMenu]
     public class CheckTileType : Check
     {
-        public TileSchema.TileType Type;
-        
+        public TileSchema Schema;
+
         // TODO: Try to bake in Negate to all checks without having to dupe the code
         public bool Negate;
         
@@ -21,7 +21,7 @@ namespace Schemas.Checks
                 return Negate;
             }
 
-            return Negate ? context.SelectedTile.Schema.Type != Type : context.SelectedTile.Schema.Type == Type;
+            return Negate ? context.SelectedTile.Schema != Schema : context.SelectedTile.Schema == Schema;
         }
     }
 }

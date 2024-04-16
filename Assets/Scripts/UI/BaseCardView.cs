@@ -1,5 +1,6 @@
 using System;
 using Gameplay;
+using Schemas;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,15 +8,15 @@ using UnityEngine.UI;
 public class BaseCardView : MonoBehaviour
 {
     [SerializeField] protected TextMeshProUGUI m_name;
-    [SerializeField] protected Image m_icon;
+    [SerializeField] protected TextMeshProUGUI m_description;
+
     [SerializeField] protected Button m_button;
-
     [SerializeField] protected Animation m_animation;
+    
+    [SerializeField] protected Image m_icon;
 
-    public Card SourceCard => m_source;
-
-    protected Card m_source;
-
+    public Card SourceCard { get; private set; }
+    
     public event Action<BaseCardView> OnCardViewPressedEvent;
 
     private void Awake()
@@ -30,8 +31,9 @@ public class BaseCardView : MonoBehaviour
 
     public virtual void SetData(Card source)
     {
-        m_source = source;
+        SourceCard = source;
         m_name.SetText(source.Schema.Name);
+        m_description.SetText(source.Schema.Description);
         m_icon.sprite = source.Schema.Icon;
     }
 

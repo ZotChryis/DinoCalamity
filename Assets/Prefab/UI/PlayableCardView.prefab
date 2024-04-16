@@ -38,7 +38,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3485407485238035476, guid: 51a02e6b98d40844a96fa86b8bfaa55a, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 100
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 3485407485238035476, guid: 51a02e6b98d40844a96fa86b8bfaa55a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -90,7 +90,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7346848121710708905, guid: 51a02e6b98d40844a96fa86b8bfaa55a, type: 3}
       propertyPath: m_Name
-      value: PlayableCard
+      value: PlayableCardView
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4614516201534895465, guid: 51a02e6b98d40844a96fa86b8bfaa55a, type: 3}
@@ -141,9 +141,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_name: {fileID: 578586130825624709}
-  m_icon: {fileID: 3261819195804441577}
+  m_description: {fileID: 6588135950879487081}
   m_button: {fileID: 743294099801488858}
   m_animation: {fileID: 5518846767362584045}
+  m_icon: {fileID: 3261819195804441577}
 --- !u!114 &3261819195804441577 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6290329280319827669, guid: 51a02e6b98d40844a96fa86b8bfaa55a, type: 3}
@@ -160,3 +161,14 @@ Animation:
   m_CorrespondingSourceObject: {fileID: 3934197210979195089, guid: 51a02e6b98d40844a96fa86b8bfaa55a, type: 3}
   m_PrefabInstance: {fileID: 8795515099844113724}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6588135950879487081 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2405538872871878997, guid: 51a02e6b98d40844a96fa86b8bfaa55a, type: 3}
+  m_PrefabInstance: {fileID: 8795515099844113724}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

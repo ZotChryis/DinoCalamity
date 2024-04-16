@@ -13,8 +13,6 @@ MonoBehaviour:
   m_Name: Card_Steakhouse
   m_EditorClassIdentifier: 
   Status: 1
-  Name: Steakhouse
-  Icon: {fileID: 21300000, guid: 9d0d8478f68d00c47ab08c0215dafc43, type: 3}
   ActionsByType:
     _serializedList:
     - Key: 3
@@ -25,3 +23,6 @@ MonoBehaviour:
         Actions:
         - {fileID: 11400000, guid: 726eedd7dfbcd14418444e48a3ffb666, type: 2}
         - {fileID: 11400000, guid: 875e98f98bae9ea4da7224bc09ad4d6c, type: 2}
+  Name: Steakhouse
+  Description: Dino<br>+1 Prosperity
+  Icon: {fileID: 21300000, guid: 9d0d8478f68d00c47ab08c0215dafc43, type: 3}

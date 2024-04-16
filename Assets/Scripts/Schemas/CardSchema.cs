@@ -10,6 +10,7 @@ namespace Schemas
     public class CardSchema : InvokerSchema
     {
         public string Name;
+        public string Description;
         public Sprite Icon;
     }
 }

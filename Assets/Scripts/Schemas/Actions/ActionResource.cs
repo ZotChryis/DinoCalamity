@@ -6,6 +6,8 @@ namespace Schemas.Actions
     [CreateAssetMenu]
     public class ActionResource : Action
     {
+        public ResourceSchema Resource => m_resource;
+        
         [SerializeField] private ResourceSchema m_resource;
         [SerializeField] private int m_amount;
         

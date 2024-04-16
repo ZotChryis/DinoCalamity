@@ -13,8 +13,6 @@ MonoBehaviour:
   m_Name: Card_MagmaForge
   m_EditorClassIdentifier: 
   Status: 1
-  Name: Magma Forge
-  Icon: {fileID: 21300000, guid: 9fa37e1f4bf05ed4c91b790d7bbd1cab, type: 3}
   ActionsByType:
     _serializedList:
     - Key: 3
@@ -25,3 +23,6 @@ MonoBehaviour:
         Actions:
         - {fileID: 11400000, guid: a62fe08e1749e89418c873f700f76f87, type: 2}
         - {fileID: 11400000, guid: 875e98f98bae9ea4da7224bc09ad4d6c, type: 2}
+  Name: Magma Forge
+  Description: Lava<br>+1 Might
+  Icon: {fileID: 21300000, guid: 9fa37e1f4bf05ed4c91b790d7bbd1cab, type: 3}

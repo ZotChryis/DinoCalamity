@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: CheckTileType_Lava
   m_EditorClassIdentifier: 
   Status: 2
-  Type: 2
+  Schema: {fileID: 11400000, guid: 20233b52161c6514da71e50a6ae34a18, type: 2}
   Negate: 0
