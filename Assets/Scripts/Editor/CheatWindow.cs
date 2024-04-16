@@ -6,7 +6,7 @@ namespace Editor
     public class CheatWindow : EditorWindow {
 
         [MenuItem("Window/Cheats")]
-        public static void Show()
+        public static void Open()
         {
             GetWindow(typeof(CheatWindow));
         }
