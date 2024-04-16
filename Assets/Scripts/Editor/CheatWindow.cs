@@ -53,18 +53,19 @@ namespace Editor
             foreach (var resource in allResources)
             {
                 GUILayout.Label (resource.Name, EditorStyles.boldLabel);
-                if (GUILayout.Button("+1"))
+                if (GUILayout.Button("+100"))
                 {
-                    ServiceLocator.Instance.Bank.DeltaResource(resource, 1);
+                    ServiceLocator.Instance.Bank.DeltaResource(resource, 100);
                 }
                 if (GUILayout.Button("+10"))
                 {
                     ServiceLocator.Instance.Bank.DeltaResource(resource, 10);
                 }
-                if (GUILayout.Button("+100"))
+                if (GUILayout.Button("+1"))
                 {
-                    ServiceLocator.Instance.Bank.DeltaResource(resource, 100);
+                    ServiceLocator.Instance.Bank.DeltaResource(resource, 1);
                 }
+
                 if (GUILayout.Button( "-1"))
                 {
                     ServiceLocator.Instance.Bank.DeltaResource(resource, -1);
