@@ -26,9 +26,6 @@ namespace Gameplay
         public void Awake()
         {
             ServiceLocator.Instance.Register(this);
-            
-            // The game is assumed to start in the main menu scene
-            StateMachine.ChangeState(new StateMainMenu());
         }
 
         public void Update()
