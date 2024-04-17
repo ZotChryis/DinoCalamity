@@ -1,6 +1,5 @@
 
-using UnityEngine;
-using UnityEngine.SceneManagement;
+using Schemas;
 using Utility;
 
 namespace GameStates
@@ -9,10 +8,7 @@ namespace GameStates
     {
         public void Enter()
         {
-            // todo: add popup for this? for now just go back to main menu
-            Debug.Log("WINNER WINNER CHICKEN DINNER!!!!!!!!!!!!");
-
-            SceneManager.LoadScene("Scenes/MainMenu", LoadSceneMode.Single);
+            ServiceLocator.Instance.UIDisplayProcessor.TryShowView(ViewMapSchema.ViewType.GameOver);
         }
 
         public void Update()

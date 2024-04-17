@@ -10,8 +10,7 @@ namespace Schemas
         {
             DiscoverCardsView,
             PatchNotes,
-            Win,
-            Loss,
+            GameOver,
         }
 
         [SerializedDictionary("View Type", "ViewConfigs")]
