@@ -1,0 +1,69 @@
+using GameStates;
+using UnityEngine;
+using Utility;
+using Utility.Observable;
+
+namespace Gameplay
+{
+    public class GameManager: MonoBehaviour
+    {
+        /// <summary>
+        /// This event occurs when the turn ends.
+        /// </summary>
+        public delegate void OnTurnEnd();
+        public OnTurnEnd OnTurnEndEvent;
+    
+        /// <summary>
+        /// This event occurs when the turn starts.
+        /// </summary>
+        public delegate void OnTurnStart();
+        public OnTurnEnd OnTurnStartEvent;
+    
+        public StateMachine StateMachine { get; private set; } = new StateMachine();
+        public Observable<int> Turn { get; private set; } = new Observable<int>(0);
+        public Calamity Calamity { get; private set; }
+
+        public void Awake()
+        {
+            ServiceLocator.Instance.Register(this);
+            
+            // The game is assumed to start in the main menu scene
+            StateMachine.ChangeState(new StateMainMenu());
+        }
+
+        public void Update()
+        {
+            StateMachine.Update();
+
+            // todo: move somewhere else
+            RenderSettings.skybox.SetFloat("_Rotation", Time.time * 0.5f);
+        }
+
+        /// <summary>
+        /// Ends the turn by cycling to the next state.
+        /// </summary>
+        public void RequestEndTurn()
+        {
+            StateMachine.ChangeState(new StateGeneration());
+        }
+
+        public void StartTurn()
+        {
+            OnTurnStartEvent?.Invoke();
+            Turn.Value += 1;
+        }
+
+        public void EndTurn()
+        {
+            OnTurnEndEvent?.Invoke();
+        }
+
+        public void GenerateCalamity()
+        {
+            // Assume at least 1 calamity
+            var allCalamities = ServiceLocator.Instance.Schemas.Calamities;
+            int randomIndex = Random.Range(0, allCalamities.Count);
+            Calamity = new Calamity(allCalamities[randomIndex]);
+        }
+    }
+}

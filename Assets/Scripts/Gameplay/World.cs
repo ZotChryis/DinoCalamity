@@ -14,6 +14,11 @@ namespace Gameplay
 
         private WorldSettings m_schema;
 
+        private void Awake()
+        {
+            ServiceLocator.Instance.Register(this);
+        }
+        
         public void Initialize(WorldSettings schema)
         {
             m_schema = schema;

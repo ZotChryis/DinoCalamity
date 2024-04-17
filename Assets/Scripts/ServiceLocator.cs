@@ -1,5 +1,8 @@
 using Gameplay;
+using GameStates;
 using Schemas;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 using Utility;
 using Loadout = Schemas.Loadout;
 
@@ -19,13 +22,15 @@ public class ServiceLocator : SingletonMonoBehaviour
     public Schema.ProductionStatus MininmumStatus;
     
     // MonoBehavior backed systems
-    public World World;
-    public GameManager GameManager;
+    [HideInInspector] public World World;
+    [HideInInspector] public GameManager GameManager;
 
     // Non-MonoBehavior backed systems
-    public Schemas.Schemas Schemas = new Schemas.Schemas();
-    public Gameplay.Loadout Loadout = new Gameplay.Loadout();
-    public Bank Bank = new Bank();
+    public Schemas.Schemas Schemas;
+    public Gameplay.Loadout Loadout;
+    public Gameplay.Bank Bank;
+    
+    [HideInInspector]
     public UIDisplayProcessor UIDisplayProcessor;
 
     // Moved the state machine to be handled by GameManager.
@@ -34,15 +39,36 @@ public class ServiceLocator : SingletonMonoBehaviour
     protected override void Awake()
     {
         base.Awake();
-        
-        Schemas.Initialize(MininmumStatus);
-        World.Initialize(WorldSettings);
-        Loadout.Initialize(LoadoutSettings);
-        Bank.Initialize();
+
+        DontDestroyOnLoad(gameObject);
+        SceneManager.LoadScene("Scenes/MainMenu", LoadSceneMode.Single);
     }
 
-    // TODO: Move to this paradigm for the rest of things?
-    public void RegisterUIDisplayProcessor(UIDisplayProcessor processor)
+    public void Register(GameManager gameManager)
+    {
+        GameManager = gameManager;
+        
+        // todo: find a better way to initialize stuff now that SL is in Init scene
+        Schemas = new Schemas.Schemas();
+        Schemas.Initialize(MininmumStatus);
+
+        Loadout = new Gameplay.Loadout();
+        Loadout.Initialize(LoadoutSettings);
+
+        Bank = new Gameplay.Bank();
+        Bank.Initialize();
+    }
+    
+    public void Register(World world)
+    {
+        World = world;
+        World.Initialize(WorldSettings);
+        
+        // todo: update this, we need real flow handling
+        GameManager.StateMachine.ChangeState(new StateSetup());
+    }
+    
+    public void Register(UIDisplayProcessor processor)
     {
         UIDisplayProcessor = processor;
     }
