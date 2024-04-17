@@ -45,6 +45,12 @@ public class ServiceLocator : SingletonMonoBehaviour
         SceneManager.LoadScene("Scenes/MainMenu", LoadSceneMode.Single);
     }
 
+    private void Update()
+    {
+        // todo: move somewhere else
+        RenderSettings.skybox.SetFloat("_Rotation", Time.time * 0.5f);
+    }
+    
     public void Register(GameManager gameManager)
     {
         GameManager = gameManager;

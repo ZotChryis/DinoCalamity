@@ -31,9 +31,6 @@ namespace Gameplay
         public void Update()
         {
             StateMachine.Update();
-
-            // todo: move somewhere else
-            RenderSettings.skybox.SetFloat("_Rotation", Time.time * 0.5f);
         }
 
         /// <summary>
