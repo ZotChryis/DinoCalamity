@@ -8,7 +8,10 @@ namespace Schemas
     {
         public enum ViewType
         {
-            DiscoverCardsView
+            DiscoverCardsView,
+            PatchNotes,
+            Win,
+            Loss,
         }
 
         [SerializedDictionary("View Type", "ViewConfigs")]

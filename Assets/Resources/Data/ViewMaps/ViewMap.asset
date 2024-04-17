@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bdf92a5b0ec1401da09e87c6a2c5cea, type: 3}
   m_Name: ViewMap
   m_EditorClassIdentifier: 
+  Status: 2
   ViewConfigs:
     _serializedList:
     - Key: 0
       Value: {fileID: 11400000, guid: 891cac2c17244413094840b61321fad2, type: 2}
+    - Key: 1
+      Value: {fileID: 11400000, guid: f98b37150059fc242b25b7bf71cfc3f9, type: 2}
