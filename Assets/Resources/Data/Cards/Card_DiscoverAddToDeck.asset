@@ -13,8 +13,6 @@ MonoBehaviour:
   m_Name: Card_DiscoverAddToDeck
   m_EditorClassIdentifier: 
   Status: 1
-  Name: AddToDeck
-  Icon: {fileID: 21300000, guid: bb127e4c21ed81e408b5ee8729a730bc, type: 3}
   ActionsByType:
     _serializedList:
     - Key: 3
@@ -22,3 +20,7 @@ MonoBehaviour:
       - Checks: []
         Actions:
         - {fileID: 11400000, guid: 24b817dd1b9f14d62be34060013b5143, type: 2}
+  Name: AddToDeck
+  Description: 
+  Icon: {fileID: 21300000, guid: bb127e4c21ed81e408b5ee8729a730bc, type: 3}
+  Color: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}

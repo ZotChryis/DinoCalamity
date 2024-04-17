@@ -32,3 +32,4 @@ MonoBehaviour:
   Name: Scour
   Description: Target tile with no building becomes a Desert<br>+5 Prosperty
   Icon: {fileID: 21300000, guid: 201d202949a2b29499f1bd4e40304b41, type: 3}
+  Color: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}

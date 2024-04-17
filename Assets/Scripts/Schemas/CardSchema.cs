@@ -12,5 +12,8 @@ namespace Schemas
         public string Name;
         public string Description;
         public Sprite Icon;
+        
+        // todo: make a color asset that can wrap this?
+        public Color Color;
     }
 }
