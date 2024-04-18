@@ -1,7 +1,6 @@
 using GameStates;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace UI
 {
@@ -16,11 +15,6 @@ namespace UI
                 : "Defeat!";
 
             m_title.SetText(title);
-        }
-
-        public void OnMainMenuButtonPressed()
-        {
-            SceneManager.LoadScene("Scenes/MainMenu", LoadSceneMode.Single);
         }
     }
 }

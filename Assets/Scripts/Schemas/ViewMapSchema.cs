@@ -11,6 +11,7 @@ namespace Schemas
             DiscoverCardsView,
             PatchNotes,
             GameOver,
+            Calamity,
         }
 
         [SerializedDictionary("View Type", "ViewConfigs")]

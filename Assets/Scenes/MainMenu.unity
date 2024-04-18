@@ -1181,7 +1181,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1618244164}
   - component: {fileID: 1618244165}
-  - component: {fileID: 1618244166}
   m_Layer: 5
   m_Name: MainMenu
   m_TagString: Untagged
@@ -1236,18 +1235,6 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
---- !u!114 &1618244166
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1618244163}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 629599371f5a6df46ae67a2d8ecb9a25, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1665896892
 GameObject:
   m_ObjectHideFlags: 0
@@ -1435,6 +1422,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1883437116}
   - component: {fileID: 1883437117}
+  - component: {fileID: 1883437118}
   m_Layer: 5
   m_Name: MenuItem_PatchNotes
   m_TagString: Untagged
@@ -1506,19 +1494,21 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1665896894}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1618244166}
-        m_TargetAssemblyTypeName: UI.MainMenu, Assembly-CSharp
-        m_MethodName: OnPatchNotesPressed
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+--- !u!114 &1883437118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1883437115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 989e33b6911076e408a3a1f6f56ce785, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_button: {fileID: 1883437117}
+  m_view: 1
 --- !u!1 &1944159265
 GameObject:
   m_ObjectHideFlags: 0
@@ -1739,6 +1729,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2169820683376475123}
   - component: {fileID: 2169820683376475124}
+  - component: {fileID: 2169820683376475125}
   m_Layer: 5
   m_Name: MenuItem_Start
   m_TagString: Untagged
@@ -1829,19 +1820,22 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2548653528143912681}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1618244166}
-        m_TargetAssemblyTypeName: UI.MainMenu, Assembly-CSharp
-        m_MethodName: OnPlayPressed
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+--- !u!114 &2169820683376475125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 997213722892543107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 629599371f5a6df46ae67a2d8ecb9a25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_button: {fileID: 2169820683376475124}
+  m_scene: Scenes/Game
+  m_mode: 0
 --- !u!114 &2548653528143912681
 MonoBehaviour:
   m_ObjectHideFlags: 0

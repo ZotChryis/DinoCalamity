@@ -1050,7 +1050,7 @@ GameObject:
   - component: {fileID: 629600427921893940}
   - component: {fileID: 8042948621664029314}
   m_Layer: 0
-  m_Name: PatchNotes
+  m_Name: PatchNotesView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

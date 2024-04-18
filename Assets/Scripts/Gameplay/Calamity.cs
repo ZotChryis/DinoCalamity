@@ -4,13 +4,12 @@ namespace Gameplay
 {
     public class Calamity : IInvoker
     {
+        public CalamitySchema Schema { get; private set; }
         public Invoker Invoker { get; private set; } = new Invoker();
-
-        private readonly CalamitySchema m_schema;
         
         public Calamity(CalamitySchema schema)
         {
-            m_schema = schema;
+            Schema = schema;
             Invoker.Initialize(this, schema);
         }
     }

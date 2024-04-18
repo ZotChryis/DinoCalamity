@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c878aa5286c74cc2864e789ab661f39, type: 3}
+  m_Name: CalamityConfig
+  m_EditorClassIdentifier: 
+  ViewPrefab: {fileID: 9197502202141875384, guid: 441e09f5d7e324b4b8cc7723466a990c, type: 3}

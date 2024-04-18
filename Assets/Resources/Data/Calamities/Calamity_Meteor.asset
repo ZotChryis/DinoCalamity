@@ -40,4 +40,5 @@ MonoBehaviour:
         - {fileID: 11400000, guid: 8ffea9aedec6f16479eaffe90b613bc3, type: 2}
   Name: Meteor
   Description: On turn 20, a meteor will hit a random tile, destroying it in flames.
-    Each turn after, the flame will spread.
+    Each turn after, the flame will spread. If the home tile is destroyed, you lose.
+    Collect 100 Propesperity and 100 Might before that happens to win.
