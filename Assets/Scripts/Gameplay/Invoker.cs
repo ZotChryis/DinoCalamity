@@ -27,20 +27,23 @@ namespace Gameplay
         
         public enum EventType
         {
+            // These events happen when an Invoker is created and a schema is applied. Happens once!
+            OnApply = 7,
+            
             // These events pertain to the particular cards. They are only invoked on the card in which this 
             // event occurs on. For example, a card can trigger CardOnDraw effects when it itself is drawn, but 
             // cannot use this event for other cards being drawn. For that, use the OnDrawGlobal event
-            CardOnDraw,
-            CardOnDiscard,
-            CardOnShuffle,
-            CardOnPlay,
+            CardOnDraw = 0,
+            CardOnDiscard = 1,
+            CardOnShuffle = 2,
+            CardOnPlay = 3,
             
             // These events only work on buildings
-            OnGeneration,       //  Need to migrate to Global
+            OnGeneration = 4,       //  Need to migrate to Global
             
             // These events pertain to any other context.
-            GlobalOnEndTurn,
-            GlobalOnStartTurn,
+            GlobalOnEndTurn = 5,
+            GlobalOnStartTurn = 6,
         }
         
         public InvokerState State { get; private set; } = new InvokerState();
@@ -54,6 +57,8 @@ namespace Gameplay
 
             ServiceLocator.Instance.GameManager.OnTurnEndEvent += OnTurnEnded;
             ServiceLocator.Instance.GameManager.OnTurnStartEvent += OnTurnStarted;
+            
+            TryInvokeActions(EventType.OnApply);
         }
 
         public void Destroy()
