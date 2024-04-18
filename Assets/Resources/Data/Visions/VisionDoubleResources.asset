@@ -9,10 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc4d4a379617da64086a76d6dfd5fd2c, type: 3}
-  m_Name: CheckState_Counter_20
+  m_Script: {fileID: 11500000, guid: f602cac3bd9d2524d81a533bca2c8d02, type: 3}
+  m_Name: VisionDoubleResources
   m_EditorClassIdentifier: 
   Status: 1
-  Key: Counter
-  Value: 20
-  Comparison: 2
+  ActionsByType:
+    _serializedList: []
+  Name: x2 Resources
+  Description: Instead of generating 1 resource per building, you generate 2.

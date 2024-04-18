@@ -43,8 +43,8 @@ namespace Gameplay
 
         public void StartTurn()
         {
-            OnTurnStartEvent?.Invoke();
             Turn.Value += 1;
+            OnTurnStartEvent?.Invoke();
         }
 
         public void EndTurn()

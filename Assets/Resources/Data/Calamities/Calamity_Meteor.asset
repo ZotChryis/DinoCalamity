@@ -21,24 +21,42 @@ MonoBehaviour:
         Actions:
         - {fileID: 11400000, guid: 9423b9ad48b708d4db26cfb86c6e3785, type: 2}
       - Checks:
-        - {fileID: 11400000, guid: 3628d6ab24e0a56498f3ac56aeb63d17, type: 2}
+        - {fileID: 11400000, guid: 71d615cc3df439a4dbabec1046b0eb65, type: 2}
         Actions:
         - {fileID: 11400000, guid: dc702f97c929d9045b6dac9fe02233e2, type: 2}
         - {fileID: 11400000, guid: 425d56dac9fc4b745a6cb29afe1c2abb, type: 2}
         - {fileID: 11400000, guid: d5bbd344abf4431419730b31078c8a04, type: 2}
         - {fileID: 11400000, guid: 8fa38ff020f38cf4687d8f87d27291b7, type: 2}
       - Checks:
-        - {fileID: 11400000, guid: 94bc76b98ce4d8a4badec66a9e82a44c, type: 2}
+        - {fileID: 11400000, guid: 7650604b671b7b347a531e6fd90276be, type: 2}
         - {fileID: 11400000, guid: b34f3573068acfc42827dbc0d0132274, type: 2}
         - {fileID: 11400000, guid: 062a7bffb22941e40b3378b8084d4bce, type: 2}
         Actions:
         - {fileID: 11400000, guid: fbef45dd775181446a4550c86580218c, type: 2}
       - Checks:
-        - {fileID: 11400000, guid: 94bc76b98ce4d8a4badec66a9e82a44c, type: 2}
+        - {fileID: 11400000, guid: 7650604b671b7b347a531e6fd90276be, type: 2}
         - {fileID: 11400000, guid: 0df42618c8c0ce9459bc4ff90beb9fa5, type: 2}
         Actions:
         - {fileID: 11400000, guid: 8ffea9aedec6f16479eaffe90b613bc3, type: 2}
+      - Checks:
+        - {fileID: 11400000, guid: e0527ad86ede182459d0b96a36263b71, type: 2}
+        Actions:
+        - {fileID: 11400000, guid: 25c29b13d0998aa4a8eed4f825e94db3, type: 2}
+      - Checks:
+        - {fileID: 11400000, guid: 58041f2a53dacc740a07fc20e11951c6, type: 2}
+        Actions:
+        - {fileID: 11400000, guid: 25c29b13d0998aa4a8eed4f825e94db3, type: 2}
+      - Checks:
+        - {fileID: 11400000, guid: 03ef2c8e7cef76b4b8748814399d4b4b, type: 2}
+        Actions:
+        - {fileID: 11400000, guid: 25c29b13d0998aa4a8eed4f825e94db3, type: 2}
   Name: Meteor
-  Description: On turn 20, a meteor will hit a random tile, destroying it in flames.
-    Each turn after, the flame will spread. If the home tile is destroyed, you lose.
-    Collect 100 Propesperity and 100 Might before that happens to win.
+  Description: A meteor has hit a random tile, destroying it in flames! Each turn
+    after, the flame will spread. If the home tile is destroyed, you lose. Collect
+    100 Propesperity and 100 Might before that happens to win.
+  Visions:
+  - {fileID: 11400000, guid: db0d4a33052748449aaaee9bf020b1ba, type: 2}
+  - {fileID: 11400000, guid: db0d4a33052748449aaaee9bf020b1ba, type: 2}
+  - {fileID: 11400000, guid: db0d4a33052748449aaaee9bf020b1ba, type: 2}
+  - {fileID: 11400000, guid: db0d4a33052748449aaaee9bf020b1ba, type: 2}
+  - {fileID: 11400000, guid: db0d4a33052748449aaaee9bf020b1ba, type: 2}
