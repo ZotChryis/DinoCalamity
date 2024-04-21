@@ -21,6 +21,8 @@ namespace Gameplay
     
         public StateMachine StateMachine { get; private set; } = new StateMachine();
         public Observable<int> Turn { get; private set; } = new Observable<int>(0);
+        
+        // Should this live in Loadout?
         public Calamity Calamity { get; private set; }
 
         public void Awake()

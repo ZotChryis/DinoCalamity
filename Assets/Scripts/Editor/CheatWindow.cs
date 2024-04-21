@@ -1,3 +1,5 @@
+using Gameplay;
+using GameStates;
 using UnityEditor;
 using UnityEngine;
 
@@ -13,7 +15,7 @@ namespace Editor
         
         public void OnGUI()
         {
-            if (ServiceLocator.Instance == null)
+            if (!HasGameStart())
             {
                 GUILayout.Label ("Waiting for game start...", EditorStyles.boldLabel);
                 return;
@@ -53,6 +55,10 @@ namespace Editor
             foreach (var resource in allResources)
             {
                 GUILayout.Label (resource.Name, EditorStyles.boldLabel);
+                if (GUILayout.Button("+X"))
+                {
+                    ServiceLocator.Instance.Bank.DeltaMultiplier(resource, 1);
+                }
                 if (GUILayout.Button("+100"))
                 {
                     ServiceLocator.Instance.Bank.DeltaResource(resource, 100);
@@ -78,7 +84,32 @@ namespace Editor
                 {
                     ServiceLocator.Instance.Bank.DeltaResource(resource, -100);
                 }
+                if (GUILayout.Button("-X"))
+                {
+                    ServiceLocator.Instance.Bank.DeltaMultiplier(resource, 1);
+                }
             }
+        }
+
+        private bool HasGameStart()
+        {
+            if (ServiceLocator.Instance == null)
+            {
+                return false;
+            }
+
+            if (ServiceLocator.Instance.GameManager == null)
+            {
+                return false;
+            }
+
+            var currState = ServiceLocator.Instance.GameManager.StateMachine.GetCurrentState();
+            if (currState is StateWin or StateLoss)
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }
