@@ -9,10 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 384610fd4a57349e285c2dd8e29a6625, type: 3}
-  m_Name: DiscoverRemoveFromDeck
+  m_Script: {fileID: 11500000, guid: 713650c42a39945b7aa1620866ce7070, type: 3}
+  m_Name: ActionDiscoverStructure_AddToHand
   m_EditorClassIdentifier: 
   Status: 1
-  DiscoverType: 3
-  CardOptions: []
+  viewConfig: {fileID: 11400000, guid: 891cac2c17244413094840b61321fad2, type: 2}
+  DiscoverType: 2
+  CardSetsToDiscoverFrom: 01000000
   DiscoverCardCount: 4
+  OverrideCardOptions: []

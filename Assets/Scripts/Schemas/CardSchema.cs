@@ -12,8 +12,15 @@ namespace Schemas
         public string Name;
         public string Description;
         public Sprite Icon;
+        public CardTypeEnum CardType;
         
         // todo: make a color asset that can wrap this?
         public Color Color;
+    }
+
+    public enum CardTypeEnum
+    {
+        Structure = 1,
+        Action = 2,
     }
 }

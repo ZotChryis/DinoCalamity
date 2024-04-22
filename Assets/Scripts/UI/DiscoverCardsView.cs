@@ -21,7 +21,7 @@ namespace UI
         private Transform m_cardsParentTransform;
 
         private List<BaseCardView> m_cardViews = new List<BaseCardView>();
-        private DiscoverCardSchema m_discoverCardsData;
+        private ActionDiscoverCard m_actionDiscoverCard;
 
       
         // Methods
@@ -47,21 +47,41 @@ namespace UI
             base.Deactivate();
         }
 
-        public void SetData(DiscoverCardSchema discoverCardsData)
+        public void SetData(ActionDiscoverCard actionDiscoverCard)
         {
-            m_discoverCardsData = discoverCardsData;
+            m_actionDiscoverCard = actionDiscoverCard;
+            var allCards = ServiceLocator.Instance.Schemas.Cards;
+            bool isOverridingSet = m_actionDiscoverCard.OverrideCardOptions != null &&
+                                m_actionDiscoverCard.OverrideCardOptions.Count > 0;
 
             List<Card> cardsToDiscover = new List<Card>();
-            switch (m_discoverCardsData.DiscoverType)
+            switch (m_actionDiscoverCard.DiscoverType)
             {
-                case DiscoverCardSchema.DiscoverTypeEnum.AddToDeck:
-                case DiscoverCardSchema.DiscoverTypeEnum.AddToHand:
-                    foreach (var cardSchema in discoverCardsData.CardOptions)
+                case ActionDiscoverCard.DiscoverTypeEnum.AddToDeck:
+                case ActionDiscoverCard.DiscoverTypeEnum.AddToHand:
+                    if (isOverridingSet)
                     {
-                        cardsToDiscover.Add(new Card(cardSchema));
+                        foreach (var cardSchema in m_actionDiscoverCard.OverrideCardOptions)
+                        {
+                            cardsToDiscover.Add(new Card(cardSchema));
+                        }
+                    }
+                    else
+                    {
+                        foreach (var card in allCards)
+                        {
+                            foreach (var cardTypeToDiscoverFrom in m_actionDiscoverCard.CardSetsToDiscoverFrom)
+                            {
+                                if (cardTypeToDiscoverFrom == card.CardType)
+                                {
+                                    cardsToDiscover.Add(new Card(card));
+                                    break;
+                                }
+                            }
+                        }
                     }
                     break;
-                case DiscoverCardSchema.DiscoverTypeEnum.RemoveFromDeck:
+                case ActionDiscoverCard.DiscoverTypeEnum.RemoveFromDeck:
                     cardsToDiscover = new List<Card>(ServiceLocator.Instance.Loadout.Deck.Cards);
                     break;
                 default:
@@ -69,7 +89,7 @@ namespace UI
             }
 
             Algorithms.Shuffle(cardsToDiscover);
-            int cardDiscoverCount = System.Math.Min(discoverCardsData.DiscoverCardCount, cardsToDiscover.Count);
+            int cardDiscoverCount = System.Math.Min(m_actionDiscoverCard.DiscoverCardCount, cardsToDiscover.Count);
             for(int i = 0; i < cardDiscoverCount; i++)
             {
                 var cardView = Instantiate(m_cardPrefab, m_cardsParentTransform);
@@ -79,7 +99,7 @@ namespace UI
             }
 
         }
-
+        
         public void ClearData()
         {
             foreach(var cardView in m_cardViews)
@@ -88,20 +108,20 @@ namespace UI
                 Destroy(cardView);
             }
             m_cardViews.Clear();
-            m_discoverCardsData = null;
+            m_actionDiscoverCard = null;
         }
 
         private void OnCardViewPressed(BaseCardView cardView)
         {
-            switch (m_discoverCardsData.DiscoverType)
+            switch (m_actionDiscoverCard.DiscoverType)
             {
-                case DiscoverCardSchema.DiscoverTypeEnum.AddToDeck:
+                case ActionDiscoverCard.DiscoverTypeEnum.AddToDeck:
                     ServiceLocator.Instance.Loadout.Deck.ShuffleCard(cardView.SourceCard);
                     break;
-                case DiscoverCardSchema.DiscoverTypeEnum.AddToHand:
+                case ActionDiscoverCard.DiscoverTypeEnum.AddToHand:
                     ServiceLocator.Instance.Loadout.Hand.AddCard(cardView.SourceCard);
                     break;
-                case DiscoverCardSchema.DiscoverTypeEnum.RemoveFromDeck:
+                case ActionDiscoverCard.DiscoverTypeEnum.RemoveFromDeck:
                     ServiceLocator.Instance.Loadout.Deck.RemoveCard(cardView.SourceCard);
                     break;
                 default:

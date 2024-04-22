@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9c878aa5286c74cc2864e789ab661f39, type: 3}
-  m_Name: DiscoverCardViewConfig
+  m_Name: DiscoverCardViewSchema
   m_EditorClassIdentifier: 
   ViewPrefab: {fileID: 7165166199430681573, guid: 71ff6eb2d52004de0aa18fba517a81c3, type: 3}

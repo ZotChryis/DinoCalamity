@@ -14,4 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Status: 1
   viewConfig: {fileID: 11400000, guid: 891cac2c17244413094840b61321fad2, type: 2}
-  CardDiscoverOptions: {fileID: 11400000, guid: 17ee5909e4ecf4c618297ff628bae94c, type: 2}
+  DiscoverType: 3
+  CardSetsToDiscoverFrom: 
+  DiscoverCardCount: 4
+  OverrideCardOptions: []

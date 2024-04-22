@@ -1,4 +1,5 @@
 using Gameplay;
+using System.Collections.Generic;
 using UI;
 using UnityEngine;
 
@@ -7,8 +8,18 @@ namespace Schemas.Actions
     [CreateAssetMenu]
     public class ActionDiscoverCard : Action
     {
+        public enum DiscoverTypeEnum
+        {
+            AddToDeck = 1,
+            AddToHand = 2,
+            RemoveFromDeck = 3
+        }
+        
         [SerializeField] private ViewSchema viewConfig;
-        [SerializeField] private DiscoverCardSchema CardDiscoverOptions;
+        [SerializeField] public DiscoverTypeEnum DiscoverType;
+        [SerializeField] public List<CardTypeEnum> CardSetsToDiscoverFrom;
+        [SerializeField] public int DiscoverCardCount;
+        [SerializeField] public List<CardSchema> OverrideCardOptions;
 
         public override void Invoke(Invoker.Context context)
         {
@@ -19,7 +30,7 @@ namespace Schemas.Actions
                 return;
             }
 
-            discoverCardView.SetData(CardDiscoverOptions);
+            discoverCardView.SetData(this);
         }
     }
 }
