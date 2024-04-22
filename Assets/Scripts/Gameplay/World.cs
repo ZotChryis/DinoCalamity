@@ -6,6 +6,12 @@ namespace Gameplay
 {
     public class World : MonoBehaviour
     {
+        /// <summary>
+        /// This event occurs when a tile is revealed from the fog of war.
+        /// </summary>
+        public delegate void OnTileReveal(Tile tile);
+        public OnTileReveal OnTileRevealEvent;
+        
         public Tile[,] Grid { get; private set; }
         public Tile Home { get; private set; }
         
@@ -263,6 +269,15 @@ namespace Gameplay
             }
 
             return false;
+        }
+
+        /// <summary>
+        /// A tile will inform the world that it has been revealed. THis is the entry point for all global
+        /// invokers to handle this event.
+        /// </summary>
+        public void TriggerTileReveal(Tile tile)
+        {
+            OnTileRevealEvent?.Invoke(tile);
         }
     }
 }

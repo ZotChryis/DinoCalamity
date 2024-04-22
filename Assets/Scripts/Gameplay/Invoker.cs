@@ -1,5 +1,7 @@
 using System.Collections.Generic;
+using GameStates;
 using Schemas;
+using Utility;
 
 namespace Gameplay
 {
@@ -30,20 +32,20 @@ namespace Gameplay
             // These events happen when an Invoker is created and a schema is applied. Happens once!
             OnApply = 7,
             
-            // These events pertain to the particular cards. They are only invoked on the card in which this 
-            // event occurs on. For example, a card can trigger CardOnDraw effects when it itself is drawn, but 
-            // cannot use this event for other cards being drawn. For that, use the OnDrawGlobal event
+            // These events are only invoked on card invokers.
             CardOnDraw = 0,
             CardOnDiscard = 1,
             CardOnShuffle = 2,
             CardOnPlay = 3,
-            
-            // These events only work on buildings
-            OnGeneration = 4,       //  Need to migrate to Global
+
+            // These events occur only on tile invokers
+            TileOnReveal = 8,
             
             // These events pertain to any other context.
+            GlobalOnGeneration = 4,     
             GlobalOnEndTurn = 5,
             GlobalOnStartTurn = 6,
+            GlobalOnTileReveal = 9,
         }
         
         public InvokerState State { get; private set; } = new InvokerState();
@@ -57,6 +59,8 @@ namespace Gameplay
 
             ServiceLocator.Instance.GameManager.OnTurnEndEvent += OnTurnEnded;
             ServiceLocator.Instance.GameManager.OnTurnStartEvent += OnTurnStarted;
+            ServiceLocator.Instance.StateMachine.OnStateChangedEvent += OnStateChanged;
+            ServiceLocator.Instance.World.OnTileRevealEvent += OnTileReveald;
             
             TryInvokeActions(EventType.OnApply);
         }
@@ -65,6 +69,20 @@ namespace Gameplay
         {
             ServiceLocator.Instance.GameManager.OnTurnEndEvent -= OnTurnEnded;
             ServiceLocator.Instance.GameManager.OnTurnStartEvent -= OnTurnStarted;
+            ServiceLocator.Instance.StateMachine.OnStateChangedEvent -= OnStateChanged;
+            ServiceLocator.Instance.World.OnTileRevealEvent -= OnTileReveald;
+        }
+        
+        private void OnStateChanged(IState state)
+        {
+            // Currently, structures only support invoking the GlobalOnGeneration actions
+            if (state is StateGeneration)
+            {
+                if (AreConditionsMet(Invoker.EventType.GlobalOnGeneration))
+                {
+                    TryInvokeActions(Invoker.EventType.GlobalOnGeneration);
+                }
+            }
         }
 
         private void OnTurnEnded()
@@ -85,6 +103,11 @@ namespace Gameplay
             }
             
             TryInvokeActions(EventType.GlobalOnStartTurn);
+        }
+        
+        private void OnTileReveald(Tile tile)
+        {
+            
         }
 
         public void TryInvokeActions(EventType eventType)

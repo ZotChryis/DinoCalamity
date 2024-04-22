@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using AYellowpaper.SerializedCollections;
 using UnityEngine;
@@ -93,8 +92,22 @@ namespace Gameplay
 
         public void ToggleFog(bool on)
         {
+            bool wasInFog = IsInFog();
+
             m_fog.SetActive(on);
             m_content.SetActive(!on);
+
+            if (wasInFog && !IsInFog())
+            {
+                ServiceLocator.Instance.World.TriggerTileReveal(this);
+                
+                if (!Invoker.AreConditionsMet(Invoker.EventType.TileOnReveal))
+                {
+                    return;
+                }
+                
+                Invoker.TryInvokeActions(Invoker.EventType.TileOnReveal);
+            }
         }
 
         public bool IsInFog()
