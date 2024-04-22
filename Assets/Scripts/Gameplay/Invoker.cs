@@ -64,7 +64,7 @@ namespace Gameplay
             ServiceLocator.Instance.GameManager.OnTurnEndEvent += OnTurnEnded;
             ServiceLocator.Instance.GameManager.OnTurnStartEvent += OnTurnStarted;
             ServiceLocator.Instance.StateMachine.OnStateChangedEvent += OnStateChanged;
-            ServiceLocator.Instance.World.OnTileRevealEvent += OnTileReveald;
+            ServiceLocator.Instance.World.OnTileRevealEvent += OnTileRevealed;
             
             TryInvokeActions(EventType.OnApply, GetDefaultContext());
         }
@@ -74,7 +74,7 @@ namespace Gameplay
             ServiceLocator.Instance.GameManager.OnTurnEndEvent -= OnTurnEnded;
             ServiceLocator.Instance.GameManager.OnTurnStartEvent -= OnTurnStarted;
             ServiceLocator.Instance.StateMachine.OnStateChangedEvent -= OnStateChanged;
-            ServiceLocator.Instance.World.OnTileRevealEvent -= OnTileReveald;
+            ServiceLocator.Instance.World.OnTileRevealEvent -= OnTileRevealed;
         }
         
         private void OnStateChanged(IState state)
@@ -109,7 +109,7 @@ namespace Gameplay
             TryInvokeActions(EventType.GlobalOnStartTurn, GetDefaultContext());
         }
         
-        private void OnTileReveald(Tile tile)
+        private void OnTileRevealed(Tile tile)
         {
             var context = GetDefaultContext();
             context.Target = tile;

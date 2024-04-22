@@ -19,6 +19,7 @@ namespace Schemas
             Amber,
             Desert,
             CalamityMeteorCrater,
+            Event
         }
         
         public string Name;

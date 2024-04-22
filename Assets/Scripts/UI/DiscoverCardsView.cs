@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Gameplay;
+using Schemas;
 using Schemas.Actions;
 using TMPro;
 using UnityEngine;
@@ -22,35 +23,23 @@ namespace UI
 
         private List<BaseCardView> m_cardViews = new List<BaseCardView>();
         private ActionDiscoverCard m_actionDiscoverCard;
-
-      
+        
         // Methods
         //
-        public override void Setup()
-        {
-            base.Setup();
-        }
-
         public override void Teardown()
         {
             base.Teardown();
             ClearData();
         }
 
-        public override void Activate()
-        {
-            base.Activate();
-        }
-
-        public override void Deactivate()
-        {
-            base.Deactivate();
-        }
-
         public void SetData(ActionDiscoverCard actionDiscoverCard)
         {
             m_actionDiscoverCard = actionDiscoverCard;
-            var allCards = ServiceLocator.Instance.Schemas.Cards;
+
+            m_titleText.SetText(m_actionDiscoverCard.name);
+            
+            var allCards = new List<CardSchema>(ServiceLocator.Instance.Schemas.Cards);
+            Algorithms.Shuffle(allCards);
             bool isOverridingSet = m_actionDiscoverCard.OverrideCardOptions != null &&
                                 m_actionDiscoverCard.OverrideCardOptions.Count > 0;
 
@@ -109,6 +98,7 @@ namespace UI
             }
             m_cardViews.Clear();
             m_actionDiscoverCard = null;
+            m_titleText.SetText(string.Empty);
         }
 
         private void OnCardViewPressed(BaseCardView cardView)
