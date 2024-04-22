@@ -36,7 +36,8 @@ namespace UI
             m_button.interactable = isPlayState && 
                                     selectedCard != null && 
                                     selectedCard.Invoker.AreConditionsMet(
-                                        Invoker.EventType.CardOnPlay
+                                        Invoker.EventType.CardOnPlay,
+                                        selectedCard.Invoker.GetDefaultContext()
                                     );
         }
     }
