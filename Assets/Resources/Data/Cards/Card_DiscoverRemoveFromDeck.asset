@@ -21,6 +21,7 @@ MonoBehaviour:
         Actions:
         - {fileID: 11400000, guid: d774fcf7c3f1b498fab8e81510aaf2d8, type: 2}
   Name: Thin Deck!
-  Description: 
+  Description: Remove card from your deck
   Icon: {fileID: 21300000, guid: b8af7ae025e373040acabdbb8420d64a, type: 3}
+  CardType: 2
   Color: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}

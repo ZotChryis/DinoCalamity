@@ -24,4 +24,5 @@ MonoBehaviour:
   Name: Scout
   Description: Target tile is revealed from the Fog of War
   Icon: {fileID: 21300000, guid: 8fc9f669d148e1643b559b09fed55478, type: 3}
+  CardType: 2
   Color: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
