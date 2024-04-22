@@ -9,7 +9,7 @@ namespace UI
 {
     public class PlayableCardView : BaseCardView, IPointerDownHandler
     {
-        private void Awake()
+        private void Start()
         {
             ServiceLocator.Instance.Loadout.SelectedCard.OnChangedValues += OnSelectedCardChanged;
         }

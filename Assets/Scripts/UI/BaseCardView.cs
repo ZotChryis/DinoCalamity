@@ -21,7 +21,7 @@ namespace UI
     
         public event Action<BaseCardView> OnCardViewPressedEvent;
 
-        private void Awake()
+        private void Start()
         {
             m_button.onClick.AddListener(OnButtonPress);
         }
