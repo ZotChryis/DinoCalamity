@@ -20,11 +20,15 @@ namespace Gameplay
         public class Context
         {
             public Invoker Invoker;
-            public Gameplay.Tile SelectedTile;
             public object Owner;
-            
-            // TODO: Support this
-            public Gameplay.Card SelectedCard;
+            public object Target;
+        }
+        
+        public enum Location
+        {
+            Invoker,
+            Owner,
+            Target
         }
         
         public enum EventType
@@ -62,7 +66,7 @@ namespace Gameplay
             ServiceLocator.Instance.StateMachine.OnStateChangedEvent += OnStateChanged;
             ServiceLocator.Instance.World.OnTileRevealEvent += OnTileReveald;
             
-            TryInvokeActions(EventType.OnApply);
+            TryInvokeActions(EventType.OnApply, GetDefaultContext());
         }
 
         public void Destroy()
@@ -78,39 +82,47 @@ namespace Gameplay
             // Currently, structures only support invoking the GlobalOnGeneration actions
             if (state is StateGeneration)
             {
-                if (AreConditionsMet(Invoker.EventType.GlobalOnGeneration))
+                if (AreConditionsMet(Invoker.EventType.GlobalOnGeneration, GetDefaultContext()))
                 {
-                    TryInvokeActions(Invoker.EventType.GlobalOnGeneration);
+                    TryInvokeActions(Invoker.EventType.GlobalOnGeneration, GetDefaultContext());
                 }
             }
         }
 
         private void OnTurnEnded()
         {
-            if (!AreConditionsMet(EventType.GlobalOnEndTurn))
+            if (!AreConditionsMet(EventType.GlobalOnEndTurn, GetDefaultContext()))
             {
                 return;
             }
             
-            TryInvokeActions(EventType.GlobalOnEndTurn);
+            TryInvokeActions(EventType.GlobalOnEndTurn, GetDefaultContext());
         }
         
         private void OnTurnStarted()
         {
-            if (!AreConditionsMet(EventType.GlobalOnStartTurn))
+            if (!AreConditionsMet(EventType.GlobalOnStartTurn, GetDefaultContext()))
             {
                 return;
             }
             
-            TryInvokeActions(EventType.GlobalOnStartTurn);
+            TryInvokeActions(EventType.GlobalOnStartTurn, GetDefaultContext());
         }
         
         private void OnTileReveald(Tile tile)
         {
+            var context = GetDefaultContext();
+            context.Target = tile;
             
+            if (!AreConditionsMet(EventType.GlobalOnTileReveal, context))
+            {
+                return;
+            }
+            
+            TryInvokeActions(EventType.GlobalOnTileReveal, context);
         }
 
-        public void TryInvokeActions(EventType eventType)
+        public void TryInvokeActions(EventType eventType, Context context)
         {
             if (!Schema.ActionsByType.TryGetValue(eventType, out var cardEvents))
             {
@@ -123,7 +135,7 @@ namespace Gameplay
                 var checks = cardEvents[i].Checks;
                 for (var checkIndex = 0; checkIndex < checks.Length; checkIndex++)
                 {
-                    if (!checks[checkIndex].IsValid(GetContext()))
+                    if (!checks[checkIndex].IsValid(context))
                     {
                         checksPassed = false;
                         break;
@@ -138,7 +150,7 @@ namespace Gameplay
                 var actions = cardEvents[i].Actions;
                 for (var actionIndex = 0; actionIndex < actions.Length; actionIndex++)
                 {
-                    actions[actionIndex].Invoke(GetContext());
+                    actions[actionIndex].Invoke(context);
                 }
             }
         }
@@ -147,7 +159,7 @@ namespace Gameplay
         /// Returns whether or not the card's conditions for the event are met. Only one passing set is needed to be true.
         /// For example, some cards require targetting an empty World tile, or a tile with a building, etc.
         /// </summary>
-        public bool AreConditionsMet(EventType eventType)
+        public bool AreConditionsMet(EventType eventType, Context context)
         {
             // If we have no actions for this type of event, we can assume say false.
             if (!Schema.ActionsByType.TryGetValue(eventType, out var cardEvents))
@@ -162,7 +174,7 @@ namespace Gameplay
                 var checks = cardEvents[i].Checks;
                 for (var checkIndex = 0; checkIndex < checks.Length; checkIndex++)
                 {
-                    if (!checks[checkIndex].IsValid(GetContext()))
+                    if (!checks[checkIndex].IsValid(context))
                     {
                         isValid = false;
                     }
@@ -178,13 +190,12 @@ namespace Gameplay
             return false;
         }
 
-        private Context GetContext()
+        public Context GetDefaultContext()
         {
             return new Context()
             {
                 Owner = Owner,
-                Invoker = this,
-                SelectedTile = ServiceLocator.Instance.Loadout.SelectedTile.Value,
+                Invoker = this
             };
         }
     }

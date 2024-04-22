@@ -18,15 +18,11 @@ namespace Schemas.Actions
                 return;
             }
 
-            ServiceLocator.Instance.Loadout.SelectedTile.Value.ToggleFog(m_enable);
-            if (m_includeNeighbors)
-            {
-                ServiceLocator.Instance.World.ToggleFog(
-                    ServiceLocator.Instance.Loadout.SelectedTile.Value,
-                    false,
-                    true
-                );
-            }
+            ServiceLocator.Instance.World.ToggleFog(
+                ServiceLocator.Instance.Loadout.SelectedTile.Value,
+                false,
+                m_includeNeighbors
+            );
         }
     }
 }

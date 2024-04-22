@@ -7,21 +7,26 @@ namespace Schemas.Actions
     /// Use this action to swap a tile to another type of tile.
     /// </summary>
     [CreateAssetMenu]
-    public class ActionSwapTile : Action
+    public class ActionSwapTile : TargettedAction
     {
         public TileSchema Tile;
         public override void Invoke(Invoker.Context context)
         {
+            var tile = ServiceLocator.Instance.Loadout.SelectedTile.Value;
+            if (Location == Invoker.Location.Target)
+            {
+                tile = context.Target as Tile;
+            }
+            
             // This action requires a tile
-            if (context.SelectedTile == null)
+            if (tile == null)
             {
                 return;
             }
             
-            
             // Swap selected tile
             ServiceLocator.Instance.World.SwapTile(
-                context.SelectedTile,
+                tile,
                 Tile
             );
         }

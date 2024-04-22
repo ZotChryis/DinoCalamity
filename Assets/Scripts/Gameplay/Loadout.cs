@@ -88,10 +88,10 @@ namespace Gameplay
             {
                 return false;
             }
-
+            
             Card card = Deck.Pop();
             Hand.AddCard(card);
-            card.Invoker.TryInvokeActions(Invoker.EventType.CardOnDraw);
+            card.Invoker.TryInvokeActions(Invoker.EventType.CardOnDraw, card.Invoker.GetDefaultContext());
             OnDrawEvent?.Invoke(card);
             return true;
         }
@@ -108,7 +108,7 @@ namespace Gameplay
             }
 
             Hand.RemoveCard(card);
-            card.Invoker.TryInvokeActions(Invoker.EventType.CardOnDiscard);
+            card.Invoker.TryInvokeActions(Invoker.EventType.CardOnDiscard, card.Invoker.GetDefaultContext());
             Discard.AddCardFront(card);
             OnDiscardEvent?.Invoke(card);
             return true;
@@ -127,7 +127,11 @@ namespace Gameplay
             Discard.AddCardFront(SelectedCard.Value);
             OnDiscardEvent?.Invoke(SelectedCard.Value);
             
-            SelectedCard.Value.Invoker.TryInvokeActions(Invoker.EventType.CardOnPlay);
+            SelectedCard.Value.Invoker.TryInvokeActions(
+                Invoker.EventType.CardOnPlay, 
+                SelectedCard.Value.Invoker.GetDefaultContext()
+            );
+            
             OnPlayEvent?.Invoke(SelectedCard.Value);
             
             SelectedCard.Value = null;

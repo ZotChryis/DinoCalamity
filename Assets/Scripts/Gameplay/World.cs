@@ -217,10 +217,10 @@ namespace Gameplay
                 return;
             }
             
-            var homeNeighbors = GetNeighbors(tile);
-            foreach (var homeNeighbor in homeNeighbors)
+            var neighbors = GetNeighbors(tile);
+            foreach (var neighbor in neighbors)
             {
-                homeNeighbor.ToggleFog(on);
+                neighbor.ToggleFog(on);
             }
         }
 

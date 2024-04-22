@@ -100,13 +100,12 @@ namespace Gameplay
             if (wasInFog && !IsInFog())
             {
                 ServiceLocator.Instance.World.TriggerTileReveal(this);
-                
-                if (!Invoker.AreConditionsMet(Invoker.EventType.TileOnReveal))
+                if (!Invoker.AreConditionsMet(Invoker.EventType.TileOnReveal, Invoker.GetDefaultContext()))
                 {
                     return;
                 }
                 
-                Invoker.TryInvokeActions(Invoker.EventType.TileOnReveal);
+                Invoker.TryInvokeActions(Invoker.EventType.TileOnReveal, Invoker.GetDefaultContext());
             }
         }
 
