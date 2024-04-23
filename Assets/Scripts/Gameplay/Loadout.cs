@@ -8,13 +8,13 @@ namespace Gameplay
     public class Loadout
     {
         /// <summary>
-        /// This event occurs when the card is drawn from the loadout's deck to the player's hand.
+        /// This event occurs when the card is drawn from the loadoutSchema's deck to the player's hand.
         /// </summary>
         public delegate void OnDraw(Card card);
         public OnDraw OnDrawEvent;
     
         /// <summary>
-        /// This event occurs when the loadout commits playing the card from their hand to the map.
+        /// This event occurs when the loadoutSchema commits playing the card from their hand to the map.
         /// </summary>
         public delegate void OnPlay(Card card);
         public OnPlay OnPlayEvent;
@@ -26,7 +26,7 @@ namespace Gameplay
         public OnDiscard OnDiscardEvent;
         
         /// <summary>
-        /// This event occurs when the card is goes from anywhere back into the loadout's deck.
+        /// This event occurs when the card is goes from anywhere back into the loadoutSchema's deck.
         /// </summary>
         public delegate void OnShuffle(Card card);
         public OnShuffle OnShuffleEvent;
@@ -46,7 +46,7 @@ namespace Gameplay
         public readonly Deck Hand = new Deck();
         public readonly Deck Discard = new Deck();
 
-        private Schemas.Loadout m_schema; 
+        private Schemas.LoadoutSchema m_schema; 
         private Card m_selectedCard;
 
         public Loadout()
@@ -54,10 +54,10 @@ namespace Gameplay
             Deck.CardCount.OnChanged += OnDeckCountChanged;
         }
         
-        public void Initialize(Schemas.Loadout loadout)
+        public void Initialize(Schemas.LoadoutSchema loadoutSchema)
         {
             // Start the user's deck with the pre-selected kit
-            m_schema = loadout;
+            m_schema = loadoutSchema;
             foreach (Schemas.CardSchema card in m_schema.Deck)
             {
                 ShuffleCard(new Card(card));

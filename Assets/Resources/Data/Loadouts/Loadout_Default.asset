@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 299a735349151064d8accb7471b23821, type: 3}
-  m_Name: DefaultLoadout
+  m_Name: Loadout_Default
   m_EditorClassIdentifier: 
+  Status: 1
   Name: Default
   HandSize: 5
   Deck:

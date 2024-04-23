@@ -6,7 +6,7 @@ namespace UI
 {
     public class LoadSceneButton : MonoBehaviour
     {
-        [SerializeField] private Button m_button;
+        [SerializeField] protected Button m_button;
         [SerializeField] private string m_scene;
         [SerializeField] private LoadSceneMode m_mode;
 
@@ -16,7 +16,7 @@ namespace UI
             m_button.onClick.AddListener(OnButtonClicked);
         }
 
-        private void OnButtonClicked()
+        protected virtual void OnButtonClicked()
         {
             SceneManager.LoadScene(m_scene, m_mode);
         }

@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e9f227bd7731d144491a930bcdaf3ac1, type: 3}
-  m_Name: CheckTileType_Meteor
+  m_Name: CheckTileType_NotEvent
   m_EditorClassIdentifier: 
   Status: 1
   Location: 0
-  Type: 7
-  Negate: 0
+  Type: 8
+  Negate: 1

@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f9aea2ba78448c442bb02d7b2da33bc8, type: 3}
-  m_Name: ActionSelectRandomTile_NoHome
+  m_Name: ActionSelectRandomTile_MeteorCalamity
   m_EditorClassIdentifier: 
   Status: 1
   m_checks:
   - {fileID: 11400000, guid: 880e2fd65fe1fc54fa7c994dc24dfa58, type: 2}
+  - {fileID: 11400000, guid: d1a26a48be52855479441d9f9b495190, type: 2}

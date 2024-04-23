@@ -5,7 +5,6 @@ using UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Utility;
-using Loadout = Schemas.Loadout;
 
 /// <summary>
 /// This class acts as a ServiceLocator root and can be statically accessed via ServiceLocator.Instance.
@@ -19,8 +18,8 @@ public class ServiceLocator : SingletonMonoBehaviour
     // WorldSettings and Config of the run (Move this stuff somewhere else later)
     // 
     public WorldSettings WorldSettings;
-    public Loadout LoadoutSettings;
     public Schema.ProductionStatus MininmumStatus;
+    public LoadoutSchema LoadoutSchema;
     
     // MonoBehavior backed systems
     [HideInInspector] public World World;
@@ -42,6 +41,10 @@ public class ServiceLocator : SingletonMonoBehaviour
         base.Awake();
         
         DontDestroyOnLoad(gameObject);
+        
+        Schemas = new Schemas.Schemas();
+        Schemas.Initialize(MininmumStatus);
+
         SceneManager.LoadScene("Scenes/MainMenu", LoadSceneMode.Single);
     }
 
@@ -59,9 +62,6 @@ public class ServiceLocator : SingletonMonoBehaviour
     public void Register(World world)
     {
         // todo: find a better way to initialize stuff now that SL is in Init scene
-        Schemas = new Schemas.Schemas();
-        Schemas.Initialize(MininmumStatus);
-
         Bank = new Gameplay.Bank();
         Bank.Initialize();
         
@@ -69,7 +69,7 @@ public class ServiceLocator : SingletonMonoBehaviour
         World.Initialize(WorldSettings);
         
         Loadout = new Gameplay.Loadout();
-        Loadout.Initialize(LoadoutSettings);
+        Loadout.Initialize(LoadoutSchema);
         
         // todo: update this, we need real flow handling
         GameManager.StateMachine.ChangeState(new StateSetup());

@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Schemas
 {
@@ -17,12 +16,14 @@ namespace Schemas
         private const string c_resourceDirectory = "Data/Resources";
         private const string c_calamityDirectory = "Data/Calamities";
         private const string c_visionDirectory = "Data/Visions";
+        private const string c_loadoutDirectory = "Data/Loadouts";
         
         public IReadOnlyList<CardSchema> Cards;
         public IReadOnlyList<TileSchema> Tiles;
         public IReadOnlyList<ResourceSchema> Resources;
         public IReadOnlyList<CalamitySchema> Calamities;
         public IReadOnlyList<VisionSchema> Visions;
+        public IReadOnlyList<LoadoutSchema> Loadouts;
 
         public void Initialize(Schema.ProductionStatus minimumStatus)
         {
@@ -45,6 +46,10 @@ namespace Schemas
             Visions = Array.FindAll(
                 UnityEngine.Resources.LoadAll<VisionSchema>(c_visionDirectory),
                 v => v.Status >= minimumStatus
+            );
+            Loadouts = Array.FindAll(
+                UnityEngine.Resources.LoadAll<LoadoutSchema>(c_loadoutDirectory),
+                l => l.Status >= minimumStatus
             );
         }
     }

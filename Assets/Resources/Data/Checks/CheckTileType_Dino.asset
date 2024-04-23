@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: CheckTileType_Dino
   m_EditorClassIdentifier: 
   Status: 1
-  Schema: {fileID: 11400000, guid: 4fa70f3d3f1248c468173a62fada940f, type: 2}
+  Location: 0
+  Type: 3
   Negate: 0

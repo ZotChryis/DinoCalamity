@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: CheckTileType_NotMeteorCrater
   m_EditorClassIdentifier: 
   Status: 1
-  Schema: {fileID: 11400000, guid: 96f7f9970e7a8ba4ba9585679dd3a9ea, type: 2}
+  Location: 0
+  Type: 7
   Negate: 1

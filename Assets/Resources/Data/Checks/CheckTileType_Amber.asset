@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: CheckTileType_Amber
   m_EditorClassIdentifier: 
   Status: 1
-  Schema: {fileID: 11400000, guid: 8575669f50febd74090d0624259cd49d, type: 2}
+  Location: 0
+  Type: 5
   Negate: 0
