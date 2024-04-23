@@ -29,6 +29,7 @@ public class ServiceLocator : SingletonMonoBehaviour
     public Schemas.Schemas Schemas;
     public Gameplay.Loadout Loadout;
     public Gameplay.Bank Bank;
+    public RandomManager RandomManager = new RandomManager();
     
     [HideInInspector]
     public UIDisplayProcessor UIDisplayProcessor;
