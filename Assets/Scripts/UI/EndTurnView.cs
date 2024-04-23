@@ -9,7 +9,7 @@ namespace UI
     {
         [SerializeField] private Button m_button;
 
-        private void Awake()
+        private void Start()
         {
             // STUB - some game manager should be handling this
             ServiceLocator.Instance.StateMachine.OnStateChangedEvent += OnStateChangedEvent;

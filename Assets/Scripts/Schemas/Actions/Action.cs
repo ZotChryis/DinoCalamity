@@ -11,6 +11,12 @@ namespace Schemas
     }
     
     [Serializable]
+    public abstract class TargettedAction : Action
+    {
+        public Invoker.Location Location;
+    }
+    
+    [Serializable]
     public class ActionEvent
     {
         public Check[] Checks;

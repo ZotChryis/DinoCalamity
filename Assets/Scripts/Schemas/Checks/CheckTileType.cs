@@ -7,7 +7,7 @@ namespace Schemas.Checks
     /// Use this check to determine if selected tile type matches the provided type.
     /// </summary>
     [CreateAssetMenu]
-    public class CheckTileType : Check
+    public class CheckTileType : TargettedCheck
     {
         public TileSchema Schema;
 
@@ -16,12 +16,18 @@ namespace Schemas.Checks
         
         public override bool IsValid(Invoker.Context context)
         {
-            if (context.SelectedTile == null)
+            var tile = ServiceLocator.Instance.Loadout.SelectedTile.Value;
+            if (Location == Invoker.Location.Target)
+            {
+                tile = context.Target as Tile;
+            }
+            
+            if (tile == null)
             {
                 return Negate;
             }
 
-            return Negate ? context.SelectedTile.Schema != Schema : context.SelectedTile.Schema == Schema;
+            return Negate ? tile.Schema != Schema : tile.Schema == Schema;
         }
     }
 }

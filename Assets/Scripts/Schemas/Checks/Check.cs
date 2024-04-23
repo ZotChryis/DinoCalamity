@@ -17,4 +17,9 @@ namespace Schemas.Checks
         
         public abstract bool IsValid(Invoker.Context context);
     }
+
+    public abstract class TargettedCheck : Check
+    {
+        public Invoker.Location Location;
+    }
 }

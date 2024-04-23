@@ -36,7 +36,7 @@ namespace Schemas.Actions
                 Tile rTile = allTiles[rIndex];
                 
                 // Second, overwrite the context selected tile for the check logic
-                internalContext.SelectedTile = rTile;
+                internalContext.Target = rTile;
 
                 // If there are no checks, then its valid
                 if (m_checks == null)

@@ -10,7 +10,7 @@ namespace UI
     {
         [SerializeField] private Button m_button;
 
-        private void Awake()
+        private void Start()
         {
             // STUB - some game manager should be handling this
             ServiceLocator.Instance.StateMachine.OnStateChangedEvent += OnStateChangedEvent;
@@ -35,7 +35,10 @@ namespace UI
             var selectedCard = ServiceLocator.Instance.Loadout.SelectedCard.Value;
             m_button.interactable = isPlayState && 
                                     selectedCard != null && 
-                                    selectedCard.Invoker.AreConditionsMet(Invoker.EventType.CardOnPlay);
+                                    selectedCard.Invoker.AreConditionsMet(
+                                        Invoker.EventType.CardOnPlay,
+                                        selectedCard.Invoker.GetDefaultContext()
+                                    );
         }
     }
 }

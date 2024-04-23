@@ -7,7 +7,7 @@ namespace UI
         [SerializeField] private ResourceView m_prefab;
         [SerializeField] private Transform m_content;
 
-        public void Awake()
+        public void Start()
         {
             // TEMP: Show that we can pull the data to create the views
             foreach (var resourceSchema in ServiceLocator.Instance.Schemas.Resources)

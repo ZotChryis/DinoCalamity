@@ -41,7 +41,7 @@ public class ServiceLocator : SingletonMonoBehaviour
     protected override void Awake()
     {
         base.Awake();
-
+        
         DontDestroyOnLoad(gameObject);
         SceneManager.LoadScene("Scenes/MainMenu", LoadSceneMode.Single);
     }
@@ -55,22 +55,22 @@ public class ServiceLocator : SingletonMonoBehaviour
     public void Register(GameManager gameManager)
     {
         GameManager = gameManager;
-        
-        // todo: find a better way to initialize stuff now that SL is in Init scene
-        Schemas = new Schemas.Schemas();
-        Schemas.Initialize(MininmumStatus);
-
-        Loadout = new Gameplay.Loadout();
-        Loadout.Initialize(LoadoutSettings);
-
-        Bank = new Gameplay.Bank();
-        Bank.Initialize();
     }
     
     public void Register(World world)
     {
+        // todo: find a better way to initialize stuff now that SL is in Init scene
+        Schemas = new Schemas.Schemas();
+        Schemas.Initialize(MininmumStatus);
+
+        Bank = new Gameplay.Bank();
+        Bank.Initialize();
+        
         World = world;
         World.Initialize(WorldSettings);
+        
+        Loadout = new Gameplay.Loadout();
+        Loadout.Initialize(LoadoutSettings);
         
         // todo: update this, we need real flow handling
         GameManager.StateMachine.ChangeState(new StateSetup());

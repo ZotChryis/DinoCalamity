@@ -11,7 +11,7 @@ namespace UI
 
         private Dictionary<Card, PlayableCardView> m_cards = new();
 
-        private void Awake()
+        private void Start()
         {
             ServiceLocator.Instance.Loadout.Hand.CardCount.OnChanged += OnHandUpdated;
         }
