@@ -90,13 +90,18 @@ namespace Gameplay
             m_structures.Add(spawn);
         }
 
-        public void ToggleFog(bool on)
+        public void ToggleFog(bool on, bool broadcast = true)
         {
             bool wasInFog = IsInFog();
 
             m_fog.SetActive(on);
             m_content.SetActive(!on);
 
+            if (!broadcast)
+            {
+                return;
+            }
+            
             if (wasInFog && !IsInFog())
             {
                 ServiceLocator.Instance.World.TriggerTileReveal(this);

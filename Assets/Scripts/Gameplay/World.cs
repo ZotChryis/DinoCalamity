@@ -254,7 +254,7 @@ namespace Gameplay
                         var position = oldTile.transform.position;
                         var newTile = Instantiate(schema.Prefab, position, Quaternion.identity, transform);
                         newTile.SetSchema(schema);
-                        newTile.ToggleFog(oldTile.IsInFog());
+                        newTile.ToggleFog(oldTile.IsInFog(), false);
                         Grid[row, col] = newTile;
 
                         if (IsHome(oldTile))
