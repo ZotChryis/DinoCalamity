@@ -86,7 +86,7 @@ namespace Gameplay
             // scale and rotation information, while manipulating the position
             Structure spawn = Instantiate(schema.Prefab, m_anchors[anchor], true);
             spawn.gameObject.transform.localPosition = Vector3.zero;
-            spawn.SetSchema(schema);
+            spawn.Initialize(this, schema);
             m_structures.Add(spawn);
         }
 

@@ -153,8 +153,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WorldSettings: {fileID: 11400000, guid: 6aa88cd805fcd1a48b6a1749f5246620, type: 2}
-  LoadoutSettings: {fileID: 11400000, guid: 2c5d52003f1a73747bb45bc732c8a15d, type: 2}
   MininmumStatus: 1
+  LoadoutSchema: {fileID: 0}
   World: {fileID: 0}
   GameManager: {fileID: 0}
   UIDisplayProcessor: {fileID: 0}

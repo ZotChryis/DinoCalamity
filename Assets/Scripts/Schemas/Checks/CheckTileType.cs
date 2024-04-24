@@ -17,11 +17,17 @@ namespace Schemas.Checks
         public override bool IsValid(Invoker.Context context)
         {
             var tile = ServiceLocator.Instance.Loadout.SelectedTile.Value;
-            if (Location == Invoker.Location.Target)
-            {
-                tile = context.Target as Tile;
-            }
             
+            switch (Location)
+            {
+                case Invoker.Location.Target:
+                    tile = context.Target as Tile;
+                    break;
+                case Invoker.Location.Owner:
+                    tile = context.Owner as Tile;
+                    break;
+            }
+
             if (tile == null)
             {
                 return Negate;
