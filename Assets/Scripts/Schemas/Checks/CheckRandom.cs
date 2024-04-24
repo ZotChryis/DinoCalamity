@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Schemas.Checks
 {
-    [CreateAssetMenu]
+    [CreateAssetMenu(menuName = "Check/CheckRandom")]
     public class CheckRandom : Check
     {
         [Range(0, 100)]

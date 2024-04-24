@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Schemas.Actions
 {
-    [CreateAssetMenu]
+    [CreateAssetMenu(menuName = "Action/ActionShowView")]  
     public class ActionShowView : Action
     {
         [SerializeField] private ViewSchema viewConfig;

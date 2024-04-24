@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Schemas.Actions
 {
-    [CreateAssetMenu]
+    [CreateAssetMenu(menuName = "Action/ActionDiscard")]
     public class ActionDiscard : Action
     {
         [SerializeField] private int m_amount;

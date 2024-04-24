@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Schemas.Actions
 {
-    [CreateAssetMenu]
+    [CreateAssetMenu(menuName = "Action/ActionDraw")]    
     public class ActionDraw : Action
     {
         [SerializeField] private int m_amount;

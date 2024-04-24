@@ -7,7 +7,7 @@ namespace Schemas.Checks
     /// Use this check to compare the total resource count for the given resource.
     /// TODO: Merge this and CheckStateInt with comparisons?
     /// </summary>
-    [CreateAssetMenu]
+    [CreateAssetMenu(menuName = "Check/CheckBank")]
     public class CheckBank : Check
     {
         public global::Schemas.ResourceSchema Resource;

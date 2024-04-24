@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Schemas.Actions
 {
-    [CreateAssetMenu]
+    [CreateAssetMenu(menuName = "Action/ActionStateInt")]  
     public class ActionStateInt : Action
     {
         public string Key;

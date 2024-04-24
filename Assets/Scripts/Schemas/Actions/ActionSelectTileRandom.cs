@@ -8,7 +8,7 @@ namespace Schemas.Actions
     /// <summary>
     /// Use this action to forcibly change the selected tile to a random one that passes the checks.
     /// /// </summary>
-    [CreateAssetMenu]
+    [CreateAssetMenu(menuName = "Action/ActionSelectRandomTile")]  
     public class ActionSelectRandomTile : Action
     {
         [SerializeField] private Check[] m_checks;

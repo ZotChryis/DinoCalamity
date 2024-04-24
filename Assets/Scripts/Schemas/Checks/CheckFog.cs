@@ -6,7 +6,7 @@ namespace Schemas.Checks
     /// <summary>
     /// Use this check to see if selected tile is in Fog of War or not.
     /// </summary>
-    [CreateAssetMenu]
+    [CreateAssetMenu(menuName = "Check/CheckFog")]
     public class CheckFog : TargettedCheck
     {
         // TODO: Try to bake in Negate to all checks without having to dupe the code

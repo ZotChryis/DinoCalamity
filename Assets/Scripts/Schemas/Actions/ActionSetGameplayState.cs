@@ -6,11 +6,11 @@ namespace Schemas.Actions
 {
     /// <summary>
     /// Use this action to force a game state.
-    /// TODO: Support all states? For now, Loss/Win
     /// </summary>
-    [CreateAssetMenu]
-    public class ActionLose : Action
+    [CreateAssetMenu(menuName = "Action/ActionSetGameplayState")]  
+    public class ActionSetGameplayState : Action
     {
+        /// TODO: Support all states? For now, Loss/Win
         public enum State
         {
             Loss,

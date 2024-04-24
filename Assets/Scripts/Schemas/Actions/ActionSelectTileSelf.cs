@@ -6,7 +6,6 @@ namespace Schemas.Actions
     /// <summary>
     /// Use this action to forcibly change the tile that invoked this.
     /// </summary>
-    [CreateAssetMenu]
     public class ActionSelectTileSelf : Action
     {
         public override void Invoke(Invoker.Context context)

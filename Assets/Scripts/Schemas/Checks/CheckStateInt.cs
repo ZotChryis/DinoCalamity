@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Schemas.Checks
 {
-    [CreateAssetMenu]
+    [CreateAssetMenu(menuName = "Check/CheckStateInt")]
     public class CheckStateInt : Check
     {
         public string Key;

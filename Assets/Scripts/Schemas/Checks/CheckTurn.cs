@@ -6,7 +6,7 @@ namespace Schemas.Checks
     /// <summary>
     /// Use this check to determine the relationship with the current turn counter.
     /// </summary>
-    [CreateAssetMenu]
+    [CreateAssetMenu(menuName = "Check/CheckTurn")]
     public class CheckTurn : Check
     {
         public int Turn;

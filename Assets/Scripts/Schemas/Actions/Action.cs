@@ -10,6 +10,7 @@ namespace Schemas
         public abstract void Invoke(Invoker.Context context);
     }
     
+    //  TODO: Should all things have this? Probably? Need to refactor stuff to use it so for now we extend
     [Serializable]
     public abstract class TargettedAction : Action
     {

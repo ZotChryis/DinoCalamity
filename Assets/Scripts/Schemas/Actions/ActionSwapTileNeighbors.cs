@@ -6,7 +6,7 @@ namespace Schemas.Actions
     /// <summary>
     /// Use this action to swap all neighbor tiles to the currently selected tile.
     /// </summary>
-    [CreateAssetMenu]
+    [CreateAssetMenu(menuName = "Action/ActionSwapTileNeighbors")]
     public class ActionSwapTileNeighbors : TargettedAction
     {
         public TileSchema Tile;

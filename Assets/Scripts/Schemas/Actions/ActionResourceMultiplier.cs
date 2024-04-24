@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Schemas.Actions
 {
-    [CreateAssetMenu]
+    [CreateAssetMenu(menuName = "Action/ActionResourceMultiplier")]  
     public class ActionResourceMultiplier : Action
     {
         public ResourceSchema Resource;

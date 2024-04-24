@@ -6,7 +6,7 @@ namespace Schemas.Actions
     /// <summary>
     /// Use this action to swap a tile to another type of tile.
     /// </summary>
-    [CreateAssetMenu]
+    [CreateAssetMenu(menuName = "Action/ActionSwapTile")]
     public class ActionSwapTile : TargettedAction
     {
         public TileSchema Tile;

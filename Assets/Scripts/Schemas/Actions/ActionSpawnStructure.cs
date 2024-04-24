@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Schemas.Actions
 {
-    [CreateAssetMenu]
+    [CreateAssetMenu(menuName = "Action/ActionSpawnStructure")]  
     public class ActionSpawnStructure : Action
     {
         public StructureSchema Structure => m_schema;

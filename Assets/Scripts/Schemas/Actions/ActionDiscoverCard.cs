@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Schemas.Actions
 {
-    [CreateAssetMenu]
+    [CreateAssetMenu(menuName = "Action/ActionDiscoverCard")]
     public class ActionDiscoverCard : Action
     {
         public enum DiscoverTypeEnum

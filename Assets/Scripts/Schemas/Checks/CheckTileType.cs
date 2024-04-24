@@ -6,7 +6,7 @@ namespace Schemas.Checks
     /// <summary>
     /// Use this check to determine if selected tile type matches the provided type.
     /// </summary>
-    [CreateAssetMenu]
+    [CreateAssetMenu(menuName = "Check/CheckTileType")]
     public class CheckTileType : TargettedCheck
     {
         public TileSchema.TileType Type;

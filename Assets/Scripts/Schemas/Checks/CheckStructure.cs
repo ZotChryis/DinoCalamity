@@ -6,7 +6,7 @@ namespace Schemas.Checks
     /// <summary>
     /// Use this check to determine if the contextual Tile has a building on it.
     /// </summary>
-    [CreateAssetMenu]
+    [CreateAssetMenu(menuName = "Check/CheckStructure")]
     public class CheckStructure : TargettedCheck
     {
         public bool Negate;

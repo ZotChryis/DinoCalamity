@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Schemas.Actions
 {
-    [CreateAssetMenu]
+    [CreateAssetMenu(menuName = "Action/ActionFog")]    
     public class ActionFog : Action
     {
         [SerializeField] private bool m_enable;

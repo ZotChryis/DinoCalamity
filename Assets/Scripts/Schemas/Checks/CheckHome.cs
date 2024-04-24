@@ -6,7 +6,7 @@ namespace Schemas.Checks
     /// <summary>
     /// Use this check to forcibly check the home tile to see if it's in an ok state.
     /// </summary>
-    [CreateAssetMenu]
+    [CreateAssetMenu(menuName = "Check/CheckHome")]
     public class CheckHome : Check
     {
         public bool Negate = false;
