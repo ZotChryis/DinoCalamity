@@ -15,3 +15,4 @@ MonoBehaviour:
   Status: 1
   Name: Prosperity
   Icon: {fileID: 21300000, guid: 6b437b2bd16bcce4583ff361fe898894, type: 3}
+  Type: 5

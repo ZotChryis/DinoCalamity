@@ -86,7 +86,7 @@ namespace Gameplay
         {
             if (Deck.IsEmpty())
             {
-                return false;
+                ShuffleDiscardToDeck();
             }
             
             Card card = Deck.Pop();
@@ -146,19 +146,24 @@ namespace Gameplay
             {
                 return;
             }
-            
-            Discard.Shuffle();
-            while (!Discard.IsEmpty())
-            {
-                Deck.AddCard(Discard.Pop());
-            }
+
+            ShuffleDiscardToDeck();
         }
 
         public void DrawUntilFull()
         {
-            while (Hand.CardCount.Value < m_schema.HandSize && !Deck.IsEmpty())
+            while (Hand.CardCount.Value < m_schema.HandSize)
             {
                 Draw();
+            }
+        }
+
+        private void ShuffleDiscardToDeck()
+        {
+            Discard.Shuffle();
+            while (!Discard.IsEmpty())
+            {
+                Deck.AddCard(Discard.Pop());
             }
         }
     }

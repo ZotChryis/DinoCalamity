@@ -11,10 +11,10 @@ namespace Gameplay
         
         public Invoker Invoker { get; private set; } = new Invoker();
 
-        public void SetSchema(Schemas.StructureSchema schema)
+        public void Initialize(Tile owner, Schemas.StructureSchema schema)
         {
             Schema = schema;
-            Invoker.Initialize(this, Schema);
+            Invoker.Initialize(owner, Schema);
         }
     }
 }

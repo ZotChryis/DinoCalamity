@@ -9,10 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0183e4a931545c40a697f633e351ecb, type: 3}
-  m_Name: Resource_Might
+  m_Script: {fileID: 11500000, guid: 150a070d7978e1949890332ccc834515, type: 3}
+  m_Name: ActionAddResource_Dino
   m_EditorClassIdentifier: 
   Status: 1
-  Name: Might
-  Icon: {fileID: 21300000, guid: bb127e4c21ed81e408b5ee8729a730bc, type: 3}
-  Type: 4
+  m_resource: {fileID: 11400000, guid: 5f7e2cff8cc485145b12b01d3b8818e4, type: 2}
+  m_amount: 1

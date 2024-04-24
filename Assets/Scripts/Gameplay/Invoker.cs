@@ -20,8 +20,11 @@ namespace Gameplay
         public class Context
         {
             public Invoker Invoker;
-            public object Owner;
             public object Target;
+            
+            // todo: fully support this concept. currently only TILES do this, but in theory everything should have
+            // something valid for this.
+            public object Owner;
         }
         
         public enum Location

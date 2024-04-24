@@ -11,12 +11,19 @@ namespace Schemas.Checks
     {
         public override bool IsValid(Invoker.Context context)
         {
+            // todo: we need a selected tile context location
             var tile = ServiceLocator.Instance.Loadout.SelectedTile.Value;
-            if (Location == Invoker.Location.Target)
+
+            switch (Location)
             {
-                tile = context.Target as Tile;
+                case Invoker.Location.Target:
+                    tile = context.Target as Tile;
+                    break;
+                case Invoker.Location.Owner:
+                    tile = context.Owner as Tile;
+                    break;
             }
-            
+
             return tile != null;
         }
     }
