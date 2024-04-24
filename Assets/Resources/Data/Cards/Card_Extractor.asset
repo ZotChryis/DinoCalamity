@@ -25,7 +25,7 @@ MonoBehaviour:
         Actions:
         - {fileID: 11400000, guid: 0b1bbb13df132474dbf0c29d38cdcd03, type: 2}
   Name: Extractor
-  Description: Any<br>+1 Unrefined Resource of Tile
+  Description: Any<br>OnGeneration:<br>+1 Tile's Resource
   Icon: {fileID: 21300000, guid: fecf8600dd3673345bdaf9f19b3a9df9, type: 3}
   CardType: 1
   Color: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}

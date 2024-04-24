@@ -15,3 +15,4 @@ MonoBehaviour:
   Status: 1
   Name: Technology
   Icon: {fileID: 21300000, guid: 932c4924bd375a94aab19a7cdd25543a, type: 3}
+  Type: 7

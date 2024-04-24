@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f0183e4a931545c40a697f633e351ecb, type: 3}
-  m_Name: Resource_Might
+  m_Name: Resource_Fossil
   m_EditorClassIdentifier: 
   Status: 1
-  Name: Might
-  Icon: {fileID: 21300000, guid: bb127e4c21ed81e408b5ee8729a730bc, type: 3}
-  Type: 4
+  Name: Fossil
+  Icon: {fileID: 21300000, guid: 31f3dbc844ead6e4186da9301bf7b3ba, type: 3}
+  Type: 3
