@@ -8,6 +8,7 @@ namespace GameStates
         {
             ServiceLocator.Instance.GameManager.StartTurn();
             ServiceLocator.Instance.Loadout.DrawUntilFull();
+            ServiceLocator.Instance.Bank.ReplinishFaith();
         }
 
         public void Update()

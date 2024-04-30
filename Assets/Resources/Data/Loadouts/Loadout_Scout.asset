@@ -15,6 +15,7 @@ MonoBehaviour:
   Status: 1
   Name: Scout
   HandSize: 5
+  FaithMax: 3
   Deck:
   - {fileID: 11400000, guid: 039add516e22ce14a9525870f777cd2d, type: 2}
   - {fileID: 11400000, guid: 4fe3a8201847b2f4fb6af2a04a2c8394, type: 2}

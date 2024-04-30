@@ -15,6 +15,7 @@ MonoBehaviour:
   Status: 1
   Name: Extractor
   HandSize: 3
+  FaithMax: 3
   Deck:
   - {fileID: 11400000, guid: d9b20046655e92541bab597c7b258710, type: 2}
   - {fileID: 11400000, guid: d9b20046655e92541bab597c7b258710, type: 2}

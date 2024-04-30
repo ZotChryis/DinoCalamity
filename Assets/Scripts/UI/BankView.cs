@@ -1,3 +1,4 @@
+using Schemas;
 using UnityEngine;
 
 namespace UI
@@ -13,6 +14,11 @@ namespace UI
             // TEMP: Show that we can pull the data to create the views
             foreach (var resourceSchema in ServiceLocator.Instance.Schemas.Resources)
             {
+                if (resourceSchema.IsCurrency())
+                {
+                    continue;
+                }
+                
                 ResourceView resource = Instantiate(m_prefab, resourceSchema.IsRefined() ? m_refined : m_unrefined);
                 resource.SetData(resourceSchema);
             }

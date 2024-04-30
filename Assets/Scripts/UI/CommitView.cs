@@ -34,7 +34,8 @@ namespace UI
             var isPlayState = ServiceLocator.Instance.StateMachine.GetCurrentState() is StatePlay;
             var selectedCard = ServiceLocator.Instance.Loadout.SelectedCard.Value;
             m_button.interactable = isPlayState && 
-                                    selectedCard != null && 
+                                    selectedCard != null &&
+                                    selectedCard.CanAllCostsBePaid() &&
                                     selectedCard.Invoker.AreConditionsMet(
                                         Invoker.EventType.CardOnPlay,
                                         selectedCard.Invoker.GetDefaultContext()

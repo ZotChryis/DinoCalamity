@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 299a735349151064d8accb7471b23821, type: 3}
   m_Name: Loadout_Test
   m_EditorClassIdentifier: 
+  Status: 0
   Name: Default
   HandSize: 5
+  FaithMax: 3
   Deck:
   - {fileID: 11400000, guid: 3972fdff8534141b5927500d546e4d76, type: 2}
   - {fileID: 11400000, guid: 872cc40fcb2d54f83b8e120c786d9670, type: 2}

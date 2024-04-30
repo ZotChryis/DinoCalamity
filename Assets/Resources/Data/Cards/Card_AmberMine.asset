@@ -28,3 +28,7 @@ MonoBehaviour:
   Icon: {fileID: 21300000, guid: ee24737cf7d409e449a01943ed495295, type: 3}
   CardType: 1
   Color: {r: 0.7264151, g: 0.01027944, b: 0.54986787, a: 1}
+  Costs:
+    _serializedList:
+    - Key: {fileID: 11400000, guid: 79ad42bc985cc07488a5e645142f2229, type: 2}
+      Value: 1

@@ -1,3 +1,5 @@
+using Schemas;
+
 namespace Gameplay
 {
     /// <summary>
@@ -16,6 +18,27 @@ namespace Gameplay
         {
             Schema = schema;
             Invoker.Initialize(this, Schema);
+        }
+
+        public bool CanAllCostsBePaid()
+        {
+            foreach (var (resource, amount) in Schema.Costs)
+            {
+                if (ServiceLocator.Instance.Bank.GetAmount(resource) < amount)
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        public void ConsumeCost()
+        {
+            foreach (var (resource, amount) in Schema.Costs)
+            {
+                ServiceLocator.Instance.Bank.DeltaResource(resource, -amount);
+            }
         }
     }
 }

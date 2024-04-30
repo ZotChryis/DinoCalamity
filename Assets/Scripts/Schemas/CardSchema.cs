@@ -1,3 +1,4 @@
+using AYellowpaper.SerializedCollections;
 using UnityEngine;
 
 namespace Schemas
@@ -16,6 +17,10 @@ namespace Schemas
         
         // todo: make a color asset that can wrap this?
         public Color Color;
+        
+        // todo: expand costs as a concept?
+        [SerializedDictionary("Resource", "Amount")]
+        public SerializedDictionary<ResourceSchema, int> Costs;
     }
 
     public enum CardTypeEnum

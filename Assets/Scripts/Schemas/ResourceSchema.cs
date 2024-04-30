@@ -22,14 +22,27 @@ namespace Schemas
             Prosperity = 5,
             Culture = 6,
             Technology = 7,
+            
+            // Currency
+            Faith = 8,
         } 
         
         public string Name;
         public Sprite Icon;
         public ResourceType Type;
 
+        public bool IsCurrency()
+        {
+            return Type == ResourceType.Faith;
+        }
+        
         public bool IsRefined()
         {
+            if (IsCurrency())
+            {
+                return false;
+            }
+            
             return Type == ResourceType.Might ||
                    Type == ResourceType.Prosperity ||
                    Type == ResourceType.Culture ||
@@ -38,6 +51,11 @@ namespace Schemas
         
         public bool IsUnrefined()
         {
+            if (IsCurrency())
+            {
+                return false;
+            }
+            
             return Type == ResourceType.Amber ||
                    Type == ResourceType.Dino ||
                    Type == ResourceType.Lava ||

@@ -1,3 +1,4 @@
+using Schemas;
 using Utility.Observable;
 
 namespace Gameplay
@@ -41,7 +42,7 @@ namespace Gameplay
         /// TODO: Support selecting multiple tiles
         /// </summary>
         public Observable<Tile> SelectedTile = new Observable<Tile>();
-        
+
         public readonly Deck Deck = new Deck();
         public readonly Deck Hand = new Deck();
         public readonly Deck Discard = new Deck();
@@ -62,6 +63,8 @@ namespace Gameplay
             {
                 ShuffleCard(new Card(card));
             }
+
+            ServiceLocator.Instance.Bank.FaithMax.Value = loadoutSchema.FaithMax;
         }
 
         /// <summary>
@@ -123,6 +126,9 @@ namespace Gameplay
                 return;
             }
             
+            // Apply costs
+            SelectedCard.Value.ConsumeCost();
+            
             Hand.RemoveCard(SelectedCard.Value);
             Discard.AddCardFront(SelectedCard.Value);
             OnDiscardEvent?.Invoke(SelectedCard.Value);
@@ -139,7 +145,7 @@ namespace Gameplay
         }
         
         
-        // STUB - This should live in a game state manager of some sort?
+        // TEMP
         private void OnDeckCountChanged()
         {
             if (Deck.CardCount.Value != 0)

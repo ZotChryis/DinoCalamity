@@ -22,9 +22,9 @@ namespace UI
             ServiceLocator.Instance.Bank.OnResourceUpdateEvent += OnResourceUpdateEvent;
         }
         
-        private void OnResourceUpdateEvent(Schemas.ResourceSchema resource, int currentTotal)
+        private void OnResourceUpdateEvent(Schemas.ResourceSchema.ResourceType resourceType, int currentTotal)
         {
-            if (resource != m_data)
+            if (resourceType != m_data.Type)
             {
                 return;
             }
