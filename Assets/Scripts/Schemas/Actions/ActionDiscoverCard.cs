@@ -16,6 +16,8 @@ namespace Schemas.Actions
         }
         
         [SerializeField] private ViewSchema viewConfig;
+        [SerializeField] public string DisplayName;
+        [SerializeField] public string DisplayDescription;
         [SerializeField] public DiscoverTypeEnum DiscoverType;
         [SerializeField] public List<CardTypeEnum> CardSetsToDiscoverFrom;
         [SerializeField] public int DiscoverCardCount;
