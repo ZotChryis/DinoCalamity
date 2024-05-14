@@ -14,6 +14,9 @@ namespace UI
         //
         [SerializeField]
         private TextMeshProUGUI m_titleText;
+        
+        [SerializeField]
+        private TextMeshProUGUI m_descriptionText;
 
         [SerializeField]
         private BaseCardView m_cardPrefab;
@@ -36,7 +39,8 @@ namespace UI
         {
             m_actionDiscoverCard = actionDiscoverCard;
 
-            m_titleText.SetText(m_actionDiscoverCard.name);
+            m_titleText.SetText(m_actionDiscoverCard.DisplayName);
+            m_descriptionText.SetText(m_actionDiscoverCard.DisplayDescription);
             
             var allCards = new List<CardSchema>(ServiceLocator.Instance.Schemas.Cards);
             Algorithms.Shuffle(allCards);

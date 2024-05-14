@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Status: 1
   viewConfig: {fileID: 11400000, guid: 891cac2c17244413094840b61321fad2, type: 2}
+  DisplayName: Discover!
+  DisplayDescription: Click a card to add it to your deck!
   DiscoverType: 1
   CardSetsToDiscoverFrom: 01000000
   DiscoverCardCount: 4

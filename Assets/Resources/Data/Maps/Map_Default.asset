@@ -25,6 +25,8 @@ MonoBehaviour:
     Amount: 3
   - Tile: {fileID: 11400000, guid: 3b6a0903da70f4764917c7ee3a696a9c, type: 2}
     Amount: 1
+  - Tile: {fileID: 11400000, guid: 073e97746549a4bcb9a1253b1300d4e7, type: 2}
+    Amount: 1
   Width: 15
   Height: 15
   HexSize: 0.5
