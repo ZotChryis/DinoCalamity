@@ -17,6 +17,10 @@ namespace Schemas.Actions
             {
                 tile = context.Target as Tile;
             }
+            if (Location == Invoker.Location.Owner)
+            {
+                tile = context.Owner as Tile;
+            }
             
             // This action requires a tile
             if (tile == null)

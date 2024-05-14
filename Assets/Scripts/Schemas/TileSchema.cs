@@ -11,15 +11,16 @@ namespace Schemas
     {
         public enum TileType
         {
-            Home,
-            Empty,
-            Lava,
-            Dino,
-            Fossil,
-            Amber,
-            Desert,
-            CalamityMeteorCrater,
-            Event
+            Home = 0,
+            Empty = 1,
+            Lava = 2,
+            Dino = 3,
+            Fossil = 4,
+            Amber = 5,
+            Desert = 6,
+            CalamityMeteorCrater = 7,
+            EventDiscover = 8,
+            EventPillagers = 9
         }
         
         public string Name;
