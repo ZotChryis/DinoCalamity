@@ -12,6 +12,7 @@ namespace Schemas
             PatchNotes,
             GameOver,
             Calamity,
+            Tooltip
         }
 
         [SerializedDictionary("View Type", "ViewConfigs")]
