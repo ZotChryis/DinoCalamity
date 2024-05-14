@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using AYellowpaper.SerializedCollections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -10,26 +9,19 @@ namespace Gameplay
     /// </summary>
     public class Tile : MonoBehaviour, IPointerClickHandler, IInvoker
     {
-        // STUB - We might want to have multiple places to spawn stuff on the tile. We'll denote the difference with
-        // this. However, if we find we don't need it, we can rip it out. We could generalize this further and make it
-        // a scriptable object. Could re-use this style of data anchoring in UI as well?
-        public enum Anchor
-        {
-            Center
-        }
-
+        public static int c_maxCapacity = 4;
+        
         public Invoker Invoker { get; private set; } = new Invoker();
         
         [SerializeField] private Highlight m_highlight;
         [SerializeField] private GameObject m_fog;
         [SerializeField] private GameObject m_content;
+        [SerializeField] private Transform[] m_buildingLocations = new Transform[c_maxCapacity];
 
-        [SerializedDictionary("Anchor", "Transform")] 
-        [SerializeField] private SerializedDictionary<Anchor, Transform> m_anchors;
-        
         [HideInInspector] public Schemas.TileSchema Schema;
         
         private List<Structure> m_structures;
+        private int m_capacity;
 
         private void Awake()
         {
@@ -53,6 +45,8 @@ namespace Gameplay
         {
             Schema = schema;
             Invoker.Initialize(this, Schema);
+
+            m_capacity = schema.Capacity;
         }
         
         public void OnPointerClick(PointerEventData eventData)
@@ -66,25 +60,17 @@ namespace Gameplay
             ServiceLocator.Instance.Loadout.SelectedTile.Value = this;
         }
         
-        public void AddStructure(Schemas.StructureSchema schema, Anchor anchor)
+        public void AddStructure(Schemas.StructureSchema schema)
         {
-            // If this tile is the Home, we can't place buildings here so we ignore the action (it gets consumed. we 
-            // may want to add a generic "IsNotHome" check of some sort
-            if (ServiceLocator.Instance.World.IsHome(this))
+            // This tile is full!
+            if (m_structures.Count >= m_capacity)
             {
                 return;
             }
             
-            // Currently, if you place a building on a tile that has one, we'll just replace it
-            foreach (var structure in m_structures)
-            {
-                Destroy(structure.gameObject);
-            }
-            m_structures.Clear();
-            
             // We spawn in world position and then zero out local position so we can retain the prefab author's
             // scale and rotation information, while manipulating the position
-            Structure spawn = Instantiate(schema.Prefab, m_anchors[anchor], true);
+            Structure spawn = Instantiate(schema.Prefab, m_buildingLocations[m_structures.Count], true);
             spawn.gameObject.transform.localPosition = Vector3.zero;
             spawn.Initialize(this, schema);
             m_structures.Add(spawn);
@@ -119,6 +105,11 @@ namespace Gameplay
             return m_fog.activeInHierarchy;
         }
 
+        public bool HasCapacity()
+        {
+            return m_structures.Count < m_capacity;
+        }
+        
         public int GetStructureCount()
         {
             return m_structures.Count;
