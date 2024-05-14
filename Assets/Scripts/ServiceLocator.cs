@@ -11,10 +11,8 @@ using Utility;
 /// It is what bootstraps the game scene.
 /// </summary>
 
-public class ServiceLocator : SingletonMonoBehaviour
+public class ServiceLocator : SingletonMonoBehaviour<ServiceLocator>
 {
-    public static ServiceLocator Instance => ((ServiceLocator)InternalInstance);
-
     // WorldSettings and Config of the run (Move this stuff somewhere else later)
     // 
     public WorldSettings WorldSettings;

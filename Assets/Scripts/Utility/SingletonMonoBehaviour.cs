@@ -2,19 +2,20 @@ using UnityEngine;
 
 namespace Utility
 {
-    public class SingletonMonoBehaviour : MonoBehaviour
+    public class SingletonMonoBehaviour<T> : MonoBehaviour
+        where T: SingletonMonoBehaviour<T>
     {
-        protected static SingletonMonoBehaviour InternalInstance { get; private set; }
+        public static T Instance { get; protected set; }
 
         protected virtual void Awake()
         {
-            if (InternalInstance != null && InternalInstance != this)
+            if (Instance != null && Instance != this)
             {
                 Destroy(this);
                 return;
             }
 
-            InternalInstance = this;
+            Instance = (T)this;
         }
     }
 }
