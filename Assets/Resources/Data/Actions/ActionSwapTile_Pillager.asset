@@ -9,10 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9f227bd7731d144491a930bcdaf3ac1, type: 3}
-  m_Name: CheckTileType_Target_NotEvent
+  m_Script: {fileID: 11500000, guid: 3ab305c69f438674286ade501938e132, type: 3}
+  m_Name: ActionSwapTile_Pillager
   m_EditorClassIdentifier: 
-  Status: 2
+  Status: 1
   Location: 2
-  Type: 8
-  Negate: 1
+  Tile: {fileID: 11400000, guid: 3c3b33d37c07a7e48ac47e790fcd517c, type: 2}

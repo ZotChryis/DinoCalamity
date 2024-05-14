@@ -20,6 +20,11 @@ namespace Schemas.Checks
                 tile = context.Target as Tile;
             }
 
+            if (Location == Invoker.Location.Owner)
+            {
+                tile = context.Owner as Tile;
+            }
+
             if (tile == null)
             {
                 return Negate;

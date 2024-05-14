@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using GameStates;
 using Schemas;
+using UnityEngine.SceneManagement;
 using Utility;
 
 namespace Gameplay
@@ -29,14 +30,14 @@ namespace Gameplay
         
         public enum Location
         {
-            Invoker,
+            Selected,
             Owner,
             Target
         }
         
         public enum EventType
         {
-            // These events happen when an Invoker is created and a schema is applied. Happens once!
+            // These events happen when an Selected is created and a schema is applied. Happens once!
             OnApply = 7,
             
             // These events are only invoked on card invokers.
@@ -64,10 +65,22 @@ namespace Gameplay
             Owner = owner;
             Schema = schema;
 
-            ServiceLocator.Instance.GameManager.OnTurnEndEvent += OnTurnEnded;
-            ServiceLocator.Instance.GameManager.OnTurnStartEvent += OnTurnStarted;
-            ServiceLocator.Instance.StateMachine.OnStateChangedEvent += OnStateChanged;
-            ServiceLocator.Instance.World.OnTileRevealEvent += OnTileRevealed;
+            if (Schema.ActionsByType.ContainsKey(EventType.GlobalOnEndTurn))
+            {
+                ServiceLocator.Instance.GameManager.OnTurnEndEvent += OnTurnEnded;
+            }
+            if (Schema.ActionsByType.ContainsKey(EventType.GlobalOnStartTurn))
+            {
+                ServiceLocator.Instance.GameManager.OnTurnStartEvent += OnTurnStarted;
+            }
+            if (Schema.ActionsByType.ContainsKey(EventType.GlobalOnGeneration))
+            {
+                ServiceLocator.Instance.StateMachine.OnStateChangedEvent += OnStateChanged;
+            }
+            if (Schema.ActionsByType.ContainsKey(EventType.GlobalOnTileReveal))
+            {
+                ServiceLocator.Instance.World.OnTileRevealEvent += OnTileRevealed;
+            }
             
             TryInvokeActions(EventType.OnApply, GetDefaultContext());
         }

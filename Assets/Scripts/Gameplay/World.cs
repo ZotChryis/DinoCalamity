@@ -208,9 +208,9 @@ namespace Gameplay
         /// <summary>
         /// Toggles the fog on the given tile to the given value.
         /// </summary>
-        public void ToggleFog(Tile tile, bool on, bool includeNeightbors)
+        public void ToggleFog(Tile tile, bool on, bool includeNeightbors, bool broadcast = true)
         {
-            tile.ToggleFog(on);
+            tile.ToggleFog(on, broadcast);
 
             if (!includeNeightbors)
             {
@@ -220,7 +220,7 @@ namespace Gameplay
             var neighbors = GetNeighbors(tile);
             foreach (var neighbor in neighbors)
             {
-                neighbor.ToggleFog(on);
+                neighbor.ToggleFog(on, broadcast);
             }
         }
 

@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3777e34ffbb57a429285f5f11ab4b86, type: 3}
+  m_Name: ActionSelectRandomTileNeighbor_Pillager
+  m_EditorClassIdentifier: 
+  Status: 1
+  m_location: 1
+  m_checks:
+  - {fileID: 11400000, guid: bb97460793639da48a63983d5127c6e8, type: 2}
+  - {fileID: 11400000, guid: 4aa60d03711585d49a1eab5f0fc361d7, type: 2}
+  - {fileID: 11400000, guid: 5e2ad7f9df6cda44ca468dbe617d859c, type: 2}
+  - {fileID: 11400000, guid: 6905a7e25901d464cbcdce2f8cec7c34, type: 2}
+  - {fileID: 11400000, guid: 1768010f509705841a0a387effd5ff3e, type: 2}
+  - {fileID: 11400000, guid: 09794230651dac541809f3754ae6686a, type: 2}
