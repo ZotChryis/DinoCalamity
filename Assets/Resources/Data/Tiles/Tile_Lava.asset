@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: Tile_Lava
   m_EditorClassIdentifier: 
   Status: 1
+  ActionsByType:
+    _serializedList: []
   Name: Lava
   Prefab: {fileID: 892281507216346329, guid: b58414a1783d29642960146ad2a03125, type: 3}
   Type: 2
+  Capacity: 4

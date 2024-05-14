@@ -26,5 +26,12 @@ namespace Schemas
         public string Name;
         public Gameplay.Tile Prefab;
         public TileType Type;
+        
+        /// <summary>
+        /// How many buildings this tile can hold.
+        /// This may be altered at runtime.
+        /// </summary>
+        [Range(0, 4)]
+        public int Capacity;
     }
 }

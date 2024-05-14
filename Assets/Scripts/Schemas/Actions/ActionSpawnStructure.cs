@@ -6,11 +6,8 @@ namespace Schemas.Actions
     [CreateAssetMenu(menuName = "Action/ActionSpawnStructure")]  
     public class ActionSpawnStructure : Action
     {
-        public StructureSchema Structure => m_schema;
-        
         [SerializeField] private StructureSchema m_schema;
-        [SerializeField] private Gameplay.Tile.Anchor m_anchor;
-
+        
         public override void Invoke(Invoker.Context context)
         {
             // This action requires a target tile
@@ -20,7 +17,7 @@ namespace Schemas.Actions
                 return;
             }
             
-            tile.AddStructure(m_schema, m_anchor);
+            tile.AddStructure(m_schema);
         }
     }
 }

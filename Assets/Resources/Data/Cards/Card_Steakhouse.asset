@@ -20,6 +20,7 @@ MonoBehaviour:
       - Checks:
         - {fileID: 11400000, guid: 3041af89019a39247889cef4559665e0, type: 2}
         - {fileID: 11400000, guid: ed9cdc7983ce8ad44b6a9e21434e1a60, type: 2}
+        - {fileID: 11400000, guid: 9432a60e988cbfd4cb2d0025151c7b7c, type: 2}
         Actions:
         - {fileID: 11400000, guid: 726eedd7dfbcd14418444e48a3ffb666, type: 2}
         - {fileID: 11400000, guid: 875e98f98bae9ea4da7224bc09ad4d6c, type: 2}

@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: Tile_Dino
   m_EditorClassIdentifier: 
   Status: 1
+  ActionsByType:
+    _serializedList: []
   Name: Dino
   Prefab: {fileID: 6125427455479687762, guid: 3f0c73f42c103494bb57b5dbbeb46dfd, type: 3}
   Type: 3
+  Capacity: 4
