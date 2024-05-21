@@ -12,17 +12,20 @@ namespace UI
         /// <summary>
         /// Holds all information that would be displayed in a tooltip.
         /// </summary>
+        [System.Serializable]
         public class TooltipDescription
         {
             public string title;
             public string description;
             public Sprite sprite;
-            // TODO: Add action list
+            public List<Schemas.Action> actions;
         }
 
         [SerializeField] private TextMeshProUGUI m_titleText;
         [SerializeField] private TextMeshProUGUI m_descriptionText;
         [SerializeField] private Image m_image;
+        [SerializeField] private GameObject m_buttonParent;
+        [SerializeField] private GameObject m_buttonPrefab;
 
         public delegate void TooltipButtonDelegate();
 
@@ -58,6 +61,11 @@ namespace UI
             }
 
             // TODO: Create action buttons
+            foreach (Schemas.Action action in tooltip.actions)
+            {
+                var button = Instantiate(m_buttonPrefab, m_buttonParent.transform);
+                //button.GetComponent<TooltipActionButton>().;
+            }
         }
     }
 }
