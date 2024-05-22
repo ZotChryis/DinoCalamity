@@ -11,15 +11,19 @@ namespace UI
 
         public Invoker Invoker { get; private set; } = new Invoker();
 
+        /// <summary>
+        /// Set the button's action. Subscribes to the Button component's onClick event.
+        /// </summary>
+        /// <param name="action"></param>
         public void SetAction(Schemas.Action action)
         {
+            // TODO: Might need to initialize Invoker somewhere.
             m_action = action;
             gameObject.GetComponent<Button>().onClick.AddListener(OnClick);
         }
 
         public void OnClick()
         {
-            // TODO: Might need to initialize Invoker somewhere.
             Debug.Log($"TooltipActionButton: OnClick triggered.");
             m_action?.Invoke(Invoker.GetDefaultContext());
         }
