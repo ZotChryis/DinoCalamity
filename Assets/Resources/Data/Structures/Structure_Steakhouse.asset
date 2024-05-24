@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: Structure_Steakhouse
   m_EditorClassIdentifier: 
   Status: 1
-  Prefab: {fileID: 5562485489402463965, guid: 8d3ef4c621c214e448118f5ba74b99de, type: 3}
   ActionsByType:
     _serializedList:
     - Key: 4
@@ -21,3 +20,9 @@ MonoBehaviour:
       - Checks: []
         Actions:
         - {fileID: 11400000, guid: d2651fed2ad26194c8e8155d54aaa9f6, type: 2}
+  Prefab: {fileID: 5562485489402463965, guid: 8d3ef4c621c214e448118f5ba74b99de, type: 3}
+  TooltipInfo:
+    title: Steakhouse
+    description: Best not to think about it
+    sprite: {fileID: 21300000, guid: 9d0d8478f68d00c47ab08c0215dafc43, type: 3}
+    actions: []

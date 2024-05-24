@@ -1,56 +1,85 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
 using Gameplay;
 
 namespace UI
 {
-    public class ClickTooltip : MonoBehaviour, IPointerClickHandler
+    public class ClickTooltip : MonoBehaviour
     {
         [HideInInspector] public Tile m_tile;
 
+        [HideInInspector] private bool isOpen = false;
+
         /*
          * TODO: Steps:
-         * 1) Get Tile class
-         * 2) Get all structures on the Tile
          * 3) OnClick -> Open a tooltip for each structure.
          * 4) ClickOff -> Close tooltips.
          */
 
         public void Start()
         {
-            // TODO: Make a better way to get the data.
             m_tile = GetComponent<Tile>();
+
+            // Subscribe to events.
+            ServiceLocator.Instance.Loadout.SelectedTile.OnChangedValues += OnSelectedTileChanged;
         }
 
-        public void OnPointerClick(PointerEventData eventData)
+        private void OnDestroy()
         {
-            // Open tooltip on right click.
-            if (eventData.button != PointerEventData.InputButton.Right)
-            {
-                return;
-            }
-            string str = "";
-            if (m_tile?.Structures != null)
-            {
-                str += "{\n";
-                for (int i = 0; i < m_tile.Structures.Count; i++)
-                {
-                    str += $"{m_tile.Structures[i].Schema.name},\n";
-                }
-                str += "}";
-            }
-            Debug.Log($"{gameObject.name}: Opening Tooltip. Structures: {str}");
-            //ServiceLocator.Instance.Loadout.SelectedTile.Value = this;
+            ServiceLocator.Instance.Loadout.SelectedTile.OnChangedValues -= OnSelectedTileChanged;
         }
+
+        private void OnSelectedTileChanged(Tile oldValue, Tile newValue)
+        {
+            ToggleTooltip(newValue == m_tile);
+        }
+
+        public void ToggleTooltip(bool open)
+        {
+            if (open)
+            {
+                if (m_tile?.Structures == null)
+                {
+                    return;
+                }
+
+                // TODO: Open tooltip for each structure on the tile.
+                //for (int i = 0; i < m_tile.Structures.Count; i++)
+                //{
+                //    // Open tooltip
+                //    var view = ServiceLocator.Instance.UIDisplayProcessor.TryShowView(Schemas.ViewMapSchema.ViewType.Tooltip);
+                //    var tooltipView = view as TooltipView;
+                //    tooltipView?.SetData(m_tile.Structures[i].Schema.TooltipInfo);
+                //}
+
+                if (m_tile.Structures.Count > 0)
+                {
+                    // Open tooltip
+                    var view = ServiceLocator.Instance.UIDisplayProcessor.TryShowView(Schemas.ViewMapSchema.ViewType.Tooltip);
+                    var tooltipView = view as TooltipView;
+                    tooltipView?.SetData(m_tile.Structures[0].Schema.TooltipInfo);
+                    Debug.Log($"ClickTooltip: Opening.");
+                    isOpen = true;
+                }
+            } else
+            {
+                if (isOpen)
+                {
+                    ServiceLocator.Instance.UIDisplayProcessor.PopView();
+                    Debug.Log($"ClickTooltip: Closing.");
+                    isOpen = false;
+                }
+            }
+        }
+
 
         //private void OnMouseEnter()
         //{
         //    if (Schema == null) return;
 
         //    Debug.Log($"Structure: Mouse Enter");
-        //    var view = ServiceLocator.Instance.UIDisplayProcessor.TryShowView(Schemas.ViewMapSchema.ViewType.Tooltip);
-        //    var tooltipView = view as TooltipView;
-        //    tooltipView?.SetData(Schema.TooltipInfo);
+        //var view = ServiceLocator.Instance.UIDisplayProcessor.TryShowView(Schemas.ViewMapSchema.ViewType.Tooltip);
+        //var tooltipView = view as TooltipView;
+        //tooltipView?.SetData(Schema.TooltipInfo);
         //}
 
         //private void OnMouseExit()

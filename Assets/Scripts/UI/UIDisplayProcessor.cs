@@ -48,7 +48,6 @@ namespace UI
 
             var indexToPop = m_activeViews.Count - 1;
             RemoveViewAtIndex(indexToPop);
-
         }
 
         private void Awake()

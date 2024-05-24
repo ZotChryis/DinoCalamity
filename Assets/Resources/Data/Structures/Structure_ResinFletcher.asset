@@ -21,3 +21,8 @@ MonoBehaviour:
         Actions:
         - {fileID: 11400000, guid: 6560a117dbf947e499634a6bd4848190, type: 2}
   Prefab: {fileID: 1786084997924789625, guid: 134941f945efc3d43ae9df919c27606d, type: 3}
+  TooltipInfo:
+    title: Resin Fletcher
+    description: Not sure what this does
+    sprite: {fileID: 21300000, guid: 2d50e4bc278e1104cb227eca462a326e, type: 3}
+    actions: []

@@ -36,6 +36,7 @@ namespace Gameplay
 
         private void Awake()
         {
+            Debug.Log($"Tile: Awake");
             m_structures = new List<Structure>();
             ServiceLocator.Instance.Loadout.SelectedTile.OnChangedValues += OnSelectedTileChanged;
             ToggleFog(true);
