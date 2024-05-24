@@ -64,6 +64,8 @@ namespace UI
             foreach (Schemas.Action action in tooltip.actions)
             {
                 var button = Instantiate(m_buttonPrefab, m_buttonParent.transform);
+                // TODO: Assign actions to the button.
+                // TODO: Make a cleanup for the buttons?
                 //button.GetComponent<TooltipActionButton>().;
             }
         }
