@@ -1,4 +1,4 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,7 +12,7 @@ namespace UI
         /// <summary>
         /// Holds all information that would be displayed in a tooltip.
         /// </summary>
-        [System.Serializable]
+        [Serializable]
         public class TooltipDescription
         {
             public string title;

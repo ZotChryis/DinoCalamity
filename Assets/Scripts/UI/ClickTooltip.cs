@@ -7,13 +7,8 @@ namespace UI
     {
         [HideInInspector] public Tile m_tile;
 
+        // TODO: May need to listen to an event from UIDisplayProcessor closing a view in case something else pops this.
         [HideInInspector] private bool isOpen = false;
-
-        /*
-         * TODO: Steps:
-         * 3) OnClick -> Open a tooltip for each structure.
-         * 4) ClickOff -> Close tooltips.
-         */
 
         public void Start()
         {
@@ -33,6 +28,10 @@ namespace UI
             ToggleTooltip(newValue == m_tile);
         }
 
+        /// <summary>
+        /// Opens and closes the tooltip icon.
+        /// </summary>
+        /// <param name="open"></param>
         public void ToggleTooltip(bool open)
         {
             if (open)
@@ -42,25 +41,24 @@ namespace UI
                     return;
                 }
 
-                // TODO: Open tooltip for each structure on the tile.
-                //for (int i = 0; i < m_tile.Structures.Count; i++)
-                //{
-                //    // Open tooltip
-                //    var view = ServiceLocator.Instance.UIDisplayProcessor.TryShowView(Schemas.ViewMapSchema.ViewType.Tooltip);
-                //    var tooltipView = view as TooltipView;
-                //    tooltipView?.SetData(m_tile.Structures[i].Schema.TooltipInfo);
-                //}
+                var tilePos = Camera.main.WorldToScreenPoint(m_tile.transform.position);
 
+                // TODO: Make for loop for multiple structures. Make each one offset to not stack.
                 if (m_tile.Structures.Count > 0)
                 {
                     // Open tooltip
                     var view = ServiceLocator.Instance.UIDisplayProcessor.TryShowView(Schemas.ViewMapSchema.ViewType.Tooltip);
                     var tooltipView = view as TooltipView;
                     tooltipView?.SetData(m_tile.Structures[0].Schema.TooltipInfo);
-                    Debug.Log($"ClickTooltip: Opening.");
+
+                    // Set position.
+                    tooltipView.transform.position = tilePos;
+
+                    Debug.Log($"ClickTooltip: Opening. world={m_tile.transform.position}. screen={tilePos}");
                     isOpen = true;
                 }
-            } else
+            }
+            else
             {
                 if (isOpen)
                 {
@@ -70,23 +68,5 @@ namespace UI
                 }
             }
         }
-
-
-        //private void OnMouseEnter()
-        //{
-        //    if (Schema == null) return;
-
-        //    Debug.Log($"Structure: Mouse Enter");
-        //var view = ServiceLocator.Instance.UIDisplayProcessor.TryShowView(Schemas.ViewMapSchema.ViewType.Tooltip);
-        //var tooltipView = view as TooltipView;
-        //tooltipView?.SetData(Schema.TooltipInfo);
-        //}
-
-        //private void OnMouseExit()
-        //{
-        //    if (Schema == null) return;
-
-        //    ServiceLocator.Instance.UIDisplayProcessor.PopView();
-        //}
     }
 }
