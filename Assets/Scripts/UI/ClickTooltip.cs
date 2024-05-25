@@ -7,6 +7,8 @@ namespace UI
     {
         [HideInInspector] public Tile m_tile;
 
+        public Vector3 offset = new Vector3(1.75f, 1.0f, 0); // World point offset to place the tooltip.
+
         // TODO: May need to listen to an event from UIDisplayProcessor closing a view in case something else pops this.
         [HideInInspector] private bool isOpen = false;
 
@@ -41,7 +43,12 @@ namespace UI
                     return;
                 }
 
-                var tilePos = Camera.main.WorldToScreenPoint(m_tile.transform.position);
+                // Get screen position.
+                var worldPos = new Vector3(m_tile.transform.position.x + offset.x, m_tile.transform.position.y + offset.y, m_tile.transform.position.z + offset.z);
+                var tilePos = Camera.main.WorldToScreenPoint(worldPos);
+
+                // Shift over to not cover the tile.
+                //tilePos = new Vector3(tilePos.x + 285, tilePos.y, tilePos.z);
 
                 // TODO: Make for loop for multiple structures. Make each one offset to not stack.
                 if (m_tile.Structures.Count > 0)
@@ -54,7 +61,7 @@ namespace UI
                     // Set position.
                     tooltipView.transform.position = tilePos;
 
-                    Debug.Log($"ClickTooltip: Opening. world={m_tile.transform.position}. screen={tilePos}");
+                    Debug.Log($"ClickTooltip: Opening. tile={m_tile.transform.position}. world={worldPos}. screen={tilePos}");
                     isOpen = true;
                 }
             }
