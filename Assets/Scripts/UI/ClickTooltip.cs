@@ -45,7 +45,7 @@ namespace UI
 
                 // Get screen position.
                 var worldPos = new Vector3(m_tile.transform.position.x + offset.x, m_tile.transform.position.y + offset.y, m_tile.transform.position.z + offset.z);
-                var tilePos = Camera.main.WorldToScreenPoint(worldPos);
+                //var tilePos = Camera.main.WorldToScreenPoint(worldPos);
 
                 // Shift over to not cover the tile.
                 //tilePos = new Vector3(tilePos.x + 285, tilePos.y, tilePos.z);
@@ -56,12 +56,12 @@ namespace UI
                     // Open tooltip
                     var view = ServiceLocator.Instance.UIDisplayProcessor.TryShowView(Schemas.ViewMapSchema.ViewType.Tooltip);
                     var tooltipView = view as TooltipView;
-                    tooltipView?.SetData(m_tile.Structures[0].Schema.TooltipInfo);
+                    tooltipView?.SetData(m_tile.Structures[0].Schema.TooltipInfo, worldPos);
 
                     // Set position.
-                    tooltipView.transform.position = tilePos;
+                    //tooltipView.transform.position = tilePos;
 
-                    Debug.Log($"ClickTooltip: Opening. tile={m_tile.transform.position}. world={worldPos}. screen={tilePos}");
+                    //Debug.Log($"ClickTooltip: Opening. tile={m_tile.transform.position}. world={worldPos}. screen={tilePos}");
                     isOpen = true;
                 }
             }

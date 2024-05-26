@@ -16,7 +16,7 @@ namespace Schemas.Actions
         {
             var view = ServiceLocator.Instance.UIDisplayProcessor.TryShowView(viewConfig);
             var tooltipView = view as TooltipView;
-            tooltipView?.SetData(Tooltip);
+            tooltipView?.SetData(Tooltip, Vector3.zero);
         }
     }
 }

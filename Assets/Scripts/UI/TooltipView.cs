@@ -27,9 +27,11 @@ namespace UI
         [SerializeField] private GameObject m_buttonParent;
         [SerializeField] private GameObject m_buttonPrefab;
 
+        private Vector3 m_WorldPos;
+
         public delegate void TooltipButtonDelegate();
 
-        public void SetData(TooltipDescription tooltip)
+        public void SetData(TooltipDescription tooltip, Vector3 worldPos)
         {
             // Set title text
             if (m_titleText != null && tooltip.title != null)
@@ -68,6 +70,22 @@ namespace UI
                 // TODO: Make a cleanup for the buttons?
                 //button.GetComponent<TooltipActionButton>().;
             }
+
+            m_WorldPos = worldPos;
+            UpdateScreenPosition();
+        }
+
+        public void LateUpdate()
+        {
+            // Move the screen position to match the world position.
+            // Will be able to move offscreen. TODO: If offscreen, align to an edge?
+            UpdateScreenPosition();
+        }
+
+        private void UpdateScreenPosition()
+        {
+            var screenPos = Camera.main.WorldToScreenPoint(m_WorldPos);
+            transform.position = screenPos;
         }
     }
 }
