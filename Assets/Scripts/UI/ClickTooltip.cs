@@ -70,7 +70,6 @@ namespace UI
                 if (isOpen)
                 {
                     ServiceLocator.Instance.UIDisplayProcessor.PopView();
-                    Debug.Log($"ClickTooltip: Closing.");
                     isOpen = false;
                 }
             }

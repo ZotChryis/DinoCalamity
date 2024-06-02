@@ -24,7 +24,6 @@ namespace UI
 
         public void OnClick()
         {
-            Debug.Log($"TooltipActionButton: OnClick triggered.");
             m_action?.Invoke(Invoker.GetDefaultContext());
         }
     }
