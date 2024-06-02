@@ -27,9 +27,18 @@ namespace UI
         [SerializeField] private GameObject m_buttonParent;
         [SerializeField] private GameObject m_buttonPrefab;
 
+        // For keeping track of action buttons. Currently unused but may be required to unsub actions from onClick listener.
+        private List<TooltipActionButton> actionButtons = new List<TooltipActionButton>();
+
         private Vector3 m_WorldPos;
 
         public delegate void TooltipButtonDelegate();
+
+        public override void Teardown()
+        {
+            base.Teardown();
+            // TODO: Unsub action buttons from addListener?
+        }
 
         public void SetData(TooltipDescription tooltip, Vector3 worldPos)
         {
@@ -62,13 +71,12 @@ namespace UI
                 m_image.gameObject.SetActive(false);
             }
 
-            // TODO: Create action buttons
+            // Create action buttons -> Set actions to buttons.
             foreach (Schemas.Action action in tooltip.actions)
             {
-                var button = Instantiate(m_buttonPrefab, m_buttonParent.transform);
-                // TODO: Assign actions to the button.
-                // TODO: Make a cleanup for the buttons?
-                //button.GetComponent<TooltipActionButton>().;
+                var button = Instantiate(m_buttonPrefab, m_buttonParent.transform).GetComponent<TooltipActionButton>();
+                button.SetAction(action);
+                actionButtons.Add(button);
             }
 
             m_WorldPos = worldPos;
