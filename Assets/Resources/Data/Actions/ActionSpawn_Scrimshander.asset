@@ -13,5 +13,4 @@ MonoBehaviour:
   m_Name: ActionSpawn_Scrimshander
   m_EditorClassIdentifier: 
   Status: 1
-  m_schema: {fileID: 11400000, guid: b3e4e3142592c6c408f78a52a8b5f9ed, type: 2}
-  m_anchor: 0
+  m_schema: {fileID: 11400000, guid: aae7f5aa2d3ede24b8491dc358ca7fa9, type: 2}
