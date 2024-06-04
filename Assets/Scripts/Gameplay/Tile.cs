@@ -23,6 +23,9 @@ namespace Gameplay
         private List<Structure> m_structures;
         private int m_capacity;
 
+        // Public viewable list of structures. TODO: The structures in the list are still editable.
+        public List<Structure> Structures => new List<Structure>(m_structures);
+
         private void Awake()
         {
             m_structures = new List<Structure>();

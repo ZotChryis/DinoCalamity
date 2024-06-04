@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: Structure_Harbor
   m_EditorClassIdentifier: 
   Status: 1
-  Prefab: {fileID: 8389380372041290757, guid: 96f56f33fd86a8f44bcf8e0f505f2398, type: 3}
   ActionsByType:
     _serializedList:
     - Key: 4
@@ -21,3 +20,9 @@ MonoBehaviour:
       - Checks: []
         Actions:
         - {fileID: 11400000, guid: d2651fed2ad26194c8e8155d54aaa9f6, type: 2}
+  Prefab: {fileID: 8389380372041290757, guid: 96f56f33fd86a8f44bcf8e0f505f2398, type: 3}
+  TooltipInfo:
+    title: Harbor
+    description: Like a harbor but on lava
+    sprite: {fileID: 21300000, guid: 9beeb3a9e2d89564c87f71ca02f8b4ca, type: 3}
+    actions: []
