@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using Schemas.Actions;
+using Schemas;
 
 namespace UI
 {
@@ -13,7 +13,7 @@ namespace UI
         /// Holds all information that would be displayed in a tooltip.
         /// </summary>
         [Serializable]
-        public class TooltipDescription
+        public class TooltipInfo
         {
             public string title;
             public string description;
@@ -40,7 +40,7 @@ namespace UI
             // TODO: Unsub action buttons from addListener?
         }
 
-        public void SetData(TooltipDescription tooltip, Vector3 worldPos)
+        public void SetData(TooltipInfo tooltip, Vector3 worldPos)
         {
             // Set title text
             if (m_titleText != null && tooltip.title != null)
