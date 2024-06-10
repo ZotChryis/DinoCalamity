@@ -1,15 +1,11 @@
 using Gameplay;
 using UnityEngine;
-using UI;
 
 namespace Schemas
 {
     [CreateAssetMenu]
-    public class StructureSchema : InvokerSchema, ITooltipable
+    public class StructureSchema : InvokerSchema
     {
         public Structure Prefab;
-        
-        
-        public TooltipView.TooltipInfo TooltipInfo { get; }
     }
 }

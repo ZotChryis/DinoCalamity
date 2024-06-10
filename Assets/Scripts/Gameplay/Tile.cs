@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using AYellowpaper.SerializedCollections;
+using UI;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Serialization;
@@ -8,7 +10,7 @@ namespace Gameplay
     /// <summary>
     /// STUB
     /// </summary>
-    public class Tile : MonoBehaviour, IPointerClickHandler, IInvoker
+    public class Tile : MonoBehaviour, IPointerClickHandler, IInvoker, ITooltipable
     {
         public static int c_maxCapacity = 4;
         
@@ -114,6 +116,14 @@ namespace Gameplay
         public int GetStructureCount()
         {
             return m_structures.Count;
+        }
+        
+        // *********************
+        // ITooltipable
+        // *********************
+        public void OpenTooltip()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
