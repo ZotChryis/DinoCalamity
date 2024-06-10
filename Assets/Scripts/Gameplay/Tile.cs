@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Serialization;
 
 namespace Gameplay
 {
@@ -20,11 +21,8 @@ namespace Gameplay
 
         [HideInInspector] public Schemas.TileSchema Schema;
         
-        private List<Structure> m_structures;
+        public List<Structure> m_structures;
         private int m_capacity;
-
-        // Public viewable list of structures. TODO: The structures in the list are still editable.
-        public List<Structure> Structures => new List<Structure>(m_structures);
 
         private void Awake()
         {

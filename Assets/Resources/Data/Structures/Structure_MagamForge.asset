@@ -25,4 +25,5 @@ MonoBehaviour:
     title: Magma forge
     description: Forges things from magma
     sprite: {fileID: 21300000, guid: 9fa37e1f4bf05ed4c91b790d7bbd1cab, type: 3}
-    actions: []
+    actions:
+    - {fileID: 11400000, guid: d2651fed2ad26194c8e8155d54aaa9f6, type: 2}
