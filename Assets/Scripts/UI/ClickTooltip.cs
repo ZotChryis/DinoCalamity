@@ -38,7 +38,7 @@ namespace UI
         {
             if (open)
             {
-                if (m_tile?.Structures == null)
+                if (m_tile?.m_structures == null)
                 {
                     return;
                 }
@@ -51,12 +51,12 @@ namespace UI
                 //tilePos = new Vector3(tilePos.x + 285, tilePos.y, tilePos.z);
 
                 // TODO: Make for loop for multiple structures. Make each one offset to not stack.
-                if (m_tile.Structures.Count > 0)
+                if (m_tile.m_structures.Count > 0)
                 {
                     // Open tooltip
                     var view = ServiceLocator.Instance.UIDisplayProcessor.TryShowView(Schemas.ViewMapSchema.ViewType.Tooltip);
                     var tooltipView = view as TooltipView;
-                    tooltipView?.SetData(m_tile.Structures[0].Schema.TooltipInfo, worldPos);
+                    tooltipView?.SetData(m_tile.m_structures[0].Schema.TooltipInfo, worldPos);
 
                     // Set position.
                     //tooltipView.transform.position = tilePos;
