@@ -5,9 +5,11 @@ using UI;
 namespace Schemas
 {
     [CreateAssetMenu]
-    public class StructureSchema : InvokerSchema
+    public class StructureSchema : InvokerSchema, ITooltipable
     {
         public Structure Prefab;
-        public TooltipView.TooltipDescription TooltipInfo;  // TODO: Move this somewhere else.
+        
+        
+        public TooltipView.TooltipInfo TooltipInfo { get; }
     }
 }
