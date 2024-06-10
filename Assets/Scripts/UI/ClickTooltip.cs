@@ -52,7 +52,7 @@ namespace UI
                     // Open tooltip
                     var view = ServiceLocator.Instance.UIDisplayProcessor.TryShowView(Schemas.ViewMapSchema.ViewType.Tooltip);
                     var tooltipView = view as TooltipView;
-                    tooltipView?.SetData(m_tile.m_structures[0].Schema.TooltipInfo, worldPos);
+                    // tooltipView?.SetData(m_tile.m_structures[0].Schema.tooltipInfo, worldPos);
 
                     isOpen = true;
                 }

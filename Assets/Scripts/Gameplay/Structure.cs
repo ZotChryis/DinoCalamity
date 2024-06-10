@@ -1,7 +1,4 @@
-using GameStates;
 using UnityEngine;
-using Utility;
-using Action = Schemas.Action;
 
 namespace Gameplay
 {

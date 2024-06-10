@@ -2,6 +2,11 @@ namespace UI
 {
     public interface ITooltipable
     {
-        public TooltipView.TooltipInfo TooltipInfo { get; }
+        public void OpenTooltip();
+
+        public void CloseTooltip()
+        {
+            ServiceLocator.Instance.UIDisplayProcessor.PopView();
+        }
     }
 }

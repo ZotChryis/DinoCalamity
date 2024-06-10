@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using AYellowpaper.SerializedCollections;
+using UI;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Serialization;
@@ -9,7 +10,7 @@ namespace Gameplay
     /// <summary>
     /// STUB
     /// </summary>
-    public class Tile : MonoBehaviour, IPointerClickHandler, IInvoker
+    public class Tile : MonoBehaviour, IPointerClickHandler, IInvoker, ITooltipable
     {
         // STUB - We might want to have multiple places to spawn stuff on the tile. We'll denote the difference with
         // this. However, if we find we don't need it, we can rip it out. We could generalize this further and make it
@@ -123,6 +124,14 @@ namespace Gameplay
         public int GetStructureCount()
         {
             return m_structures.Count;
+        }
+        
+        // *********************
+        // ITooltipable
+        // *********************
+        public void OpenTooltip()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
