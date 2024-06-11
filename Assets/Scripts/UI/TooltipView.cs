@@ -87,6 +87,7 @@ namespace UI
             {
                 var button = Instantiate(m_buttonPrefab, m_buttonParent.transform).GetComponent<TooltipActionButton>();
                 button.SetAction(action);
+                button.SetText(action.name);
                 actionButtons.Add(button);
             }
         }
