@@ -23,3 +23,6 @@ MonoBehaviour:
   Name: Discover
   Prefab: {fileID: 4735739967759771959, guid: cade8861cbfbf475c86b8e7c00cc38b5, type: 3}
   Type: 8
+  tooltipMessage: Discover tile!
+  tooltipIcon: {fileID: 0}
+  tooltipActions: []

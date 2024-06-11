@@ -19,3 +19,6 @@ MonoBehaviour:
   Prefab: {fileID: 8345107443637791908, guid: d90a1393305273343b1efe227b9915dc, type: 3}
   Type: 5
   Capacity: 4
+  tooltipMessage: This is a amber tile.
+  tooltipIcon: {fileID: 21300000, guid: e20e18b0e1ad37744b3f3016d43b18be, type: 3}
+  tooltipActions: []

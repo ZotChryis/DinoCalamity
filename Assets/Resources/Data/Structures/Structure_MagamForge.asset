@@ -21,9 +21,8 @@ MonoBehaviour:
         Actions:
         - {fileID: 11400000, guid: 6560a117dbf947e499634a6bd4848190, type: 2}
   Prefab: {fileID: 6064727291728260522, guid: ecfb231f27451754ca180068156dda8e, type: 3}
-  TooltipInfo:
-    title: Magma forge
-    description: Forges things from magma
-    sprite: {fileID: 21300000, guid: 9fa37e1f4bf05ed4c91b790d7bbd1cab, type: 3}
-    actions:
-    - {fileID: 11400000, guid: d2651fed2ad26194c8e8155d54aaa9f6, type: 2}
+  tooltipName: Magma Forge
+  tooltipMessage: Something something seomthing...
+  tooltipIcon: {fileID: 21300000, guid: 9fa37e1f4bf05ed4c91b790d7bbd1cab, type: 3}
+  tooltipActions:
+  - {fileID: 11400000, guid: 6560a117dbf947e499634a6bd4848190, type: 2}

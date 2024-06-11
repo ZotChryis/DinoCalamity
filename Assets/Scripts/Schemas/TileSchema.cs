@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Schemas
@@ -33,5 +34,10 @@ namespace Schemas
         /// </summary>
         [Range(0, 4)]
         public int Capacity;
+
+        // Tooltip info.
+        public string tooltipMessage;
+        public Sprite tooltipIcon;
+        public List<Action> tooltipActions;
     }
 }

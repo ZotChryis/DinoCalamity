@@ -783,8 +783,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_closeButtons: []
   m_titleText: {fileID: 6308838157308396073}
-  m_descriptionText: {fileID: 376792056186331159}
-  m_image: {fileID: 3573360107870961975}
+  m_messageText: {fileID: 0}
+  m_icon: {fileID: 3573360107870961975}
   m_buttonParent: {fileID: 1834260675042711386}
   m_buttonPrefab: {fileID: 4050720576631819286, guid: 25397153c109847f3a9a8aeec2910614, type: 3}
 --- !u!114 &6077317701334682007

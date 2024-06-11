@@ -41,7 +41,7 @@ namespace UI
         // For keeping track of action buttons. Currently unused but may be required to unsub actions from onClick listener.
         private List<TooltipActionButton> actionButtons = new List<TooltipActionButton>();
 
-        private Vector3 m_WorldPos;
+        // private Vector3 m_WorldPos;
 
         public delegate void TooltipButtonDelegate();
 
@@ -51,7 +51,7 @@ namespace UI
             // TODO: Unsub action buttons from addListener?
         }
 
-        public void SetData(TooltipInfo tooltip, Vector3 worldPos)
+        public void SetData(TooltipInfo tooltip)
         {
             // Set title text
             if (m_titleText != null && tooltip.Title != null)
@@ -90,21 +90,21 @@ namespace UI
                 actionButtons.Add(button);
             }
 
-            m_WorldPos = worldPos;
-            UpdateScreenPosition();
+            // m_WorldPos = worldPos;
+            // UpdateScreenPosition();
         }
 
-        public void LateUpdate()
-        {
-            // Move the screen position to match the world position.
-            // Will be able to move offscreen. TODO: If offscreen, align to an edge?
-            UpdateScreenPosition();
-        }
-
-        private void UpdateScreenPosition()
-        {
-            var screenPos = Camera.main.WorldToScreenPoint(m_WorldPos);
-            transform.position = screenPos;
-        }
+        // public void LateUpdate()
+        // {
+        //     // Move the screen position to match the world position.
+        //     // Will be able to move offscreen. TODO: If offscreen, align to an edge?
+        //     UpdateScreenPosition();
+        // }
+        //
+        // private void UpdateScreenPosition()
+        // {
+        //     var screenPos = Camera.main.WorldToScreenPoint(m_WorldPos);
+        //     transform.position = screenPos;
+        // }
     }
 }

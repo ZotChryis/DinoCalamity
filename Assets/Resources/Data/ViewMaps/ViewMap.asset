@@ -15,6 +15,8 @@ MonoBehaviour:
   Status: 2
   ViewConfigs:
     _serializedList:
+    - Key: 5
+      Value: {fileID: 11400000, guid: 03ee52d4555a64f7c8f7591577ea3413, type: 2}
     - Key: 4
       Value: {fileID: 11400000, guid: 783fab65b76a5491ca645286035770b7, type: 2}
     - Key: 0

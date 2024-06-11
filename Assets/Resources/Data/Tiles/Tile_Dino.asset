@@ -19,3 +19,6 @@ MonoBehaviour:
   Prefab: {fileID: 6125427455479687762, guid: 3f0c73f42c103494bb57b5dbbeb46dfd, type: 3}
   Type: 3
   Capacity: 4
+  tooltipMessage: This tile has dinos on it.
+  tooltipIcon: {fileID: 21300000, guid: bbe3429ea33360542a84baca88743660, type: 3}
+  tooltipActions: []

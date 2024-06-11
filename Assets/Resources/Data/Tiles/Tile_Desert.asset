@@ -19,3 +19,6 @@ MonoBehaviour:
   Prefab: {fileID: 6260952448239503249, guid: 94924868b6a327c4c9527b5db6bc6450, type: 3}
   Type: 6
   Capacity: 1
+  tooltipMessage: This is a desert tile.
+  tooltipIcon: {fileID: 0}
+  tooltipActions: []
