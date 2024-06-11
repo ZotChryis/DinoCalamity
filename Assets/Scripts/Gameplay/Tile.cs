@@ -152,9 +152,9 @@ namespace Gameplay
             return tooltipStackView;
         }
 
-        public void CloseTooltip()
-        {
-            ServiceLocator.Instance.UIDisplayProcessor.PopView();
-        }
+        // public void CloseTooltip()
+        // {
+        //     ServiceLocator.Instance.UIDisplayProcessor.PopView();
+        // }
     }
 }

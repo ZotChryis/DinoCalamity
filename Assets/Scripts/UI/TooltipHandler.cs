@@ -7,8 +7,8 @@ namespace UI
     {
         public Vector3 offset = new Vector3(1.75f, 1.0f, 0); // World point offset to place the tooltip.
 
-        // private Tile currValue;
-        private View currTooltipView = null;
+        [SerializeField] private Tile currValue = null;
+        [SerializeField] private View currTooltipView = null;
         
         public void Start()
         {
@@ -29,14 +29,17 @@ namespace UI
         private void ToggleTooltip(Tile newValue)
         {
             // currValue?.CloseTooltip();
-            if (currTooltipView != null)
-            {
-                ServiceLocator.Instance.UIDisplayProcessor.CloseView(currTooltipView);
-            }
+            // if (currTooltipView != null)
+            // {
+            //     ServiceLocator.Instance.UIDisplayProcessor.CloseView(currTooltipView);
+            // }
+            ServiceLocator.Instance.UIDisplayProcessor.CloseView(currTooltipView);
 
-            // currValue = newValue;
+            currValue = newValue;
 
             currTooltipView = newValue?.OpenTooltip(offset);
+            
+            // Debug.Log($"TooltipHandler: currValue");
         }
     }
 }
