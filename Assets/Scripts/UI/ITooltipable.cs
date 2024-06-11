@@ -8,6 +8,6 @@ namespace UI
         public View OpenTooltip(Vector3 offset);
 
 
-        public void CloseTooltip();
+        // public void CloseTooltip();
     }
 }

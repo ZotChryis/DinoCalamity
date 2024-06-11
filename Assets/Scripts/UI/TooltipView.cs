@@ -89,22 +89,6 @@ namespace UI
                 button.SetAction(action);
                 actionButtons.Add(button);
             }
-
-            // m_WorldPos = worldPos;
-            // UpdateScreenPosition();
         }
-
-        // public void LateUpdate()
-        // {
-        //     // Move the screen position to match the world position.
-        //     // Will be able to move offscreen. TODO: If offscreen, align to an edge?
-        //     UpdateScreenPosition();
-        // }
-        //
-        // private void UpdateScreenPosition()
-        // {
-        //     var screenPos = Camera.main.WorldToScreenPoint(m_WorldPos);
-        //     transform.position = screenPos;
-        // }
     }
 }

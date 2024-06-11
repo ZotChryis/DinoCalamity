@@ -61,7 +61,7 @@ namespace UI
                 return;
             }
 
-            for (int indexToPop = m_activeViews.Count - 1; indexToPop > 0; indexToPop--)
+            for (int indexToPop = m_activeViews.Count - 1; indexToPop >= 0; indexToPop--)
             {
                 if (m_activeViews[indexToPop] != view) continue;
                 
