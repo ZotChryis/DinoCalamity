@@ -27,12 +27,9 @@ namespace UI
         private void ToggleTooltip(Tile newValue)
         {
             currValue?.CloseTooltip();
-            
-            // var worldPos = new Vector3(newValue.transform.position.x + offset.x, newValue.transform.position.y + offset.y, newValue.transform.position.z + offset.z);
-            newValue?.OpenTooltip();
-            
-            // Debug.Log($"TooltipHandler: {currValue.}");
             currValue = newValue;
+
+            newValue?.OpenTooltip(offset);
         }
     }
 }
