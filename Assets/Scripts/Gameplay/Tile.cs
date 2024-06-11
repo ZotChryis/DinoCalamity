@@ -137,9 +137,14 @@ namespace Gameplay
             // Add info for each structure. TODO: Make this a for loop if more than one structure on the tile.
             if (m_structures.Count > 0)
             {
-                // Open tooltip
-                var structure = m_structures[0]; // TODO: Make this a for loop with [i];
-                tooltips.Add(new TooltipView.TooltipInfo(structure.Schema.tooltipName, structure.Schema.tooltipMessage, structure.Schema.tooltipIcon, structure.Schema.tooltipActions));
+                foreach (var structure in m_structures)
+                {
+                    tooltips.Add(new TooltipView.TooltipInfo(
+                        structure.Schema.tooltipName, 
+                        structure.Schema.tooltipMessage,
+                        structure.Schema.tooltipIcon, 
+                        structure.Schema.tooltipActions));
+                }
             }
             
             // Open tooltip
