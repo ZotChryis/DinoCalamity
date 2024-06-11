@@ -50,6 +50,25 @@ namespace UI
             RemoveViewAtIndex(indexToPop);
         }
 
+        /// <summary>
+        /// Closes a specific view.
+        /// </summary>
+        /// <param name="view">The view to close.</param>
+        public void CloseView(View view)
+        {
+            if (m_activeViews.Count == 0)
+            {
+                return;
+            }
+
+            for (int indexToPop = m_activeViews.Count - 1; indexToPop > 0; indexToPop--)
+            {
+                if (m_activeViews[indexToPop] != view) continue;
+                
+                RemoveViewAtIndex(indexToPop);
+            }
+        }
+
         private void Awake()
         {
             m_activeViews = new List<View>();
