@@ -129,9 +129,34 @@ namespace Gameplay
         // *********************
         // ITooltipable
         // *********************
+
         public void OpenTooltip()
         {
-            throw new System.NotImplementedException();
+            // Using a list to create individual tooltip items for the tile and each structure on it.
+            List<TooltipView.TooltipInfo> tooltips = new List<TooltipView.TooltipInfo>();
+            
+            // Add tile info
+            tooltips.Add(new TooltipView.TooltipInfo(Schema.Name, Schema.tooltipMessage, Schema.tooltipIcon, Schema.tooltipActions));
+            
+            // Add info for each structure. TODO: Make this a for loop if more than one structure on the tile.
+            if (m_structures.Count > 0)
+            {
+                // Open tooltip
+                var structure = m_structures[0]; // TODO: Make this a for loop with [i];
+                tooltips.Add(new TooltipView.TooltipInfo(structure.Schema.tooltipName, structure.Schema.tooltipMessage, structure.Schema.tooltipIcon, structure.Schema.tooltipActions));
+                // tooltipView?.SetData(m_structures[0].Schema.tooltipInfo, worldPos);
+            }
+            
+            // Open tooltip
+            var view = ServiceLocator.Instance.UIDisplayProcessor.TryShowView(Schemas.ViewMapSchema.ViewType.TooltipStack);
+            var tooltipStackView = view as TooltipStackView;
+            tooltipStackView?.SetData(tooltips, Vector3.zero);
+            Debug.Log("Opening tooltip.");
+        }
+
+        public void CloseTooltip()
+        {
+            Debug.Log("Closing tooltip.");
         }
     }
 }

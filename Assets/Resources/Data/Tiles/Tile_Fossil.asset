@@ -13,6 +13,11 @@ MonoBehaviour:
   m_Name: Tile_Fossil
   m_EditorClassIdentifier: 
   Status: 1
+  ActionsByType:
+    _serializedList: []
   Name: Fossil
   Prefab: {fileID: 3459353211222292083, guid: a69dde5ed32c48343aad7a24d335cf39, type: 3}
   Type: 4
+  tooltipMessage: This is a fossil tile.
+  tooltipIcon: {fileID: 21300000, guid: 31f3dbc844ead6e4186da9301bf7b3ba, type: 3}
+  tooltipActions: []

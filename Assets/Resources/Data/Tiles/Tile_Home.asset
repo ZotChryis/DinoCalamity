@@ -13,5 +13,11 @@ MonoBehaviour:
   m_Name: Tile_Home
   m_EditorClassIdentifier: 
   Status: 1
+  ActionsByType:
+    _serializedList: []
   Name: Home
   Prefab: {fileID: 6038654283065588668, guid: 65c34ba15bfe83d4fb5963a947f5dc80, type: 3}
+  Type: 0
+  tooltipMessage: This is the home tile.
+  tooltipIcon: {fileID: 0}
+  tooltipActions: []

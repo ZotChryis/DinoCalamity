@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Schemas
@@ -26,5 +27,11 @@ namespace Schemas
         public string Name;
         public Gameplay.Tile Prefab;
         public TileType Type;
+        
+        // Tooltip info. 
+        // Tooltip info.
+        public string tooltipMessage;
+        public Sprite tooltipIcon;
+        public List<Action> tooltipActions;
     }
 }

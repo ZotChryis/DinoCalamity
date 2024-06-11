@@ -7,7 +7,7 @@ namespace UI
     {
         public Vector3 offset = new Vector3(1.75f, 1.0f, 0); // World point offset to place the tooltip.
 
-        private ITooltipable currValue;
+        private Tile currValue;
         public void Start()
         {
             // Subscribe to events.
@@ -24,10 +24,15 @@ namespace UI
             ToggleTooltip(newValue);
         }
 
-        private void ToggleTooltip(ITooltipable newValue)
+        private void ToggleTooltip(Tile newValue)
         {
             currValue?.CloseTooltip();
-            newValue.OpenTooltip();
+            
+            // var worldPos = new Vector3(newValue.transform.position.x + offset.x, newValue.transform.position.y + offset.y, newValue.transform.position.z + offset.z);
+            newValue?.OpenTooltip();
+            
+            // Debug.Log($"TooltipHandler: {currValue.}");
+            currValue = newValue;
         }
     }
 }

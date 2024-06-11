@@ -13,6 +13,11 @@ MonoBehaviour:
   m_Name: Tile_Empty
   m_EditorClassIdentifier: 
   Status: 1
+  ActionsByType:
+    _serializedList: []
   Name: Empty
   Prefab: {fileID: 1309592889208938097, guid: 2c1a07d6ff666264ebfc52f5ba078101, type: 3}
   Type: 1
+  tooltipMessage: This tile is empty :(
+  tooltipIcon: {fileID: 0}
+  tooltipActions: []

@@ -21,8 +21,8 @@ MonoBehaviour:
         Actions:
         - {fileID: 11400000, guid: 6560a117dbf947e499634a6bd4848190, type: 2}
   Prefab: {fileID: 7740540078456095139, guid: ae1e59972bee935489bc2d97133a9e01, type: 3}
-  TooltipInfo:
-    title: Barracks
-    description: Barracks description
-    sprite: {fileID: 21300000, guid: 0bde533bf84adc24c8e0c8a5a5b2ee15, type: 3}
-    actions: []
+  tooltipName: Barracks
+  tooltipMessage: Trains dinos.
+  tooltipIcon: {fileID: 21300000, guid: 0bde533bf84adc24c8e0c8a5a5b2ee15, type: 3}
+  tooltipActions:
+  - {fileID: 11400000, guid: 6560a117dbf947e499634a6bd4848190, type: 2}

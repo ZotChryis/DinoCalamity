@@ -57,6 +57,7 @@ MonoBehaviour:
     - Key: 0
       Value: {fileID: 6023240463404148594}
   Schema: {fileID: 0}
+  m_structures: []
 --- !u!65 &7005829341892943190
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -98,12 +99,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 400216396864579548}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 91616decc90d342068d6c5cd93f4a77c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Schema: {fileID: 0}
+  m_tile: {fileID: 0}
+  offset: {x: 1.75, y: 1, z: 0}
 --- !u!1 &1797085975299522373
 GameObject:
   m_ObjectHideFlags: 0
