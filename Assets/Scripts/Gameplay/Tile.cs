@@ -121,12 +121,12 @@ namespace Gameplay
         // ITooltipable
         // *********************
 
-        public void OpenTooltip()
+        public View OpenTooltip()
         {
-            OpenTooltip(Vector3.zero);
+            return OpenTooltip(Vector3.zero);
         }
 
-        public void OpenTooltip(Vector3 offset)
+        public View OpenTooltip(Vector3 offset)
         {
             // Using a list to create individual tooltip items for the tile and each structure on it.
             List<TooltipView.TooltipInfo> tooltips = new List<TooltipView.TooltipInfo>();
@@ -148,6 +148,8 @@ namespace Gameplay
 
             var pos = new Vector3(transform.position.x + offset.x, transform.position.y + offset.y, transform.position.z + offset.z);
             tooltipStackView?.SetData(tooltips, pos);
+
+            return tooltipStackView;
         }
 
         public void CloseTooltip()

@@ -4,8 +4,8 @@ namespace UI
 {
     public interface ITooltipable
     {
-        public void OpenTooltip();
-        public void OpenTooltip(Vector3 offset);
+        public View OpenTooltip();
+        public View OpenTooltip(Vector3 offset);
 
 
         public void CloseTooltip();
