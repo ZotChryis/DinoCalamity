@@ -14,7 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Status: 1
   ActionsByType:
-    _serializedList: []
+    _serializedList:
+    - Key: 8
+      Value:
+      - Checks: []
+        Actions:
+        - {fileID: 11400000, guid: e8101db424bd76841a2fd9e0c9ab8dc6, type: 2}
   Name: Lava
   Prefab: {fileID: 892281507216346329, guid: b58414a1783d29642960146ad2a03125, type: 3}
   Type: 2
