@@ -38,8 +38,8 @@ MonoBehaviour:
         Actions:
         - {fileID: 11400000, guid: 811026b7d1181604c9ad7f502b83137c, type: 2}
   Prefab: {fileID: 4666357710076722438, guid: 61c1c53f92f10ca42bc594d3870e08b6, type: 3}
-  TooltipInfo:
-    title: Extractor
-    description: Extracts resources
-    sprite: {fileID: 21300000, guid: fecf8600dd3673345bdaf9f19b3a9df9, type: 3}
-    actions: []
+  tooltipName: Extractor
+  tooltipMessage: Extracts something.
+  tooltipIcon: {fileID: 21300000, guid: fecf8600dd3673345bdaf9f19b3a9df9, type: 3}
+  tooltipActions:
+  - {fileID: 11400000, guid: d2651fed2ad26194c8e8155d54aaa9f6, type: 2}

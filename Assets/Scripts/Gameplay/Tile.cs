@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using AYellowpaper.SerializedCollections;
+using UI;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -7,7 +9,7 @@ namespace Gameplay
     /// <summary>
     /// STUB
     /// </summary>
-    public class Tile : MonoBehaviour, IPointerClickHandler, IInvoker
+    public class Tile : MonoBehaviour, IPointerClickHandler, IInvoker, ITooltipable
     {
         public static int c_maxCapacity = 4;
         
@@ -20,11 +22,8 @@ namespace Gameplay
 
         [HideInInspector] public Schemas.TileSchema Schema;
         
-        private List<Structure> m_structures;
+        public List<Structure> m_structures;
         private int m_capacity;
-
-        // Public viewable list of structures. TODO: The structures in the list are still editable.
-        public List<Structure> Structures => new List<Structure>(m_structures);
 
         private void Awake()
         {
@@ -117,5 +116,45 @@ namespace Gameplay
         {
             return m_structures.Count;
         }
+        
+        // *********************
+        // ITooltipable
+        // *********************
+
+        public View OpenTooltip()
+        {
+            return OpenTooltip(Vector3.zero);
+        }
+
+        public View OpenTooltip(Vector3 offset)
+        {
+            // Using a list to create individual tooltip items for the tile and each structure on it.
+            List<TooltipView.TooltipInfo> tooltips = new List<TooltipView.TooltipInfo>();
+            
+            // Add tile info
+            tooltips.Add(new TooltipView.TooltipInfo(Schema.Name, Schema.tooltipMessage, Schema.tooltipIcon, Schema.tooltipActions));
+            
+            // Add info for each structure. TODO: Make this a for loop if more than one structure on the tile.
+            if (m_structures.Count > 0)
+            {
+                // Open tooltip
+                var structure = m_structures[0]; // TODO: Make this a for loop with [i];
+                tooltips.Add(new TooltipView.TooltipInfo(structure.Schema.tooltipName, structure.Schema.tooltipMessage, structure.Schema.tooltipIcon, structure.Schema.tooltipActions));
+            }
+            
+            // Open tooltip
+            var view = ServiceLocator.Instance.UIDisplayProcessor.TryShowView(Schemas.ViewMapSchema.ViewType.TooltipStack);
+            var tooltipStackView = view as TooltipStackView;
+
+            var pos = new Vector3(transform.position.x + offset.x, transform.position.y + offset.y, transform.position.z + offset.z);
+            tooltipStackView?.SetData(tooltips, pos);
+
+            return tooltipStackView;
+        }
+
+        // public void CloseTooltip()
+        // {
+        //     ServiceLocator.Instance.UIDisplayProcessor.PopView();
+        // }
     }
 }

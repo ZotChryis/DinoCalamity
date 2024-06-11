@@ -28,3 +28,6 @@ MonoBehaviour:
   Name: Pillagers
   Prefab: {fileID: 4441904479996006885, guid: d84de326056d77849b3eb836a495f876, type: 3}
   Type: 9
+  tooltipMessage: Pillagers!
+  tooltipIcon: {fileID: 0}
+  tooltipActions: []

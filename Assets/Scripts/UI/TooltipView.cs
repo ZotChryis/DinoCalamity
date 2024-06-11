@@ -1,36 +1,47 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using Schemas.Actions;
 
 namespace UI
 {
     public class TooltipView : View
     {
-        /// <summary>
-        /// Holds all information that would be displayed in a tooltip.
-        /// </summary>
-        [Serializable]
-        public class TooltipDescription
+        public struct TooltipInfo
         {
-            public string title;
-            public string description;
-            public Sprite sprite;
-            public List<Schemas.Action> actions;
+            public string Title;
+            public string Message;
+            public Sprite Icon;
+            public List<Schemas.Action> Actions;
+
+            /// <summary>
+            /// Wraps all info needed to create a tooltip popup.
+            /// Inputting a name and message are required.
+            /// Inputting an image icon and list of actions is optional.
+            /// </summary>
+            /// <param name="title">Required. Tooltip name/title.</param>
+            /// <param name="message">Required. Main tooltip message.</param>
+            /// <param name="icon">Optional. Tooltip image.</param>
+            /// <param name="actions">Optional. A list of actions to be displayed as buttons in the tooltip.</param>
+            public TooltipInfo(string title, string message, Sprite icon = null, List<Schemas.Action> actions = null)
+            {
+                Title = title;
+                Message = message;
+                Icon = icon;
+                Actions = actions;
+            }
         }
 
         [SerializeField] private TextMeshProUGUI m_titleText;
-        [SerializeField] private TextMeshProUGUI m_descriptionText;
-        [SerializeField] private Image m_image;
+        [SerializeField] private TextMeshProUGUI m_messageText;
+        [SerializeField] private Image m_icon;
         [SerializeField] private GameObject m_buttonParent;
         [SerializeField] private GameObject m_buttonPrefab;
 
         // For keeping track of action buttons. Currently unused but may be required to unsub actions from onClick listener.
         private List<TooltipActionButton> actionButtons = new List<TooltipActionButton>();
 
-        private Vector3 m_WorldPos;
+        // private Vector3 m_WorldPos;
 
         public delegate void TooltipButtonDelegate();
 
@@ -40,60 +51,45 @@ namespace UI
             // TODO: Unsub action buttons from addListener?
         }
 
-        public void SetData(TooltipDescription tooltip, Vector3 worldPos)
+        public void SetData(TooltipInfo tooltip)
         {
             // Set title text
-            if (m_titleText != null && tooltip.title != null)
+            if (m_titleText != null && tooltip.Title != null)
             {
-                m_titleText.text = tooltip.title;
+                m_titleText.text = tooltip.Title;
             } else
             {
                 m_titleText.gameObject.SetActive(false);
             }
 
             // Set description/message text
-            if (m_descriptionText != null && tooltip.description != null)
+            if (m_messageText != null && tooltip.Message != null)
             {
-                m_descriptionText.text = tooltip.description;
+                m_messageText.text = tooltip.Message;
             }
             else
             {
-                m_descriptionText.gameObject.SetActive(false);
+                m_messageText.gameObject.SetActive(false);
             }
 
             // Set image
-            if (m_image != null && tooltip.sprite != null)
+            if (m_icon != null && tooltip.Icon != null)
             {
-                m_image.sprite = tooltip.sprite;
+                m_icon.sprite = tooltip.Icon;
             }
             else
             {
-                m_image.gameObject.SetActive(false);
+                m_icon.gameObject.SetActive(false);
             }
 
             // Create action buttons -> Set actions to buttons.
-            foreach (Schemas.Action action in tooltip.actions)
+            foreach (Schemas.Action action in tooltip.Actions)
             {
                 var button = Instantiate(m_buttonPrefab, m_buttonParent.transform).GetComponent<TooltipActionButton>();
                 button.SetAction(action);
+                button.SetText(action.name);
                 actionButtons.Add(button);
             }
-
-            m_WorldPos = worldPos;
-            UpdateScreenPosition();
-        }
-
-        public void LateUpdate()
-        {
-            // Move the screen position to match the world position.
-            // Will be able to move offscreen. TODO: If offscreen, align to an edge?
-            UpdateScreenPosition();
-        }
-
-        private void UpdateScreenPosition()
-        {
-            var screenPos = Camera.main.WorldToScreenPoint(m_WorldPos);
-            transform.position = screenPos;
         }
     }
 }
