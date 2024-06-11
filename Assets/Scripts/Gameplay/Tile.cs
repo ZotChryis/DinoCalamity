@@ -3,7 +3,6 @@ using AYellowpaper.SerializedCollections;
 using UI;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.Serialization;
 
 namespace Gameplay
 {
@@ -132,6 +131,11 @@ namespace Gameplay
 
         public void OpenTooltip()
         {
+            OpenTooltip(Vector3.zero);
+        }
+
+        public void OpenTooltip(Vector3 offset)
+        {
             // Using a list to create individual tooltip items for the tile and each structure on it.
             List<TooltipView.TooltipInfo> tooltips = new List<TooltipView.TooltipInfo>();
             
@@ -144,19 +148,19 @@ namespace Gameplay
                 // Open tooltip
                 var structure = m_structures[0]; // TODO: Make this a for loop with [i];
                 tooltips.Add(new TooltipView.TooltipInfo(structure.Schema.tooltipName, structure.Schema.tooltipMessage, structure.Schema.tooltipIcon, structure.Schema.tooltipActions));
-                // tooltipView?.SetData(m_structures[0].Schema.tooltipInfo, worldPos);
             }
             
             // Open tooltip
             var view = ServiceLocator.Instance.UIDisplayProcessor.TryShowView(Schemas.ViewMapSchema.ViewType.TooltipStack);
             var tooltipStackView = view as TooltipStackView;
-            tooltipStackView?.SetData(tooltips, Vector3.zero);
-            Debug.Log("Opening tooltip.");
+
+            var pos = new Vector3(transform.position.x + offset.x, transform.position.y + offset.y, transform.position.z + offset.z);
+            tooltipStackView?.SetData(tooltips, pos);
         }
 
         public void CloseTooltip()
         {
-            Debug.Log("Closing tooltip.");
+            ServiceLocator.Instance.UIDisplayProcessor.PopView();
         }
     }
 }
