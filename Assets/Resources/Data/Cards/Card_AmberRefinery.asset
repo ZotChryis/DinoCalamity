@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73c4acd9b82fa274dadc738f9163d3ff, type: 3}
+  m_Name: Card_AmberRefinery
+  m_EditorClassIdentifier: 
+  Status: 1
+  ActionsByType:
+    _serializedList:
+    - Key: 3
+      Value:
+      - Checks:
+        - {fileID: 11400000, guid: f334de4f532e14342ad6cf8b8de87e6e, type: 2}
+        - {fileID: 11400000, guid: ed9cdc7983ce8ad44b6a9e21434e1a60, type: 2}
+        Actions:
+        - {fileID: 11400000, guid: 22643c9406880c34a8c26aa611264008, type: 2}
+        - {fileID: 11400000, guid: 875e98f98bae9ea4da7224bc09ad4d6c, type: 2}
+  Name: Amber Refinery
+  Description: Amber<br>+1 Technology
+  Icon: {fileID: 21300000, guid: b8af7ae025e373040acabdbb8420d64a, type: 3}
+  CardType: 1
+  Color: {r: 0.07275873, g: 0.039248843, b: 0.3962264, a: 1}
+  Costs:
+    _serializedList:
+    - Key: {fileID: 11400000, guid: 79ad42bc985cc07488a5e645142f2229, type: 2}
+      Value: 1
