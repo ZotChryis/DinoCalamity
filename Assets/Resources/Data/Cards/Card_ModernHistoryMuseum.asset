@@ -18,16 +18,16 @@ MonoBehaviour:
     - Key: 3
       Value:
       - Checks:
-        - {fileID: 11400000, guid: 2ac4baa31e4d7e44d9d449a0d2c0d4a2, type: 2}
+        - {fileID: 11400000, guid: 8c36cf846c100fd4fae195a06d376a9b, type: 2}
         - {fileID: 11400000, guid: ed9cdc7983ce8ad44b6a9e21434e1a60, type: 2}
         Actions:
-        - {fileID: 11400000, guid: 45ac546d1b1737e429480af786056709, type: 2}
+        - {fileID: 11400000, guid: 03abccdb5cc716d4287a1345d240d3ca, type: 2}
         - {fileID: 11400000, guid: 875e98f98bae9ea4da7224bc09ad4d6c, type: 2}
-  Name: Volcanic Shrine
-  Description: Lava<br>+1 Culture
+  Name: Modern History Museum
+  Description: Fossils<br>+1 Culture
   Icon: {fileID: 21300000, guid: b8af7ae025e373040acabdbb8420d64a, type: 3}
   CardType: 1
-  Color: {r: 0.07275873, g: 0.039248843, b: 0.3962264, a: 1}
+  Color: {r: 0.9372549, g: 0.93333334, b: 0.08627451, a: 1}
   Costs:
     _serializedList:
     - Key: {fileID: 11400000, guid: 79ad42bc985cc07488a5e645142f2229, type: 2}

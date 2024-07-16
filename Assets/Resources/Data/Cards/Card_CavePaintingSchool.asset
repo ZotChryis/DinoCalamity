@@ -27,7 +27,7 @@ MonoBehaviour:
   Description: Dinos<br>+1 Culture
   Icon: {fileID: 21300000, guid: b8af7ae025e373040acabdbb8420d64a, type: 3}
   CardType: 1
-  Color: {r: 0.07275873, g: 0.039248843, b: 0.3962264, a: 1}
+  Color: {r: 0.9372549, g: 0.93333334, b: 0.08627451, a: 1}
   Costs:
     _serializedList:
     - Key: {fileID: 11400000, guid: 79ad42bc985cc07488a5e645142f2229, type: 2}
