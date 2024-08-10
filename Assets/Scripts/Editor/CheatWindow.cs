@@ -57,36 +57,36 @@ namespace Editor
                 GUILayout.Label (resource.Name, EditorStyles.boldLabel);
                 if (GUILayout.Button("+X"))
                 {
-                    ServiceLocator.Instance.Bank.DeltaMultiplier(resource, 1);
+                    ((IResourceModifierContainer)ServiceLocator.Instance.Bank).AddMultiplier(resource.Type, 1, -1);
                 }
                 if (GUILayout.Button("+100"))
                 {
-                    ServiceLocator.Instance.Bank.DeltaResource(resource, 100);
+                    ServiceLocator.Instance.Bank.DeltaResource(resource.Type, 100);
                 }
                 if (GUILayout.Button("+10"))
                 {
-                    ServiceLocator.Instance.Bank.DeltaResource(resource, 10);
+                    ServiceLocator.Instance.Bank.DeltaResource(resource.Type, 10);
                 }
                 if (GUILayout.Button("+1"))
                 {
-                    ServiceLocator.Instance.Bank.DeltaResource(resource, 1);
+                    ServiceLocator.Instance.Bank.DeltaResource(resource.Type, 1);
                 }
 
                 if (GUILayout.Button( "-1"))
                 {
-                    ServiceLocator.Instance.Bank.DeltaResource(resource, -1);
+                    ServiceLocator.Instance.Bank.DeltaResource(resource.Type, -1);
                 }
                 if (GUILayout.Button("-10"))
                 {
-                    ServiceLocator.Instance.Bank.DeltaResource(resource, -10);
+                    ServiceLocator.Instance.Bank.DeltaResource(resource.Type, -10);
                 }
                 if (GUILayout.Button("-100"))
                 {
-                    ServiceLocator.Instance.Bank.DeltaResource(resource, -100);
+                    ServiceLocator.Instance.Bank.DeltaResource(resource.Type, -100);
                 }
                 if (GUILayout.Button("-X"))
                 {
-                    ServiceLocator.Instance.Bank.DeltaMultiplier(resource, 1);
+                    ((IResourceModifierContainer)ServiceLocator.Instance.Bank).AddMultiplier(resource.Type, 1, -1);
                 }
             }
         }

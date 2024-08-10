@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Schemas;
 using Utility.Observable;
 
@@ -171,6 +172,16 @@ namespace Gameplay
             {
                 Deck.AddCard(Discard.Pop());
             }
+        }
+
+        // TODO: We can optimize this
+        public List<Card> GetAllCards()
+        {
+            List<Card> allCards = new List<Card>();
+            allCards.AddRange(Deck.Cards);
+            allCards.AddRange(Hand.Cards);
+            allCards.AddRange(Discard.Cards);
+            return allCards;
         }
     }
 }

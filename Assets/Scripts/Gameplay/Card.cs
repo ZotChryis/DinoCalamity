@@ -14,7 +14,7 @@ namespace Gameplay
 
         public Invoker Invoker { get; private set; } = new Invoker();
         
-        public Card(Schemas.CardSchema schema)
+        public Card(CardSchema schema)
         {
             Schema = schema;
             Invoker.Initialize(this, Schema);
@@ -37,7 +37,7 @@ namespace Gameplay
         {
             foreach (var (resource, amount) in Schema.Costs)
             {
-                ServiceLocator.Instance.Bank.DeltaResource(resource, -amount);
+                ServiceLocator.Instance.Bank.DeltaResource(resource.Type, -amount);
             }
         }
     }

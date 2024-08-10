@@ -279,5 +279,41 @@ namespace Gameplay
         {
             OnTileRevealEvent?.Invoke(tile);
         }
+
+        // TODO: We can optimize this
+        public List<Structure> GetAllStructures()
+        {
+            List<Structure> allStructures = new List<Structure>();
+            for (var row = 0; row < m_schema.Width; row++)
+            {
+                for (int col = 0; col < m_schema.Height; col++)
+                {
+                    if (Grid[row, col] != null)
+                    {
+                        allStructures.AddRange(Grid[row, col].m_structures);
+                    }
+                }
+            }
+
+            return allStructures;
+        }
+        
+        // TODO: We can optimize this
+        public List<Tile> GetAllTiles()
+        {
+            List<Tile> allTiles = new List<Tile>();
+            for (var row = 0; row < m_schema.Width; row++)
+            {
+                for (int col = 0; col < m_schema.Height; col++)
+                {
+                    if (Grid[row, col] != null)
+                    {
+                        allTiles.Add(Grid[row, col]);
+                    }
+                }
+            }
+
+            return allTiles;
+        }
     }
 }

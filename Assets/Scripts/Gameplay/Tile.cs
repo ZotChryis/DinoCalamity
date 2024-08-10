@@ -22,12 +22,11 @@ namespace Gameplay
 
         [HideInInspector] public Schemas.TileSchema Schema;
         
-        public List<Structure> m_structures;
+        public List<Structure> m_structures = new List<Structure>();
         private int m_capacity;
 
         private void Awake()
         {
-            m_structures = new List<Structure>();
             ServiceLocator.Instance.Loadout.SelectedTile.OnChangedValues += OnSelectedTileChanged;
             ToggleFog(true);
         }

@@ -8,17 +8,23 @@ namespace Gameplay
     public class GameManager: MonoBehaviour
     {
         /// <summary>
-        /// This event occurs when the turn ends.
-        /// </summary>
-        public delegate void OnTurnEnd();
-        public OnTurnEnd OnTurnEndEvent;
-    
-        /// <summary>
         /// This event occurs when the turn starts.
         /// </summary>
         public delegate void OnTurnStart();
         public OnTurnEnd OnTurnStartEvent;
-    
+        
+        /// <summary>
+        /// This event occurs when the turn ends.
+        /// </summary>
+        public delegate void OnTurnEnd();
+        public OnTurnEnd OnTurnEndEvent;
+        
+        /// <summary>
+        /// This event occurs when the turn ends.
+        /// </summary>
+        public delegate void OnTurnCleanup();
+        public OnTurnCleanup OnTurnCleanupEvent;
+
         public StateMachine StateMachine { get; private set; } = new StateMachine();
         public Observable<int> Turn { get; private set; } = new Observable<int>(0);
         
@@ -52,6 +58,7 @@ namespace Gameplay
         public void EndTurn()
         {
             OnTurnEndEvent?.Invoke();
+            OnTurnCleanupEvent?.Invoke();
         }
 
         public void GenerateCalamity()

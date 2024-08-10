@@ -10,8 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 875aff0ff949be041b5d5215f47bb1d5, type: 3}
-  m_Name: ActionResourceMultiplier_Prosperity
+  m_Name: ActionResourceMultiplier_Enlightenment_Add_Technology
   m_EditorClassIdentifier: 
   Status: 1
-  Resource: {fileID: 11400000, guid: bbe31351566fb534d898bdf5e5758c2f, type: 2}
+  Locality: 1
+  Resource: {fileID: 11400000, guid: d734d9689fae7e24e89212041957a9f1, type: 2}
   Multiplier: 1
+  FlatBonus: 0
+  Turns: 1

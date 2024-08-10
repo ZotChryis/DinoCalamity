@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using GameStates;
 using Schemas;
-using UnityEngine.SceneManagement;
 using Utility;
 
 namespace Gameplay
@@ -11,11 +10,20 @@ namespace Gameplay
         Invoker Invoker { get; }
     }
 
-    public class Invoker
+    public class Invoker : IResourceModifierContainer
     {
         public class InvokerState
         {
+            /// <summary>
+            /// This is a generic state of values to store for this invoker.
+            /// </summary>
             public Dictionary<string, int> Ints = new Dictionary<string, int>();
+            
+            /// <summary>
+            /// These are "global" multipliers applied to all non-faith resource types.
+            /// </summary>
+            public Dictionary<ResourceSchema.ResourceType, List<ResourceModifier>> ResourceModifiers 
+                = new Dictionary<ResourceSchema.ResourceType, List<ResourceModifier>>();
         }
 
         public class Context
@@ -30,6 +38,8 @@ namespace Gameplay
         
         public enum Location
         {
+            // TODO: Promote this "selected" context to Context better
+            // Currently, this is overloaded as "SelectedTile" or "SelectedCard"
             Selected,
             Owner,
             Target
@@ -50,10 +60,12 @@ namespace Gameplay
             TileOnReveal = 8,
             
             // These events pertain to any other context.
-            GlobalOnGeneration = 4,     
-            GlobalOnEndTurn = 5,
+            GlobalOnGeneration = 4,
             GlobalOnStartTurn = 6,
+            GlobalOnEndTurn = 5,
+            GlobalOnCleanupTurn = 10,
             GlobalOnTileReveal = 9,
+
         }
         
         public InvokerState State { get; private set; } = new InvokerState();
@@ -64,14 +76,14 @@ namespace Gameplay
         {
             Owner = owner;
             Schema = schema;
-
-            if (Schema.ActionsByType.ContainsKey(EventType.GlobalOnEndTurn))
-            {
-                ServiceLocator.Instance.GameManager.OnTurnEndEvent += OnTurnEnded;
-            }
+            
             if (Schema.ActionsByType.ContainsKey(EventType.GlobalOnStartTurn))
             {
                 ServiceLocator.Instance.GameManager.OnTurnStartEvent += OnTurnStarted;
+            }
+            if (Schema.ActionsByType.ContainsKey(EventType.GlobalOnEndTurn))
+            {
+                ServiceLocator.Instance.GameManager.OnTurnEndEvent += OnTurnEnded;
             }
             if (Schema.ActionsByType.ContainsKey(EventType.GlobalOnGeneration))
             {
@@ -81,6 +93,8 @@ namespace Gameplay
             {
                 ServiceLocator.Instance.World.OnTileRevealEvent += OnTileRevealed;
             }
+            
+            ServiceLocator.Instance.GameManager.OnTurnCleanupEvent += OnTurnCleanUp;
             
             TryInvokeActions(EventType.OnApply, GetDefaultContext());
         }
@@ -105,16 +119,6 @@ namespace Gameplay
             }
         }
 
-        private void OnTurnEnded()
-        {
-            if (!AreConditionsMet(EventType.GlobalOnEndTurn, GetDefaultContext()))
-            {
-                return;
-            }
-            
-            TryInvokeActions(EventType.GlobalOnEndTurn, GetDefaultContext());
-        }
-        
         private void OnTurnStarted()
         {
             if (!AreConditionsMet(EventType.GlobalOnStartTurn, GetDefaultContext()))
@@ -125,6 +129,28 @@ namespace Gameplay
             TryInvokeActions(EventType.GlobalOnStartTurn, GetDefaultContext());
         }
         
+        private void OnTurnEnded()
+        {
+            if (!AreConditionsMet(EventType.GlobalOnEndTurn, GetDefaultContext()))
+            {
+                return;
+            }
+            
+            TryInvokeActions(EventType.GlobalOnEndTurn, GetDefaultContext());
+        }
+        
+        private void OnTurnCleanUp()
+        {
+            ((IResourceModifierContainer)this).HandTurnCleanup();
+            
+            if (!AreConditionsMet(EventType.GlobalOnCleanupTurn, GetDefaultContext()))
+            {
+                return;
+            }
+            
+            TryInvokeActions(EventType.GlobalOnCleanupTurn, GetDefaultContext());
+        }
+
         private void OnTileRevealed(Tile tile)
         {
             var context = GetDefaultContext();
@@ -213,6 +239,11 @@ namespace Gameplay
                 Owner = Owner,
                 Invoker = this
             };
+        }
+
+        public Dictionary<ResourceSchema.ResourceType, List<ResourceModifier>> GetResourceModifiers()
+        {
+            return State.ResourceModifiers;
         }
     }
 }
