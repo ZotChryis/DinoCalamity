@@ -40,7 +40,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7122263356348461133}
-  m_Mesh: {fileID: 4300000, guid: 7d0338f00ae6e9242964059b50a7a393, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 7ca18c5d2dbba354e922f48e26139644, type: 3}
 --- !u!23 &4492048465478949772
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 30d2c0caf0ebf2748b15e3aa63202a2a, type: 2}
+  - {fileID: 2100000, guid: 81dca6bac8972d84097771af6295bd87, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 4012166835116571826}
   - component: {fileID: 3880061852983329220}
   m_Layer: 0
-  m_Name: Structure_AmberRefinery
+  m_Name: Structure_FossilFuelPressurizer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
