@@ -16,3 +16,7 @@ MonoBehaviour:
   Location: 2
   m_enable: 0
   m_includeNeighbors: 0
+  m_suppressEvent: 0
+  m_tileSearchParameters:
+    SearchRadius: 0
+    InfiniteSearchRadius: 0

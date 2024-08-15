@@ -32,7 +32,7 @@ namespace Editor
 
                 foreach (var tile in ServiceLocator.Instance.World.Grid)
                 {
-                    ServiceLocator.Instance.World.ToggleFog(tile, false, false);
+                    ServiceLocator.Instance.World.ToggleFog(tile, false, null);
                 }
             }
             
@@ -46,7 +46,7 @@ namespace Editor
                 foreach (var tile in ServiceLocator.Instance.World.Grid)
                 {
                     var random = Random.Range(0, 2);
-                    ServiceLocator.Instance.World.ToggleFog(tile, random == 0, false);
+                    ServiceLocator.Instance.World.ToggleFog(tile, random == 0, null);
                 }
             }
             

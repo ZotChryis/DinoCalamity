@@ -60,13 +60,18 @@ namespace Gameplay
         /// Returns the card at the very top of the deck. It is removed from the deck.
         /// </summary>
         /// <returns></returns>
-        public Card Pop()
+        public bool TryPop(out Card card)
         {
+            if (IsEmpty())
+            {
+                card = null;
+                return false;
+            }
             Assert.IsFalse(IsEmpty());
-            Card card = m_cards[0];
+            card = m_cards[0];
             m_cards.RemoveAt(0);
             CardCount.Value = m_cards.Count;
-            return card;
+            return true;
         }
 
         /// <summary>

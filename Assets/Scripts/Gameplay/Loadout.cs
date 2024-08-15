@@ -92,8 +92,11 @@ namespace Gameplay
             {
                 ShuffleDiscardToDeck();
             }
-            
-            Card card = Deck.Pop();
+
+            if (!Deck.TryPop(out Card card))
+            {
+                return false;
+            }
             Hand.AddCard(card);
             card.Invoker.TryInvokeActions(Invoker.EventType.CardOnDraw, card.Invoker.GetDefaultContext());
             OnDrawEvent?.Invoke(card);
@@ -170,7 +173,10 @@ namespace Gameplay
             Discard.Shuffle();
             while (!Discard.IsEmpty())
             {
-                Deck.AddCard(Discard.Pop());
+                if (Discard.TryPop(out Card card))
+                {
+                    Deck.AddCard(card);
+                }
             }
         }
 

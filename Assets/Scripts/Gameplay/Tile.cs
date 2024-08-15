@@ -12,6 +12,9 @@ namespace Gameplay
     public class Tile : MonoBehaviour, IPointerClickHandler, IInvoker, ITooltipable
     {
         public static int c_maxCapacity = 4;
+
+        public int X => m_x;
+        public int Y => m_y;
         
         public Invoker Invoker { get; private set; } = new Invoker();
         
@@ -24,6 +27,9 @@ namespace Gameplay
         
         public List<Structure> m_structures = new List<Structure>();
         private int m_capacity;
+
+        private int m_x;
+        private int m_y;
 
         private void Awake()
         {
@@ -48,6 +54,12 @@ namespace Gameplay
             Invoker.Initialize(this, Schema);
 
             m_capacity = schema.Capacity;
+        }
+
+        public void SetPosition(int x, int y)
+        {
+            m_x = x;
+            m_y = y;
         }
         
         public void OnPointerClick(PointerEventData eventData)

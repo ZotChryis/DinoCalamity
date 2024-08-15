@@ -9,6 +9,7 @@ namespace Schemas.Actions
         [SerializeField] private bool m_enable;
         [SerializeField] private bool m_includeNeighbors;
         [SerializeField] private bool m_suppressEvent;
+        [SerializeField] private TileSearchParameters m_tileSearchParameters;
 
         public override void Invoke(Invoker.Context context)
         {
@@ -29,7 +30,7 @@ namespace Schemas.Actions
             ServiceLocator.Instance.World.ToggleFog(
                 tile,
                 false,
-                m_includeNeighbors,
+                m_includeNeighbors ? m_tileSearchParameters : null,
                 !m_suppressEvent
             );
         }
