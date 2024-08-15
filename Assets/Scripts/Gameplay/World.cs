@@ -10,26 +10,27 @@ namespace Gameplay
         /// This event occurs when a tile is revealed from the fog of war.
         /// </summary>
         public delegate void OnTileReveal(Tile tile);
+
         public OnTileReveal OnTileRevealEvent;
-        
+
         public Tile[,] Grid { get; private set; }
         public Tile Home { get; private set; }
-        
+
         private int m_totalTileProbability;
         private Schemas.TileSchema[] m_tileProbability;
 
-        private WorldSettings m_schema;
+        private WorldSettings m_worldSettingsSchema;
 
         private void Awake()
         {
             ServiceLocator.Instance.Register(this);
         }
-        
+
         public void Initialize(WorldSettings schema)
         {
-            m_schema = schema;
+            m_worldSettingsSchema = schema;
         }
-        
+
         /// <summary>
         /// Generates a map in World space given the current WorldSettings.
         /// </summary>
@@ -38,23 +39,25 @@ namespace Gameplay
             GenerateProbabilityTable();
             Clear();
 
-            Grid = new Tile[m_schema.Width, m_schema.Height];
-            float zOffsetEven = Mathf.Sqrt(3) * m_schema.HexSize;
-            for (int row = 0; row < m_schema.Width; row++)
+            Grid = new Tile[m_worldSettingsSchema.Width, m_worldSettingsSchema.Height];
+            float zOffsetEven = Mathf.Sqrt(3) * m_worldSettingsSchema.HexSize;
+            for (int row = 0; row < m_worldSettingsSchema.Width; row++)
             {
-                for (int col = 0; col < m_schema.Height; col++)
+                for (int col = 0; col < m_worldSettingsSchema.Height; col++)
                 {
-                    float zPos = col * (zOffsetEven + m_schema.Gap);
+                    float zPos = col * (zOffsetEven + m_worldSettingsSchema.Gap);
                     if (row % 2 == 1)
                     {
                         zPos += (zOffsetEven) / 2f;
                     }
-                    float xPos = row * 1.5f * (m_schema.HexSize + m_schema.Gap);
+
+                    float xPos = row * 1.5f * (m_worldSettingsSchema.HexSize + m_worldSettingsSchema.Gap);
                     Vector3 position = new Vector3(xPos, 0, zPos);
 
                     var schema = GetRandomTileSchema();
                     var instance = Instantiate(schema.Prefab, position, Quaternion.identity, transform);
                     instance.SetSchema(schema);
+                    instance.SetPosition(row, col);
                     Grid[row, col] = instance;
                 }
             }
@@ -68,24 +71,24 @@ namespace Gameplay
         private void PlaceHome()
         {
             int row, col;
-            switch (m_schema.Location)
+            switch (m_worldSettingsSchema.Location)
             {
                 case WorldSettings.HomeLocation.Random:
-                    row = Random.Range(0, m_schema.Width);
-                    col = Random.Range(0, m_schema.Height);
+                    row = Random.Range(0, m_worldSettingsSchema.Width);
+                    col = Random.Range(0, m_worldSettingsSchema.Height);
                     break;
                 case WorldSettings.HomeLocation.Center:
                 default:
-                    row = m_schema.Width / 2;
-                    col = m_schema.Height / 2;
+                    row = m_worldSettingsSchema.Width / 2;
+                    col = m_worldSettingsSchema.Height / 2;
                     break;
             }
 
             // Now replace the home where the settings tell us to...
-            SwapTile(Grid[row, col], m_schema.Home);
-            
+            SwapTile(Grid[row, col], m_worldSettingsSchema.Home);
+
             // ...and toggle the fog on it and surrounding tiles.
-            ToggleFog(Grid[row, col], false, true);
+            ToggleFog(Grid[row, col], false, new TileSearchParameters{SearchRadius = 1});
 
             Home = Grid[row, col];
         }
@@ -100,7 +103,7 @@ namespace Gameplay
             // at times. Should look into this
             while (transform.childCount > 0)
             {
-                foreach(Transform child in transform)
+                foreach (Transform child in transform)
                 {
                     if (Application.isPlaying)
                     {
@@ -118,14 +121,14 @@ namespace Gameplay
         {
             // O(2N) because we have to find the total first to properly initialize the array.
             m_totalTileProbability = 0;
-            foreach (var settingsTileProbability in m_schema.MapProbabilities)
+            foreach (var settingsTileProbability in m_worldSettingsSchema.MapProbabilities)
             {
                 m_totalTileProbability += settingsTileProbability.Amount;
             }
 
             m_tileProbability = new Schemas.TileSchema[m_totalTileProbability];
             int tilesPlaced = 0;
-            foreach (var settingsTileProbability in m_schema.MapProbabilities)
+            foreach (var settingsTileProbability in m_worldSettingsSchema.MapProbabilities)
             {
                 for (int i = 0; i < settingsTileProbability.Amount; i++)
                 {
@@ -142,33 +145,64 @@ namespace Gameplay
             return m_tileProbability[randomIndex];
         }
 
-        public List<Tile> GetNeighbors(Tile tile)
+        public List<Tile> GetNeighbors(Tile tile, TileSearchParameters tileSearchParameters = null)
         {
-            for (var i = 0; i < m_schema.Width; i++)
+            if (!IsValidLocation(tile.X, tile.Y))
             {
-                for (int j = 0; j < m_schema.Height; j++)
-                {
-                    if (Grid[i, j] == tile)
+                return new List<Tile>();
+            }
+            
+            int level = 0;
+            int searchRadius = tileSearchParameters?.SearchRadius ?? 1;
+            Queue<Tile> queue = new Queue<Tile>();
+            queue.Enqueue(tile);
+            List<Tile> tilesFound = new List<Tile>();
+            while(queue.Count > 0){
+                int levelSize = queue.Count;
+                while (levelSize-- != 0) {
+                    var temp = queue.Dequeue();
+                    var tempNeighbors = GetDirectNeighbors(temp, tileSearchParameters);
+                    foreach (var tempNeighbor in tempNeighbors)
                     {
-                        return GetNeighbors(i, j);
+                        queue.Enqueue(tempNeighbor);
+                        if (!tilesFound.Contains(tempNeighbor))
+                        {
+                            tilesFound.Add(tempNeighbor);
+                        }
                     }
+                }
+                level++;
+                if (level >= searchRadius)
+                {
+                    break;
                 }
             }
 
-            return new List<Tile>();
+            foreach (var thing in tilesFound)
+            {
+                Debug.LogWarning("TILES I FOUND: " + thing.name);
+            }
+
+            return tilesFound;
         }
-        
-        public List<Tile> GetNeighbors(int x, int y)
+
+        private List<Tile> GetDirectNeighbors(
+            Tile tile,
+            TileSearchParameters searchParameters)
         {
             void TryAdd(ref List<Tile> tiles, int r, int c)
             {
-                if (IsValidLocation(r, c ))
+                if (IsValidLocation(r, c) && DoesTileMeetParameters(Grid[r, c], searchParameters))
                 {
                     tiles.Add(Grid[r, c]);
                 }
             }
-            
+
+            int x = tile.X;
+            int y = tile.Y;
+
             List<Tile> neighbors = new List<Tile>();
+
             if (x % 2 == 0)
             {
                 TryAdd(ref neighbors, x - 1, y - 1);
@@ -193,11 +227,12 @@ namespace Gameplay
 
         private bool IsValidLocation(int x, int y)
         {
-            if (x < 0 || x >= m_schema.Width)
+            if (x < 0 || x >= m_worldSettingsSchema.Width)
             {
                 return false;
             }
-            if (y < 0 || y >= m_schema.Height)
+
+            if (y < 0 || y >= m_worldSettingsSchema.Height)
             {
                 return false;
             }
@@ -205,19 +240,39 @@ namespace Gameplay
             return true;
         }
 
+        private bool DoesTileMeetParameters(Tile tile, TileSearchParameters tileSearchParameters)
+        {
+            if (tileSearchParameters == null)
+            {
+                return true;
+            }
+
+            if (tileSearchParameters.TileType == null)
+            {
+                return true;
+            }
+
+            if (tile.Schema.Type == tileSearchParameters.TileType)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
         /// <summary>
         /// Toggles the fog on the given tile to the given value.
         /// </summary>
-        public void ToggleFog(Tile tile, bool on, bool includeNeightbors, bool broadcast = true)
+        public void ToggleFog(Tile tile, bool on, TileSearchParameters tileSearchParameters, bool broadcast = true)
         {
             tile.ToggleFog(on, broadcast);
 
-            if (!includeNeightbors)
+            if (tileSearchParameters == null)
             {
                 return;
             }
-            
-            var neighbors = GetNeighbors(tile);
+
+            var neighbors = GetNeighbors(tile, tileSearchParameters);
             foreach (var neighbor in neighbors)
             {
                 neighbor.ToggleFog(on, broadcast);
@@ -243,10 +298,10 @@ namespace Gameplay
             {
                 return false;
             }
-            
-            for (var row = 0; row < m_schema.Width; row++)
+
+            for (var row = 0; row < m_worldSettingsSchema.Width; row++)
             {
-                for (int col = 0; col < m_schema.Height; col++)
+                for (int col = 0; col < m_worldSettingsSchema.Height; col++)
                 {
                     if (Grid[row, col] == tile)
                     {
@@ -254,6 +309,7 @@ namespace Gameplay
                         var position = oldTile.transform.position;
                         var newTile = Instantiate(schema.Prefab, position, Quaternion.identity, transform);
                         newTile.SetSchema(schema);
+                        newTile.SetPosition(row, col);
                         newTile.ToggleFog(oldTile.IsInFog(), false);
                         Grid[row, col] = newTile;
 
@@ -261,7 +317,7 @@ namespace Gameplay
                         {
                             Home = newTile;
                         }
-                        
+
                         Destroy(oldTile.gameObject);
                         return true;
                     }

@@ -13,5 +13,10 @@ MonoBehaviour:
   m_Name: ActionFog_Remove_Selected
   m_EditorClassIdentifier: 
   Status: 1
+  Location: 0
   m_enable: 0
   m_includeNeighbors: 0
+  m_suppressEvent: 0
+  m_tileSearchParameters:
+    SearchRadius: 0
+    InfiniteSearchRadius: 0
