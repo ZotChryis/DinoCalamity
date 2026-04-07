@@ -340,9 +340,9 @@ namespace Gameplay
         public List<Structure> GetAllStructures()
         {
             List<Structure> allStructures = new List<Structure>();
-            for (var row = 0; row < m_schema.Width; row++)
+            for (var row = 0; row < m_worldSettingsSchema.Width; row++)
             {
-                for (int col = 0; col < m_schema.Height; col++)
+                for (int col = 0; col < m_worldSettingsSchema.Height; col++)
                 {
                     if (Grid[row, col] != null)
                     {
@@ -358,9 +358,9 @@ namespace Gameplay
         public List<Tile> GetAllTiles()
         {
             List<Tile> allTiles = new List<Tile>();
-            for (var row = 0; row < m_schema.Width; row++)
+            for (var row = 0; row < m_worldSettingsSchema.Width; row++)
             {
-                for (int col = 0; col < m_schema.Height; col++)
+                for (int col = 0; col < m_worldSettingsSchema.Height; col++)
                 {
                     if (Grid[row, col] != null)
                     {
